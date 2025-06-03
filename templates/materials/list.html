@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Material Stock</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Material</th>
+                <th>Dimensions</th>
+                <th>Quantity</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for material in materials %}
+            <tr>
+                <td>{{ material.material }}</td>
+                <td>{{ material.length }}" x {{ material.width }}" x {{ material.thickness }}"</td>
+                <td>{{ material.quantity }}</td>
+                <td>${{ material.price }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{% url 'materials:add' %}" class="btn btn-primary">
+        <i class="fas fa-plus"></i> Add Material
+    </a>
+</div>
+{% endblock %}

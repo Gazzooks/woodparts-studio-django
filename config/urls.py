@@ -15,8 +15,36 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+from django.views.generic import TemplateView
+from django.contrib.auth.views import LoginView, LogoutView
+from django.conf import settings
+from django.conf.urls.static import static
+from projects.views import ProjectDashboardView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', TemplateView.as_view(template_name='landing.html'), name='landing'),
+    path('dashboard/', include('projects.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('accounts/', include('accounts.urls')),
+    
+    # Main application URLs
+    path('projects/', include('projects.urls')),
+    path('parts/', include('parts.urls', namespace='parts')),
+    path('calculators/', include('calculators.urls')),
+    path('converters/', include('converters.urls', namespace='converters')),
+    path('cutlists/', include('cutlists.urls')),
+    path('references/', include('references.urls', namespace='references')),
+    path('materials/', include('materials.urls', namespace='materials')),
+    
+    # Redirect root URL to projects dashboard
+    # path('', RedirectView.as_view(url='/projects/dashboard/', permanent=True)),
+    
+    # If you want a direct view instead of redirect:
+    # path('', ProjectDashboardView.as_view(), name='home'),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

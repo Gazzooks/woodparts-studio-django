@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WoodParts Studio v2</title>
+    
+    <!-- Bootstrap 4 CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/app.css' %}">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="{% url 'landing' %}">
+            <i class="fas fa-hammer"></i> WoodParts Studio
+        </a>
+        
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="mainNav">
+            <!-- LEFT SIDE NAVIGATION -->
+            <ul class="navbar-nav mr-auto">
+                <!-- Projects -->
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'projects:dashboard' %}">
+                        <i class="fas fa-project-diagram"></i> Projects
+                    </a>
+                </li>
+
+                <!-- Parts & Materials -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="partsDropdown" data-toggle="dropdown">
+                        <i class="fas fa-cubes"></i> Parts & Materials
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="{% url 'parts:manager' %}">
+                            <i class="fas fa-tasks"></i> Parts Manager
+                        </a>
+                        <a class="dropdown-item" href="{% url 'materials:list' %}">
+                            <i class="fas fa-boxes"></i> Material Stock
+                        </a>
+                    </div>
+                </li>
+
+                <!-- Tools Menu -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="toolsDropdown" data-toggle="dropdown">
+                        <i class="fas fa-tools"></i> Tools
+                    </a>
+                    <div class="dropdown-menu">
+                        <!-- Calculators Submenu -->
+                        <div class="dropdown-submenu">
+                            <a class="dropdown-item dropdown-toggle" href="#">
+                                <i class="fas fa-calculator"></i> Calculators
+                            </a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="{% url 'calculators:board_foot' %}">
+                                    <i class="fas fa-cube"></i> Board Foot Calculator
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="{% url 'calculators:fraction' %}">
+                                    <i class="fas fa-divide"></i> Fraction Calculator
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Converters Submenu -->
+                        <div class="dropdown-submenu">
+                            <a class="dropdown-item dropdown-toggle" href="#">
+                                <i class="fas fa-exchange-alt"></i> Converters
+                            </a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="{% url 'converters:length' %}">
+                                    <i class="fas fa-ruler"></i> Length Converter
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Cutlist Creator -->
+                        <div class="dropdown-divider"></div>
+                            {% if request.resolver_match.kwargs.project_id %}
+                                <a href="{% url 'cutlists:creator' project_id=request.resolver_match.kwargs.project_id %}"><i class="fas fa-cut"></i> Cutlist Creator</a>
+                            {% else %}
+                                <a href="#" class="disabled" title="No project selected"></a>
+                            {% endif %}
+                    </div>
+                </li>
+
+                <!-- References Menu - MOVED HERE TO LEFT SIDE -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="referencesDropdown" data-toggle="dropdown">
+                        <i class="fas fa-book"></i> References
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="{% url 'references:wood_types' %}">
+                            <i class="fas fa-tree"></i> Wood Types
+                        </a>
+                        <a class="dropdown-item" href="{% url 'references:screw_chart' %}">
+                            <i class="fas fa-screwdriver"></i> Screw Chart
+                        </a>
+                        {% comment %} <!-- NOTE: Add new reference materials below this comment -->
+                        <!-- Example new entry:
+                        <a class="dropdown-item" href="{% url 'references:new_reference' %}">
+                            <i class="fas fa-new-icon"></i> New Reference
+                        </a>
+                        --> {% endcomment %}
+                    </div>
+                </li>
+            </ul>
+
+            <!-- RIGHT SIDE NAVIGATION -->
+            <ul class="navbar-nav ml-auto">
+                {% if user.is_authenticated %}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" data-toggle="dropdown">
+                            <i class="fas fa-user"></i> {{ user.username }}
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <a class="dropdown-item" href="{% url 'accounts:profile' %}">
+                                <i class="fas fa-user-cog"></i> Profile
+                            </a>
+                            <a class="dropdown-item" href="{% url 'accounts:preferences' %}">
+                                <i class="fas fa-cog"></i> Preferences
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <form action="{% url 'logout' %}" method="post">
+                                {% csrf_token %}
+                                <button type="submit" class="dropdown-item">
+                                    <i class="fas fa-sign-out-alt"></i> Logout
+                                </button>
+                            </form>
+                        </div>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'login' %}">
+                            <i class="fas fa-sign-in-alt"></i> Login
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'accounts:register' %}">
+                            <i class="fas fa-user-plus"></i> Register
+                        </a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+    <main class="container mt-4">
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }} alert-dismissible fade show">
+                    {{ message }}
+                    <button type="button" class="close" data-dismiss="alert">
+                        <span>&times;</span>
+                    </button>
+                </div>
+            {% endfor %}
+        {% endif %}
+
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Required JavaScript for Bootstrap 4 -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/[email protected]/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/[email protected]/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JavaScript for multi-level dropdowns -->
+    <script>
+        $(document).ready(function() {
+            $('.dropdown-submenu a.dropdown-toggle').on("click", function(e) {
+                e.stopPropagation();
+                $(this).next('.dropdown-menu').toggleClass('show');
+            });
+            
+            // Close submenus when clicking outside
+            $(document).click(function() {
+                $('.dropdown-submenu .dropdown-menu').removeClass('show');
+            });
+        });
+    </script>
+</body>
+</html>

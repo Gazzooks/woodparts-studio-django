@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>User Profile</h2>
+    <div class="card">
+        <div class="card-body">
+            <p>Username: {{ user_profile.username }}</p>
+            <p>Email: {{ user_profile.email }}</p>
+            <p>Joined: {{ user_profile.date_joined|date:"M d, Y" }}</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

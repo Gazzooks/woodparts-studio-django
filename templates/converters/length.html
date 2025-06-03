@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="mb-4"><i class="fas fa-ruler"></i> Length Converter</h2>
+    
+    <div class="card shadow">
+        <div class="card-body">
+            <form method="post">
+                {% csrf_token %}
+                <div class="row g-3 align-items-end">
+                    <div class="col-md-4">
+                        {{ form.input_value.label_tag }}
+                        {{ form.input_value }}
+                    </div>
+                    <div class="col-md-3">
+                        {{ form.from_unit.label_tag }}
+                        {{ form.from_unit }}
+                    </div>
+                    <div class="col-md-3">
+                        {{ form.to_unit.label_tag }}
+                        {{ form.to_unit }}
+                    </div>
+                    <div class="col-md-2">
+                        <button type="submit" class="btn btn-primary w-100">
+                            <i class="fas fa-sync"></i> Convert
+                        </button>
+                    </div>
+                </div>
+            </form>
+
+            {% if calculation %}
+            <div class="mt-4 p-3 bg-light rounded">
+                <h4 class="mb-0">{{ calculation }}</h4>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

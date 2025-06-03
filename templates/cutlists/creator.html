@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Create New Cutlist</h2>
+    
+    <form method="post">
+        {% csrf_token %}
+        <div class="card mb-4">
+            <div class="card-body">
+                {{ form|crispy }}
+            </div>
+        </div>
+
+        <h4>Cutlist Parts</h4>
+        <div id="formset-container">
+            {{ formset.management_form }}
+            {% for form in formset %}
+                <div class="formset-row card mb-2">
+                    <div class="card-body">
+                        {{ form|crispy }}
+                        {% if form.DELETE %}
+                            <div class="form-group">
+                                {{ form.DELETE|as_crispy_field }}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <button type="button" id="add-form" class="btn btn-secondary mt-3">
+            <i class="fas fa-plus"></i> Add Part
+        </button>
+        
+        <button type="submit" class="btn btn-primary mt-3">
+            <i class="fas fa-save"></i> Save Cutlist
+        </button>
+    </form>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/jquery.formset.js' %}"></script>
+<script>
+$(document).ready(function() {
+    $('.formset-row').formset({
+        prefix: '{{ formset.prefix }}',
+        deleteText: '<i class="fas fa-trash"></i> Remove',
+        addText: '<i class="fas fa-plus"></i> Add Another Part',
+        added: function(row) {
+            row.find('select').select2();
+        }
+    });
+});
+</script>
+{% endblock %}

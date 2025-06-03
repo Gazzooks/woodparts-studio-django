@@ -1,0 +1,133 @@
+<!-- templates/calculators/board_foot.html -->
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Board Foot Calculator - WoodParts Studio{% endblock %}
+
+{% block extra_css %}
+<style>
+.calculator-container {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.input-group {
+    margin-bottom: 1.5rem;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+}
+
+.result-card {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background: white;
+    border-radius: 4px;
+    display: none;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="calculator-container">
+    <h2 class="mb-4">Board Foot Calculator</h2>
+    
+    <form id="boardFootForm">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="input-group">
+                    <label>Length (inches)</label>
+                    <input type="number" step="0.01" id="length" required>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="input-group">
+                    <label>Width (inches)</label>
+                    <input type="number" step="0.01" id="width" required>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-6">
+                <div class="input-group">
+                    <label>Thickness (inches)</label>
+                    <input type="number" step="0.01" id="thickness" required>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="input-group">
+                    <label>Quantity</label>
+                    <input type="number" id="quantity" value="1" min="1" required>
+                </div>
+            </div>
+        </div>
+        
+        <button type="submit" class="btn btn-primary w-100">
+            <i class="fas fa-calculator"></i> Calculate
+        </button>
+    </form>
+    
+    <div class="result-card" id="result">
+        <h5>Results</h5>
+        <div id="resultText" class="mb-2"></div>
+        <small class="text-muted" id="calculationText"></small>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.getElementById('boardFootForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const formData = {
+        length: parseFloat(document.getElementById('length').value),
+        width: parseFloat(document.getElementById('width').value),
+        thickness: parseFloat(document.getElementById('thickness').value),
+        quantity: parseInt(document.getElementById('quantity').value)
+    };
+    
+    fetch('{% url "calculators:board_foot" %}', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': '{{ csrf_token }}'
+        },
+        body: JSON.stringify(formData)
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            const resultDiv = document.getElementById('result');
+            resultDiv.style.display = 'block';
+            document.getElementById('resultText').innerHTML = `
+                <strong>${data.board_feet.toFixed(4)} Board Feet</strong><br>
+                <small>${data.cubic_inches.toFixed(2)} Cubic Inches</small>
+            `;
+            document.getElementById('calculationText').textContent = data.calculation;
+        } else {
+            alert('Error: ' + data.error);
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('An error occurred during calculation');
+    });
+});
+</script>
+{% endblock %}

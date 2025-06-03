@@ -1,0 +1,23 @@
+/* Multi-level dropdown styling */
+.dropdown-submenu {
+    position: relative;
+}
+
+.dropdown-submenu .dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-top: -1px;
+    display: none;
+}
+
+.dropdown-submenu:hover > .dropdown-menu {
+    display: block;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 991px) {
+    .dropdown-submenu .dropdown-menu {
+        position: static;
+        margin-left: 1rem;
+    }
+}
