@@ -1,12 +1,12 @@
-# parts/urls.py
 from django.urls import path
-from . import views
+from .views import PartListView, PartCreateView, PartUpdateView, PartDeleteView
 
-app_name = 'parts'  # Add this line
+app_name = 'parts'
 
 urlpatterns = [
-    path('manager/', views.PartsManagerView.as_view(), name='manager'),
-    path('add/', views.add_part_ajax, name='add'),
-    path('<int:pk>/edit/', views.PartUpdateView.as_view(), name='edit'),
-    path('<int:pk>/delete/', views.PartDeleteView.as_view(), name='delete'),
+    path('', PartListView.as_view(), name='list'),
+    path('add/', PartCreateView.as_view(), name='add'),
+    path('<int:pk>/edit/', PartUpdateView.as_view(), name='edit'),
+    path('<int:pk>/delete/', PartDeleteView.as_view(), name='delete'),
+    path('<int:project_id>/', PartListView.as_view(), name='manager'),
 ]

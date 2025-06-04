@@ -93,7 +93,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'woodparts_studio',
-        'USER': 'admin',
+        'USER': 'root',
         'PASSWORD': 'Wpeterson1$',
         'HOST': 'localhost',
         'PORT': '3306',

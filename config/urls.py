@@ -20,7 +20,7 @@ from django.views.generic import TemplateView
 from django.contrib.auth.views import LoginView, LogoutView
 from django.conf import settings
 from django.conf.urls.static import static
-from projects.views import ProjectDashboardView
+# from projects.views import ProjectDashboardView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -37,12 +37,6 @@ urlpatterns = [
     path('cutlists/', include('cutlists.urls')),
     path('references/', include('references.urls', namespace='references')),
     path('materials/', include('materials.urls', namespace='materials')),
-    
-    # Redirect root URL to projects dashboard
-    # path('', RedirectView.as_view(url='/projects/dashboard/', permanent=True)),
-    
-    # If you want a direct view instead of redirect:
-    # path('', ProjectDashboardView.as_view(), name='home'),
 ]
 
 if settings.DEBUG:
