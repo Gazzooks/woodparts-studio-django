@@ -33,6 +33,10 @@ urlpatterns = [
     path('projects/', include('projects.urls')),
     path('parts/', include('parts.urls', namespace='parts')),
     path('calculators/', include('calculators.urls')),
+    path('shelf/', include('shelf_calculator.urls')),
+    path('wall-panels/', include('wall_panels.urls')),
+    path('decking/', include('decking.urls')),
+
     path('converters/', include('converters.urls', namespace='converters')),
     path('cutlists/', include('cutlists.urls')),
     path('references/', include('references.urls', namespace='references')),

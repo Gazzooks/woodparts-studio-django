@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Decking Calculator</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-4">
+    <h2 class="text-center">Decking Calculator</h2>
+    <p class="text-center mb-4">Calculate the number of deck boards, footings, and materials needed for your deck project.</p>
+    <ul class="nav nav-tabs mb-3">
+        <li class="nav-item">
+            <a class="nav-link {% if active_tab == 'deck_boards' %}active{% endif %}" href="{% url 'decking:deck_boards' %}">Deck Boards</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link {% if active_tab == 'framing' %}active{% endif %}" href="{% url 'decking:framing' %}">Framing</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link {% if active_tab == 'footings' %}active{% endif %}" href="{% url 'decking:footings' %}">Footings</a>
+        </li>
+    </ul>
+    {% block content %}{% endblock %}
+</div>
+</body>
+</html>

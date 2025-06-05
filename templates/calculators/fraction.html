@@ -1,93 +1,130 @@
-<!-- templates/calculators/fraction.html -->
-{% extends 'base.html' %}
+{% extends "base.html" %}
 {% load static %}
-
-{% block title %}Fraction Calculator - WoodParts Studio{% endblock %}
-
-{% block extra_css %}
-<style>
-.fraction-input {
-    display: inline-block;
-    width: 120px;
-    margin: 0 0.5rem;
-}
-
-.operation-select {
-    width: 80px;
-    margin: 0 0.5rem;
-}
-</style>
-{% endblock %}
-
 {% block content %}
-<div class="calculator-container">
-    <h2 class="mb-4">Fraction Calculator</h2>
-    
-    <form id="fractionForm">
-        <div class="d-flex align-items-center justify-content-center mb-4">
-            <input type="text" class="form-control fraction-input" 
-                   id="fraction1" placeholder="1 3/4">
-            
-            <select class="form-select operation-select" id="operation">
-                <option value="add">+</option>
-                <option value="subtract">-</option>
-                <option value="multiply">×</option>
-                <option value="divide">÷</option>
-            </select>
-            
-            <input type="text" class="form-control fraction-input" 
-                   id="fraction2" placeholder="2/3">
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">
+                        <i class="fas fa-divide"></i> Fraction Calculator
+                        <span data-toggle="tooltip" title="Add, subtract, multiply, or divide two fractions.">
+                            <i class="fas fa-info-circle ml-2"></i>
+                        </span>
+                    </h4>
+                </div>
+                <div class="card-body">
+                    <form id="fractionForm" method="post" class="needs-validation" novalidate>
+                        {% csrf_token %}
+                        <div class="form-row">
+                            <div class="form-group col-6">
+                                <label for="fraction1">
+                                    Fraction 1
+                                    <span tabindex="0" data-toggle="tooltip" title="Enter a fraction (e.g., 1/2 or 3 1/4).">
+                                        <i class="fas fa-info-circle"></i>
+                                    </span>
+                                </label>
+                                <input type="text" class="form-control" id="fraction1" name="fraction1"
+                                       placeholder="e.g., 1/2 or 3 1/4"
+                                       pattern="^(\d+\s)?\d+\/\d+$|^\d+$"
+                                       required>
+                                <div class="invalid-feedback">
+                                    Please enter a valid fraction (e.g., 1/2 or 3 1/4).
+                                </div>
+                            </div>
+                            <div class="form-group col-6">
+                                <label for="operation">
+                                    Operation
+                                    <span tabindex="0" data-toggle="tooltip" title="Choose an operation: +, -, ×, ÷">
+                                        <i class="fas fa-info-circle"></i>
+                                    </span>
+                                </label>
+                                <select class="form-control" id="operation" name="operation" required>
+                                    <option value="add">+ (Add)</option>
+                                    <option value="subtract">- (Subtract)</option>
+                                    <option value="multiply">× (Multiply)</option>
+                                    <option value="divide">÷ (Divide)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-6">
+                                <label for="fraction2">
+                                    Fraction 2
+                                    <span tabindex="0" data-toggle="tooltip" title="Enter a fraction (e.g., 1/2 or 3 1/4).">
+                                        <i class="fas fa-info-circle"></i>
+                                    </span>
+                                </label>
+                                <input type="text" class="form-control" id="fraction2" name="fraction2"
+                                       placeholder="e.g., 1/2 or 3 1/4"
+                                       pattern="^(\d+\s)?\d+\/\d+$|^\d+$"
+                                       required>
+                                <div class="invalid-feedback">
+                                    Please enter a valid fraction (e.g., 1/2 or 3 1/4).
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block my-2">
+                            <i class="fas fa-calculator"></i> Calculate
+                        </button>
+                    </form>
+                    <div id="result" class="alert alert-success mt-3" style="display: none;">
+                        <strong>Result:</strong><br>
+                        <span id="resultText"></span>
+                    </div>
+                </div>
+            </div>
         </div>
-        
-        <button type="submit" class="btn btn-primary w-100">
-            <i class="fas fa-equals"></i> Calculate
-        </button>
-    </form>
-    
-    <div class="result-card mt-4" id="result" style="display: none;">
-        <h5>Result</h5>
-        <div id="resultText" class="mb-2"></div>
-        <small class="text-muted" id="calculationText"></small>
     </div>
 </div>
-{% endblock %}
 
-{% block extra_js %}
+<!-- Bootstrap 4 tooltips activation and validation -->
 <script>
-document.getElementById('fractionForm').addEventListener('submit', function(e) {
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    });
+</script>
+<script>
+        // Bootstrap 4 validation
+    (function () {
+        'use strict'
+        window.addEventListener('load', function () {
+            var forms = document.getElementsByClassName('needs-validation');
+            var validation = Array.prototype.filter.call(forms, function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();
+</script>
+<script>
+    // AJAX form submission for dynamic results (optional)
+    $('#fractionForm').on('submit', function(e) {
     e.preventDefault();
-    
-    const formData = {
-        fraction1: document.getElementById('fraction1').value,
-        fraction2: document.getElementById('fraction2').value,
-        operation: document.getElementById('operation').value
-    };
-    
-    fetch('{% url "calculators:fraction" %}', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'X-CSRFToken': '{{ csrf_token }}'
-        },
-        body: JSON.stringify(formData)
-    })
-    .then(response => response.json())
-    .then(data => {
-        const resultDiv = document.getElementById('result');
-        if (data.success) {
-            resultDiv.style.display = 'block';
-            document.getElementById('resultText').innerHTML = `
-                <strong>${data.result}</strong><br>
-                <small>Decimal: ${data.decimal.toFixed(4)}</small>
-            `;
-            document.getElementById('calculationText').textContent = data.calculation;
-        } else {
-            alert('Error: ' + data.error);
+    var $form = $(this);
+    $.ajax({
+        type: $form.attr('method'),
+        url: $form.attr('action'),
+        data: $form.serialize(),
+        success: function(data) {
+            console.log('AJAX response:', data); // <-- Add this line
+            if (data.success) {
+                $('#resultText').html(
+                    data.calculation + '<br>' +
+                    '<strong>Simplified:</strong> ' + data.result + '<br>' +
+                    '<strong>Decimal:</strong> ' + data.decimal
+                );
+                $('#result').show();
+            } else {
+                $('#resultText').html('<span class="text-danger">' + data.error + '</span>');
+                $('#result').show();
+            }
         }
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        alert('An error occurred during calculation');
     });
 });
 </script>

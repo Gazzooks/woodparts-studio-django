@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'crispy_bootstrap4',
     'django_tables2',
     'django_filters',
+    'mathfilters',
     
     # Local apps (order matters for dependencies)
     'core',
@@ -47,6 +48,9 @@ INSTALLED_APPS = [
     'guides',
     'shop_management',
     'api',
+    'shelf_calculator',
+    'wall_panels',
+    'decking',
 ]
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"

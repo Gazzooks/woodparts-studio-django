@@ -8,7 +8,7 @@ class UserPreferences(models.Model):
         ('light', 'Light Theme'),
         ('dark', 'Dark Theme')
     ])
-    default_units = models.CharField(max_length=10, default='imperial', choices=[
+    default_units = models.CharField(max_length=10, default='metric', choices=[
         ('imperial', 'Imperial (inches)'),
         ('metric', 'Metric (mm)')
     ])

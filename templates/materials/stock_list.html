@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-4">
+    <h3>Lumber Sizes ({% if user_prefers_metric %}Metric (mm){% else %}Imperial (inches){% endif %})</h3>
+    <ul class="list-group mb-4">
+        {% for size in lumber_sizes %}
+            <li class="list-group-item">
+                <strong>{{ size.material }}</strong>:
+                Thickness: {{ size.thickness }}{% if user_prefers_metric %}mm{% else %}in{% endif %},
+                Width: {{ size.width }}{% if user_prefers_metric %}mm{% else %}in{% endif %},
+                Length: {{ size.length }}{% if user_prefers_metric %}mm{% else %}in{% endif %}
+                <br><small>{{ size.notes }}</small>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <h3>Plywood Sizes ({% if user_prefers_metric %}Metric (mm){% else %}Imperial (inches){% endif %})</h3>
+    <ul class="list-group">
+        {% for size in plywood_sizes %}
+            <li class="list-group-item">
+                <strong>{{ size.material }}</strong>:
+                Thickness: {{ size.thickness }}{% if user_prefers_metric %}mm{% else %}in{% endif %},
+                Width: {{ size.width }}{% if user_prefers_metric %}mm{% else %}in{% endif %},
+                Length: {{ size.length }}{% if user_prefers_metric %}mm{% else %}in{% endif %}
+                <br><small>{{ size.notes }}</small>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

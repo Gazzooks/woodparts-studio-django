@@ -1,40 +1,125 @@
 {% extends "base.html" %}
-
+{% load static %}
 {% block content %}
-<div class="container mt-4">
-    <h2 class="mb-4"><i class="fas fa-ruler"></i> Length Converter</h2>
-    
-    <div class="card shadow">
-        <div class="card-body">
-            <form method="post">
-                {% csrf_token %}
-                <div class="row g-3 align-items-end">
-                    <div class="col-md-4">
-                        {{ form.input_value.label_tag }}
-                        {{ form.input_value }}
-                    </div>
-                    <div class="col-md-3">
-                        {{ form.from_unit.label_tag }}
-                        {{ form.from_unit }}
-                    </div>
-                    <div class="col-md-3">
-                        {{ form.to_unit.label_tag }}
-                        {{ form.to_unit }}
-                    </div>
-                    <div class="col-md-2">
-                        <button type="submit" class="btn btn-primary w-100">
-                            <i class="fas fa-sync"></i> Convert
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">
+                        <i class="fas fa-ruler"></i> Length Converter
+                        <span data-toggle="tooltip" title="Convert between inches, millimeters, feet, and meters.">
+                            <i class="fas fa-info-circle ml-2"></i>
+                        </span>
+                    </h4>
+                </div>
+                <div class="card-body">
+                    <form id="lengthForm" method="post" class="needs-validation" novalidate>
+                        {% csrf_token %}
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="value">
+                                    Value
+                                    <span tabindex="0" data-toggle="tooltip" title="Enter the length you want to convert.">
+                                        <i class="fas fa-info-circle"></i>
+                                    </span>
+                                </label>
+                                <input type="number" step="0.01" min="0" class="form-control" id="value" name="value" placeholder="e.g., 12" required>
+                                <div class="invalid-feedback">Please enter a valid length.</div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="from_unit">
+                                    From Unit
+                                    <span tabindex="0" data-toggle="tooltip" title="Select the unit to convert from.">
+                                        <i class="fas fa-info-circle"></i>
+                                    </span>
+                                </label>
+                                <select class="form-control" id="from_unit" name="from_unit" required>
+                                    <option value="in">Inches (in)</option>
+                                    <option value="mm">Millimeters (mm)</option>
+                                    <option value="ft">Feet (ft)</option>
+                                    <option value="m">Meters (m)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="to_unit">
+                                    To Unit
+                                    <span tabindex="0" data-toggle="tooltip" title="Select the unit to convert to.">
+                                        <i class="fas fa-info-circle"></i>
+                                    </span>
+                                </label>
+                                <select class="form-control" id="to_unit" name="to_unit" required>
+                                    <option value="in">Inches (in)</option>
+                                    <option value="mm">Millimeters (mm)</option>
+                                    <option value="ft">Feet (ft)</option>
+                                    <option value="m">Meters (m)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block my-2">
+                            <i class="fas fa-exchange-alt"></i> Convert
                         </button>
+                    </form>
+                    <div id="result" class="alert alert-success mt-3" style="display: none;">
+                        <strong>Result:</strong><br>
+                        <span id="resultText"></span>
                     </div>
                 </div>
-            </form>
-
-            {% if calculation %}
-            <div class="mt-4 p-3 bg-light rounded">
-                <h4 class="mb-0">{{ calculation }}</h4>
             </div>
-            {% endif %}
         </div>
     </div>
 </div>
+
+<!-- Bootstrap 4 tooltips activation -->
+<script>
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+</script>
+
+<!-- Bootstrap 4 validation -->
+<script>
+    (function () {
+        'use strict'
+        window.addEventListener('load', function () {
+            var forms = document.getElementsByClassName('needs-validation');
+            var validation = Array.prototype.filter.call(forms, function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();
+</script>
+
+<!-- AJAX form submission for dynamic results -->
+<script>
+    $('#lengthForm').on('submit', function(e) {
+        e.preventDefault();
+        var $form = $(this);
+        $.ajax({
+            type: $form.attr('method'),
+            url: $form.attr('action'),
+            data: $form.serialize(),
+            success: function(data) {
+                if (data.success) {
+                    $('#resultText').html(
+                        $form.find('#value').val() + ' ' + $form.find('#from_unit option:selected').text() +
+                        ' = ' + data.result.toFixed(2) + ' ' + $form.find('#to_unit option:selected').text()
+                    );
+                    $('#result').show();
+                } else {
+                    $('#resultText').html('<span class="text-danger">' + data.error + '</span>');
+                    $('#result').show();
+                }
+            }
+        });
+    });
+</script>
 {% endblock %}

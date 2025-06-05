@@ -1,133 +1,117 @@
-<!-- templates/calculators/board_foot.html -->
-{% extends 'base.html' %}
+{% extends "base.html" %}
 {% load static %}
-
-{% block title %}Board Foot Calculator - WoodParts Studio{% endblock %}
-
-{% block extra_css %}
-<style>
-.calculator-container {
-    max-width: 600px;
-    margin: 2rem auto;
-    padding: 2rem;
-    background: #f8f9fa;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-.input-group {
-    margin-bottom: 1.5rem;
-}
-
-.input-group label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-weight: 500;
-}
-
-.input-group input {
-    width: 100%;
-    padding: 0.5rem;
-    border: 1px solid #ced4da;
-    border-radius: 4px;
-}
-
-.result-card {
-    margin-top: 1.5rem;
-    padding: 1rem;
-    background: white;
-    border-radius: 4px;
-    display: none;
-}
-</style>
-{% endblock %}
-
 {% block content %}
-<div class="calculator-container">
-    <h2 class="mb-4">Board Foot Calculator</h2>
-    
-    <form id="boardFootForm">
-        <div class="row">
-            <div class="col-md-6">
-                <div class="input-group">
-                    <label>Length (inches)</label>
-                    <input type="number" step="0.01" id="length" required>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">
+                        <i class="fas fa-ruler-combined"></i> Board Foot Calculator
+                        <span data-unit="{% if user_prefers_metric %}millimeters{% else %}inches{% endif %}"
+                              title="Board feet = (Thickness × Width × Length) / 144 × Quantity.">
+                            <i class="fas fa-info-circle ml-2"></i>
+                        </span>
+                    </h4>
                 </div>
-            </div>
-            <div class="col-md-6">
-                <div class="input-group">
-                    <label>Width (inches)</label>
-                    <input type="number" step="0.01" id="width" required>
+                <div class="card-body">
+                    <form method="post" class="needs-validation" novalidate>
+                        {% csrf_token %}
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="id_length">
+                                    Length ({% if user_prefers_metric %}mm{% else %}in{% endif %})
+                                    <span tabindex="0" data-toggle="tooltip"
+                                          title="Typical board length, e.g., 2438 for 8 feet (metric) or 96 for 8 feet (imperial).">
+                                        <i class="fas fa-info-circle"></i>
+                                    </span>
+                                </label>
+                                <input type="number" step="0.01" min="0" class="form-control" id="id_length" name="length"
+                                       placeholder="e.g. {% if user_prefers_metric %}2438{% else %}96{% endif %}" required>
+                                <div class="invalid-feedback">Please enter the board length in {% if user_prefers_metric %}mm{% else %}inches{% endif %}.</div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="id_width">
+                                    Width ({% if user_prefers_metric %}mm{% else %}inches{% endif %})
+                                    <span tabindex="0" data-toggle="tooltip"
+                                          title="Typical board width, e.g., 203 for 8 inches (metric) or 8 for 8 inches (imperial).">
+                                        <i class="fas fa-info-circle"></i>
+                                    </span>
+                                </label>
+                                <input type="number" step="0.01" min="0" class="form-control" id="id_width" name="width"
+                                       placeholder="e.g. {% if user_prefers_metric %}203{% else %}8{% endif %}" required>
+                                <div class="invalid-feedback">Please enter the board width in {% if user_prefers_metric %}mm{% else %}inches{% endif %}.</div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="id_thickness">
+                                    Thickness ({% if user_prefers_metric %}mm{% else %}inches{% endif %})
+                                    <span tabindex="0" data-toggle="tooltip"
+                                          title="Typical board thickness, e.g., 19 for 3/4 inch (metric) or 0.75 for 3/4 inch (imperial).">
+                                        <i class="fas fa-info-circle"></i>
+                                    </span>
+                                </label>
+                                <input type="number" step="0.01" min="0" class="form-control" id="id_thickness" name="thickness"
+                                       placeholder="e.g. {% if user_prefers_metric %}19{% else %}0.75{% endif %}" required>
+                                <div class="invalid-feedback">Please enter the board thickness in {% if user_prefers_metric %}mm{% else %}inches{% endif %}.</div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="id_quantity">
+                                    Quantity
+                                    <span tabindex="0" data-toggle="tooltip"
+                                          title="How many boards of this size?">
+                                        <i class="fas fa-info-circle"></i>
+                                    </span>
+                                </label>
+                                <input type="number" step="1" min="1" class="form-control" id="id_quantity" name="quantity" value="1" required>
+                                <div class="invalid-feedback">Please enter a quantity (at least 1).</div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block my-2">
+                            <i class="fas fa-calculator"></i> Calculate
+                        </button>
+                    </form>
+                    {% if result %}
+                        <div class="alert alert-success mt-3">
+                            <strong>Results:</strong><br>
+                            Total Board Feet: <span class="font-weight-bold">{{ result|floatformat:2 }}</span>
+                        </div>
+                    {% endif %}
                 </div>
             </div>
         </div>
-        
-        <div class="row">
-            <div class="col-md-6">
-                <div class="input-group">
-                    <label>Thickness (inches)</label>
-                    <input type="number" step="0.01" id="thickness" required>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="input-group">
-                    <label>Quantity</label>
-                    <input type="number" id="quantity" value="1" min="1" required>
-                </div>
-            </div>
-        </div>
-        
-        <button type="submit" class="btn btn-primary w-100">
-            <i class="fas fa-calculator"></i> Calculate
-        </button>
-    </form>
-    
-    <div class="result-card" id="result">
-        <h5>Results</h5>
-        <div id="resultText" class="mb-2"></div>
-        <small class="text-muted" id="calculationText"></small>
     </div>
 </div>
-{% endblock %}
 
-{% block extra_js %}
+<!-- Bootstrap 4 tooltips activation and validation -->
 <script>
-document.getElementById('boardFootForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    const formData = {
-        length: parseFloat(document.getElementById('length').value),
-        width: parseFloat(document.getElementById('width').value),
-        thickness: parseFloat(document.getElementById('thickness').value),
-        quantity: parseInt(document.getElementById('quantity').value)
-    };
-    
-    fetch('{% url "calculators:board_foot" %}', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'X-CSRFToken': '{{ csrf_token }}'
-        },
-        body: JSON.stringify(formData)
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            const resultDiv = document.getElementById('result');
-            resultDiv.style.display = 'block';
-            document.getElementById('resultText').innerHTML = `
-                <strong>${data.board_feet.toFixed(4)} Board Feet</strong><br>
-                <small>${data.cubic_inches.toFixed(2)} Cubic Inches</small>
-            `;
-            document.getElementById('calculationText').textContent = data.calculation;
-        } else {
-            alert('Error: ' + data.error);
-        }
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        alert('An error occurred during calculation');
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
     });
-});
+
+    // Bootstrap 4 validation
+    (function () {
+        'use strict'
+        window.addEventListener('load', function () {
+            var forms = document.getElementsByClassName('needs-validation');
+            var validation = Array.prototype.filter.call(forms, function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();
+
+    // Set dynamic main tooltip
+    document.addEventListener('DOMContentLoaded', function() {
+        var tooltipEl = document.querySelector('[data-unit]');
+        var unit = tooltipEl.getAttribute('data-unit');
+        tooltipEl.setAttribute('title', 'Board feet = (Thickness × Width × Length) / 144 × Quantity. All dimensions in ' + unit + '.');
+    });
 </script>
 {% endblock %}

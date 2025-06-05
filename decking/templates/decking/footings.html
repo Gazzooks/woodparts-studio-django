@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+{% block content %}
+<form method="post" class="mb-4">
+    {% csrf_token %}
+
+    <div class="container mt-4">
+        <h2 class="text-center">Decking Calculator</h2>
+        <p class="text-center mb-4">Calculate the number of deck boards, footings, and materials needed for your deck project.</p>
+        <ul class="nav nav-tabs mb-3">
+            <li class="nav-item">
+                <a class="nav-link {% if active_tab == 'deck_boards' %}active{% endif %}" href="{% url 'decking:deck_boards' %}">Deck Boards</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link {% if active_tab == 'framing' %}active{% endif %}" href="{% url 'decking:framing' %}">Framing</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link {% if active_tab == 'footings' %}active{% endif %}" href="{% url 'decking:footings' %}">Footings</a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Deck Dimensions -->
+    <fieldset class="border rounded p-3 mb-3">
+        <legend class="w-auto px-2" style="font-size: 1rem;">Deck Dimensions</legend>
+        <div class="form-group">
+            <label for="deck_area">Deck Area (sq ft):</label>
+            <input type="number" step="0.01" min="0" class="form-control" id="deck_area" name="deck_area">
+        </div>
+    </fieldset>
+    <!-- Support Structure -->
+    <fieldset class="border rounded p-3 mb-3">
+        <legend class="w-auto px-2" style="font-size: 1rem;">Support Structure</legend>
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="beam_length">Beam Length (feet):</label>
+                <input type="number" step="0.01" min="0" class="form-control" id="beam_length" name="beam_length">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="post_spacing">Post Spacing (feet):</label>
+                <input type="number" step="0.01" min="0" class="form-control" id="post_spacing" name="post_spacing" value="8">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="num_beams">Number of Beams:</label>
+                <input type="number" min="1" class="form-control" id="num_beams" name="num_beams" value="1">
+            </div>
+        </div>
+    </fieldset>
+    <!-- Footing Options -->
+    <fieldset class="border rounded p-3 mb-3">
+        <legend class="w-auto px-2" style="font-size: 1rem;">Footing Options</legend>
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="footing_diameter">Footing Diameter (inches):</label>
+                <select class="form-control" id="footing_diameter" name="footing_diameter">
+                    <option value="12">12</option>
+                    <option value="16">16</option>
+                    <option value="18">18</option>
+                </select>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="footing_depth">Footing Depth (inches):</label>
+                <input type="number" min="0" class="form-control" id="footing_depth" name="footing_depth" value="48">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="concrete_bag_size">Concrete Bag Size (lbs):</label>
+                <select class="form-control" id="concrete_bag_size" name="concrete_bag_size">
+                    <option value="80">80</option>
+                    <option value="60">60</option>
+                    <option value="40">40</option>
+                </select>
+            </div>
+        </div>
+    </fieldset>
+    <div class="text-center">
+        <button type="submit" class="btn btn-primary my-2">Calculate Footings</button>
+    </div>
+</form>
+<!-- Results -->
+<fieldset class="border rounded p-3">
+    <legend class="w-auto px-2" style="font-size: 1rem;">Results</legend>
+    <div id="results" class="mb-2">
+        <div>Number of Footings Required:</div>
+        <div>Concrete Required:</div>
+        <div>Concrete Bags Needed:</div>
+    </div>
+</fieldset>
+{% endblock %}

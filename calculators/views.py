@@ -20,72 +20,88 @@ import math
 
 @login_required
 def board_foot_calculator(request):
-    """Board foot calculator - equivalent to desktop BoardFootCalculator"""
+    user_prefers_metric = False
+    if hasattr(request.user, 'userpreferences'):
+        user_prefers_metric = (request.user.userpreferences.default_units == 'metric')
+
+    result = None
     if request.method == 'POST':
         try:
-            data = json.loads(request.body)
-            length = float(data.get('length', 0))
-            width = float(data.get('width', 0))
-            thickness = float(data.get('thickness', 0))
-            quantity = int(data.get('quantity', 1))
-            
-            # Calculate board feet: (L × W × T × Qty) ÷ 144
-            board_feet = (length * width * thickness * quantity) / 144
-            
-            # Calculate volume in cubic inches
-            cubic_inches = length * width * thickness * quantity
-            
-            return JsonResponse({
-                'success': True,
-                'board_feet': round(board_feet, 4),
-                'cubic_inches': cubic_inches,
-                'calculation': f"{length}\" × {width}\" × {thickness}\" × {quantity} = {board_feet:.4f} BF",
-                'formula': "Board Feet = (Length × Width × Thickness × Quantity) ÷ 144"
-            })
-        except (ValueError, TypeError) as e:
-            return JsonResponse({
-                'success': False,
-                'error': 'Invalid input values. Please enter numbers only.'
-            })
-    
-    return render(request, 'calculators/board_foot.html')
+            length = float(request.POST.get('length', 0))
+            width = float(request.POST.get('width', 0))
+            thickness = float(request.POST.get('thickness', 0))
+            quantity = int(request.POST.get('quantity', 1))
+
+            # Convert metric input to inches for calculation
+            if user_prefers_metric:
+                length = length / 25.4
+                width = width / 25.4
+                thickness = thickness / 25.4
+
+            board_feet = (length * width * thickness / 144) * quantity
+            result = round(board_feet, 2)
+        except (ValueError, TypeError):
+            result = None
+
+    return render(request, 'calculators/board_foot.html', {
+        'result': result,
+        'user_prefers_metric': user_prefers_metric
+    })
+
+
 
 @login_required
 def fraction_calculator(request):
-    """Fraction calculator - equivalent to desktop FractionCalculator"""
+    result = None
+    decimal = None
+    calculation = None
+    error = None
+
     if request.method == 'POST':
         try:
-            data = json.loads(request.body)
-            operation = data.get('operation')
-            frac1 = parse_fraction(data.get('fraction1', ''))
-            frac2 = parse_fraction(data.get('fraction2', ''))
-            
+            operation = request.POST.get('operation')
+            frac1 = parse_fraction(request.POST.get('fraction1', ''))
+            frac2 = parse_fraction(request.POST.get('fraction2', ''))
+
             if operation == 'add':
-                result = add_fractions(frac1, frac2)
+                res = add_fractions(frac1, frac2)
             elif operation == 'subtract':
-                result = subtract_fractions(frac1, frac2)
+                res = subtract_fractions(frac1, frac2)
             elif operation == 'multiply':
-                result = multiply_fractions(frac1, frac2)
+                res = multiply_fractions(frac1, frac2)
             elif operation == 'divide':
-                result = divide_fractions(frac1, frac2)
+                res = divide_fractions(frac1, frac2)
             else:
-                return JsonResponse({'success': False, 'error': 'Invalid operation'})
-            
-            simplified = simplify_fraction(result)
-            return JsonResponse({
-                'success': True,
-                'result': format_fraction(simplified),
-                'decimal': float(simplified[0]) / float(simplified[1]) if simplified[1] != 0 else 0,
-                'calculation': get_calculation_string(frac1, frac2, operation, simplified)
-            })
-            
+                error = 'Invalid operation'
+                res = None
+
+            if res:
+                simplified = simplify_fraction(res)
+                result = format_fraction(simplified)
+                decimal = float(simplified[0]) / float(simplified[1]) if simplified[1] != 0 else 0
+                calculation = get_calculation_string(frac1, frac2, operation, simplified)
         except Exception as e:
-            return JsonResponse({
-                'success': False,
-                'error': 'Invalid fraction format or calculation error'
-            })
-    
-    return render(request, 'calculators/fraction.html')
+            error = 'Invalid fraction format or calculation error'
+
+        # If AJAX, return JSON
+        if request.headers.get('x-requested-with') == 'XMLHttpRequest':
+            if error:
+                return JsonResponse({'success': False, 'error': error})
+            else:
+                return JsonResponse({
+                    'success': True,
+                    'result': result,
+                    'decimal': decimal,
+                    'calculation': calculation
+                })
+
+    # For GET or non-AJAX POST, render the page as normal
+    return render(request, 'calculators/fraction.html', {
+        'result': result,
+        'decimal': decimal,
+        'calculation': calculation,
+        'error': error
+    })
 
 # Helper functions for fraction calculations
 def parse_fraction(fraction_str):

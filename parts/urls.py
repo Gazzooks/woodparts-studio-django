@@ -9,4 +9,5 @@ urlpatterns = [
     path('<int:pk>/edit/', PartUpdateView.as_view(), name='edit'),
     path('<int:pk>/delete/', PartDeleteView.as_view(), name='delete'),
     path('<int:project_id>/', PartListView.as_view(), name='manager'),
+    path('create/', PartCreateView.as_view(), name='create'),
 ]
