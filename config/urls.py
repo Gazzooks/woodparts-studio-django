@@ -32,15 +32,22 @@ urlpatterns = [
     # Main application URLs
     path('projects/', include('projects.urls')),
     path('parts/', include('parts.urls', namespace='parts')),
+    path('materials/', include('materials.urls', namespace='materials')),
+    path('cutlists/', include('cutlists.urls')),
+
+    # Calculator application URLs
     path('calculators/', include('calculators.urls')),
     path('shelf/', include('shelf_calculator.urls')),
     path('wall-panels/', include('wall_panels.urls')),
     path('decking/', include('decking.urls')),
+    path('golden-ratio/', include('golden_ratio.urls')),
 
+    # Converter application URLs
     path('converters/', include('converters.urls', namespace='converters')),
-    path('cutlists/', include('cutlists.urls')),
+    path('fraction-decimal-mm/', include('fraction_decimal_mm.urls')),
+
+    # Reference application URLs
     path('references/', include('references.urls', namespace='references')),
-    path('materials/', include('materials.urls', namespace='materials')),
 ]
 
 if settings.DEBUG:

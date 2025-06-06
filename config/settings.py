@@ -43,14 +43,17 @@ INSTALLED_APPS = [
     'materials',
     'cutlists',
     'calculators',
+    'shelf_calculator',
+    'wall_panels',
+    'decking',
+    'golden_ratio',
     'converters',
+    'fraction_decimal_mm',
     'references',
     'guides',
     'shop_management',
     'api',
-    'shelf_calculator',
-    'wall_panels',
-    'decking',
+    
 ]
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"

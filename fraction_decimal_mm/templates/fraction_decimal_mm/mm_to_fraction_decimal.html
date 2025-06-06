@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-4">
+    <h2 class="text-center mb-2">Millimeter to Fraction & Decimal Converter</h2>
+    <p class="text-center mb-4">Convert millimeters to fractional inches and decimal inches.</p>
+    {% include "fraction_decimal_mm/fraction_tabs.html" %}
+    <div class="converter-form">
+        <form method="post">
+            {% csrf_token %}
+            <fieldset class="mb-3">
+                <legend>Millimeter Input</legend>
+                <div class="row align-items-center">
+                    <div class="col-auto">
+                        <label class="form-label">Millimeters:</label>
+                        <input type="number" step="0.001" name="millimeters" class="form-control" style="width: 120px;" value="{{ results.millimeters|default_if_none:'' }}">
+                    </div>
+                    <div class="col-auto">
+                        <label class="form-label">Precision:</label>
+                        <label class="ms-2"><input type="radio" name="precision" value="16" {% if results.precision == '16' or not results.precision %}checked{% endif %}> 1/16</label>
+                        <label class="ms-2"><input type="radio" name="precision" value="32" {% if results.precision == '32' %}checked{% endif %}> 1/32</label>
+                        <label class="ms-2"><input type="radio" name="precision" value="64" {% if results.precision == '64' %}checked{% endif %}> 1/64</label>
+                    </div>
+                </div>
+            </fieldset>
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary">Convert</button>
+            </div>
+        </form>
+    </div>
+    <fieldset class="results-frame">
+        <legend>Results</legend>
+        <div>
+            Decimal (inches): <strong>{{ results.decimal_inch|default:"" }}</strong><br>
+            Fractional (inches): <strong>{{ results.fractional|default:"" }}</strong>
+        </div>
+    </fieldset>
+</div>
+{% endblock %}

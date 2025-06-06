@@ -14,19 +14,19 @@
             <a class="nav-link {% if active_tab == 'footings' %}active{% endif %}" href="{% url 'decking:footings' %}">Footings</a>
         </li>
     </ul>
-    <form method="post" class="frame" action="{% url 'decking:footings' %}">
+    <form method="post" class="mb-4">
         {% csrf_token %}
         <!-- Deck Area -->
-        <fieldset class="frame mb-3">
-            <legend>Deck Area</legend>
+        <fieldset class="border rounded p-3 mb-3">
+            <legend class="w-auto px-2" style="font-size: 1rem;">Deck Area</legend>
             <div class="form-group">
                 <label for="deck_area">Deck Area ({% if user_prefers_metric %}m²{% else %}sq ft{% endif %}):</label>
                 <input type="number" step="{% if user_prefers_metric %}0.001{% else %}0.01{% endif %}" min="0" class="form-control" id="deck_area" name="deck_area" value="{{ results.deck_area|default_if_none:'' }}">
             </div>
         </fieldset>
         <!-- Support Structure -->
-        <fieldset class="frame mb-3">
-            <legend>Support Structure</legend>
+        <fieldset class="border rounded p-3 mb-3">
+            <legend class="w-auto px-2" style="font-size: 1rem;">Support Structure</legend>
             <div class="form-row">
                 <div class="form-group col-md-4">
                     <label for="beam_length">Beam Length ({% if user_prefers_metric %}meters{% else %}feet{% endif %}):</label>
@@ -49,8 +49,8 @@
             </div>
         </fieldset>
         <!-- Footing Options -->
-        <fieldset class="frame mb-3">
-            <legend>Footing Options</legend>
+        <fieldset class="border rounded p-3 mb-3">
+            <legend class="w-auto px-2" style="font-size: 1rem;">Footing Options</legend>
             <div class="form-row">
                 <div class="form-group col-md-4">
                     <label for="footing_diameter">Footing Diameter ({% if user_prefers_metric %}mm{% else %}inches{% endif %}):</label>
@@ -97,9 +97,9 @@
         </div>
     </form>
     <!-- Results -->
-    <fieldset class="results-frame">
-        <legend>Results</legend>
-        <div id="results">
+    <fieldset class="border rounded p-3">
+        <legend class="w-auto px-2" style="font-size: 1rem;">Results</legend>
+        <div id="results" class="mb-2">
             {% if results.error %}
                 <div class="alert alert-warning">{{ results.error }}</div>
             {% elif results.num_footings is not None %}

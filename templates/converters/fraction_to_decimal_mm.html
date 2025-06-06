@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block content %}
+<h2 class="text-center mt-4 mb-2">Fraction to Decimal & Millimeter Converter</h2>
+<p class="text-center mb-4">Convert between fractional inches, decimal inches, and millimeters.</p>
+<!-- Tab Navigation -->
+{% include "converters/fraction_tabs.html" %}
+<form method="post" class="mb-4">
+    {% csrf_token %}
+    <fieldset class="border rounded p-2 mb-3">
+        <legend class="w-auto px-2" style="font-size: 1rem;">Fractional Inch Input</legend>
+        <div class="row align-items-center">
+            <div class="col-auto">
+                <label>Whole number:</label>
+                <input type="number" name="whole" min="0" class="form-control d-inline-block" style="width: 70px;" value="{{ results.whole|default_if_none:'' }}">
+            </div>
+            <div class="col-auto">
+                <label>Fraction:</label>
+                <input type="number" name="numerator" min="0" class="form-control d-inline-block" style="width: 70px;" value="{{ results.numerator|default_if_none:'' }}">
+                <span>/</span>
+                <input type="number" name="denominator" min="1" class="form-control d-inline-block" style="width: 70px;" value="{{ results.denominator|default_if_none:'16' }}">
+            </div>
+        </div>
+    </fieldset>
+    <fieldset class="border rounded p-2 mb-3">
+        <legend class="w-auto px-2" style="font-size: 1rem;">Common Fractions</legend>
+        <div class="d-flex flex-wrap gap-2">
+            {% for frac in common_fractions %}
+                <button type="submit" name="common_fraction" value="{{ frac.numerator }}/{{ frac.denominator }}" class="btn btn-outline-secondary btn-sm mb-1">{{ frac.numerator }}/{{ frac.denominator }}</button>
+            {% endfor %}
+        </div>
+    </fieldset>
+    <div class="text-center mb-3">
+        <button type="submit" class="btn btn-primary">Convert</button>
+    </div>
+</form>
+<fieldset class="border rounded p-2">
+    <legend class="w-auto px-2" style="font-size: 1rem;">Results</legend>
+    <div>
+        Decimal (inches): <strong>{{ results.decimal_inch|default:"" }}</strong><br>
+        Millimeters: <strong>{{ results.millimeters|default:"" }}</strong>
+    </div>
+</fieldset>
+{% endblock %}

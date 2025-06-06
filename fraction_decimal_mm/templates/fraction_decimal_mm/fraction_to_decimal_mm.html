@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-4">
+    <h1 class="text-center mb-4">Fraction to Decimal & Millimeter Converter</h1>
+    <p class="text-center mb-4">Convert between fractional inches, decimal inches, and millimeters.</p>
+    {% include "fraction_decimal_mm/fraction_tabs.html" %}
+    <form id="fraction-form" method="post" class="frame" action="{% url 'fraction_decimal_mm:fraction_to_decimal_mm' %}">
+        {% csrf_token %}
+        <legend>Fractional Inch Input</legend>
+        <div class="row align-items-center">
+            <div class="col-auto">
+                <label>Whole number:</label>
+                <input type="number" name="whole" min="0" class="form-control">
+            </div>
+            <div class="col-auto">
+                <label>Fraction:</label>
+                <input type="number" name="numerator" min="0" class="form-control">
+                <span>/</span>
+                <input type="number" name="denominator" min="1" class="form-control" value="16">
+            </div>
+        </div>
+        <fieldset class="frame mt-3">
+            <legend>Common Fractions</legend>
+            <div class="alert alert-light small mb-2">
+                <i class="fas fa-info-circle"></i>
+                Click any button below to quickly set the fraction. The whole number above will be preserved.
+            </div>
+            <div class="common-fractions">
+                {% for frac in common_fractions %}
+                    <button type="button" class="btn btn-outline-secondary btn-sm common-fraction-btn"
+                            data-numerator="{{ frac.numerator }}" data-denominator="{{ frac.denominator }}">
+                        {{ frac.numerator }}/{{ frac.denominator }}
+                    </button>
+                {% endfor %}
+            </div>
+        </fieldset>
+        <div class="text-center mt-3">
+            <button type="submit" class="btn btn-primary">Convert</button>
+        </div>
+    </form>
+    <fieldset class="results-frame">
+        <legend>Results</legend>
+        <div id="conversion-result">
+            <!-- Results will appear here via JS -->
+        </div>
+    </fieldset>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('fraction-form');
+    const resultDiv = document.getElementById('conversion-result');
+    console.log('Form:', form);
+    console.log('Result div:', resultDiv);
+
+    if (!form || !resultDiv) {
+        console.error('Form or result div not found!');
+        return;
+    }
+
+    // Intercept form submission for AJAX
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const formData = new FormData(form);
+        // Check for empty input fields before AJAX
+        const whole = form.elements.whole.value.trim();
+        const numerator = form.elements.numerator.value.trim();
+        const denominator = form.elements.denominator.value.trim();
+        if (!whole && !numerator && !denominator) {
+            resultDiv.innerHTML = '<div class="alert alert-warning">Enter values to convert.</div>';
+            return;
+        }
+        fetch(form.action, {
+            method: 'POST',
+            headers: {'X-Requested-With': 'XMLHttpRequest'},
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.error) {
+                resultDiv.innerHTML = `<div class="alert alert-warning">${data.error}</div>`;
+            } else {
+                resultDiv.innerHTML = `Decimal (inches): <strong>${data.decimal_inch}</strong><br>
+                                   Millimeters: <strong>${data.millimeters}</strong>`;
+            }
+        })
+        .catch(err => {
+            resultDiv.innerHTML = `<div class="alert alert-danger">AJAX error: ${err}</div>`;
+        });
+    });
+
+    // Handle Common Fraction buttons
+    document.querySelectorAll('.common-fraction-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            document.querySelector('input[name="numerator"]').value = this.dataset.numerator;
+            document.querySelector('input[name="denominator"]').value = this.dataset.denominator;
+            // Optionally auto-submit for instant results:
+            form.dispatchEvent(new Event('submit', {cancelable: true, bubbles: true}));
+        });
+    });
+});
+</script>
+{% endblock %}

@@ -1,0 +1,18 @@
+<ul class="nav nav-tabs mb-3">
+    <li class="nav-item">
+        <a class="nav-link {% if active_tab == 'fraction_to_decimal_mm' %}active{% endif %}" href="{% url 'fraction_decimal_mm:fraction_to_decimal_mm' %}">
+            Fraction <i class="fas fa-arrow-right"></i> Decimal & mm
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link {% if active_tab == 'decimal_to_fraction' %}active{% endif %}" href="{% url 'fraction_decimal_mm:decimal_to_fraction' %}">
+            Decimal <i class="fas fa-arrow-right"></i> Fraction
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link {% if active_tab == 'mm_to_fraction_decimal' %}active{% endif %}" href="{% url 'fraction_decimal_mm:mm_to_fraction_decimal' %}">
+            mm <i class="fas fa-arrow-right"></i> Fraction & Decimal
+        </a>
+    </li>
+</ul>
+

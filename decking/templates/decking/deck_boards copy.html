@@ -14,12 +14,12 @@
             <a class="nav-link {% if active_tab == 'footings' %}active{% endif %}" href="{% url 'decking:footings' %}">Footings</a>
         </li>
     </ul>
-    <form method="post" class="frame" action="{% url 'decking:deck_boards' %}">
+    <form method="post" class="mb-4">
         {% csrf_token %}
         
         <!-- Deck Dimensions -->
-        <fieldset class="frame mb-3">
-            <legend>Deck Dimensions</legend>
+        <fieldset class="border rounded p-3 mb-3">
+            <legend class="w-auto px-2" style="font-size: 1rem;">Deck Dimensions</legend>
             <div class="form-group">
                 <label>Deck Shape:</label>
                 <div class="btn-group btn-group-toggle ml-2" data-toggle="buttons">
@@ -49,8 +49,8 @@
             </div>
         </fieldset>
         <!-- Decking Material -->
-        <fieldset class="frame mb-3">
-            <legend>Decking Material</legend>
+        <fieldset class="border rounded p-3 mb-3">
+            <legend class="w-auto px-2" style="font-size: 1rem;">Decking Material</legend>
             <div class="form-row">
                 <div class="form-group col-md-4">
                     <label for="board_width">Board Width ({% if user_prefers_metric %}mm{% else %}inches{% endif %}):</label>
@@ -67,8 +67,8 @@
             </div>
             <div class="row justify-content-center">
                 <div class="col-md-8">
-                    <div class="card frame mb-3">
-                        <div class="card-header text-center font-weight-bold">
+                    <div class="card mb-3">
+                        <div class="card-header text-center font-weight-bold" style="font-size: 1rem;">
                             Common deck board sizes:
                         </div>
                         <div class="card-body p-2">
@@ -91,8 +91,8 @@
             </div>
         </fieldset>
         <!-- Options -->
-        <fieldset class="frame mb-3">
-            <legend>Options</legend>
+        <fieldset class="border rounded p-3 mb-3">
+            <legend class="w-auto px-2" style="font-size: 1rem;">Options</legend>
             <div class="form-row align-items-center">
                 <div class="form-group col-md-6">
                     <label>Board Direction:</label>
@@ -123,9 +123,9 @@
         </div>
     </form>
     <!-- Results -->
-    <fieldset class="results-frame">
-        <legend>Results</legend>
-        <div id="results">
+    <fieldset class="border rounded p-3">
+        <legend class="w-auto px-2" style="font-size: 1rem;">Results</legend>
+        <div id="results" class="mb-2">
             {% if results.error %}
                 <div class="alert alert-warning">{{ results.error }}</div>
             {% elif results.deck_area is not None %}
