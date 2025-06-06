@@ -1,91 +1,90 @@
 {% extends "base.html" %}
 {% block content %}
-<form method="post" class="mb-4">
-    {% csrf_token %}
-
-    <div class="container mt-4">
-        <h2 class="text-center">Decking Calculator</h2>
-        <p class="text-center mb-4">Calculate the number of deck boards, footings, and materials needed for your deck project.</p>
-        <ul class="nav nav-tabs mb-3">
-            <li class="nav-item">
-                <a class="nav-link {% if active_tab == 'deck_boards' %}active{% endif %}" href="{% url 'decking:deck_boards' %}">Deck Boards</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link {% if active_tab == 'framing' %}active{% endif %}" href="{% url 'decking:framing' %}">Framing</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link {% if active_tab == 'footings' %}active{% endif %}" href="{% url 'decking:footings' %}">Footings</a>
-            </li>
-        </ul>
-    </div>
-    <!-- Deck Dimensions -->
-    <fieldset class="border rounded p-3 mb-3">
-        <legend class="w-auto px-2" style="font-size: 1rem;">Deck Dimensions</legend>
-        <div class="form-row">
-            <div class="form-group col-md-3">
-                <label for="length">Length (feet):</label>
-                <input type="number" step="0.01" min="0" class="form-control" id="length" name="length">
+<div class="container mt-4">
+    <h2 class="text-center">Decking Calculator</h2>
+    <p class="text-center mb-4">Calculate the number of deck boards, footings, and materials needed for your deck project.</p>
+    <ul class="nav nav-tabs mb-3">
+        <li class="nav-item">
+            <a class="nav-link {% if active_tab == 'deck_boards' %}active{% endif %}" href="{% url 'decking:deck_boards' %}">Deck Boards</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link {% if active_tab == 'framing' %}active{% endif %}" href="{% url 'decking:framing' %}">Framing</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link {% if active_tab == 'footings' %}active{% endif %}" href="{% url 'decking:footings' %}">Footings</a>
+        </li>
+    </ul>
+    <form method="post" class="mb-4">
+        {% csrf_token %}
+        <!-- Deck Dimensions -->
+        <fieldset class="border rounded p-3 mb-3">
+            <legend class="w-auto px-2" style="font-size: 1rem;">Deck Dimensions</legend>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="length">Length ({% if user_prefers_metric %}meters{% else %}feet{% endif %}):</label>
+                    <input type="number" step="{% if user_prefers_metric %}0.001{% else %}0.01{% endif %}" min="0" class="form-control" id="length" name="length" value="{{ results.length|default_if_none:'' }}">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="width">Width ({% if user_prefers_metric %}meters{% else %}feet{% endif %}):</label>
+                    <input type="number" step="{% if user_prefers_metric %}0.001{% else %}0.01{% endif %}" min="0" class="form-control" id="width" name="width" value="{{ results.width|default_if_none:'' }}">
+                </div>
             </div>
-            <div class="form-group col-md-3">
-                <label for="width">Width (feet):</label>
-                <input type="number" step="0.01" min="0" class="form-control" id="width" name="width">
-            </div>
-            <div class="form-group col-md-3">
-                <label for="joist_spacing">Joist Spacing (inches):</label>
-                <select class="form-control" id="joist_spacing" name="joist_spacing">
-                    <option value="12">12</option>
-                    <option value="16" selected>16</option>
-                    <option value="24">24</option>
-                </select>
-            </div>
-            <div class="form-group col-md-3">
-                <label for="beam_span">Beam Span (feet):</label>
-                <input type="number" step="0.01" min="0" class="form-control" id="beam_span" name="beam_span">
-            </div>
-        </div>
-    </fieldset>
-    <!-- Framing Options -->
-    <fieldset class="border rounded p-3 mb-3">
-        <legend class="w-auto px-2" style="font-size: 1rem;">Framing Options</legend>
-        <div class="form-row">
-            <div class="form-group col-md-4">
-                <label for="joist_size">Joist Size:</label>
-                <select class="form-control" id="joist_size" name="joist_size">
-                    <option value="2x8">2x8</option>
-                    <option value="2x10">2x10</option>
-                    <option value="2x12">2x12</option>
-                </select>
-            </div>
-            <div class="form-group col-md-4">
-                <label for="beam_size">Beam Size:</label>
-                <select class="form-control" id="beam_size" name="beam_size">
-                    <option value="(2) 2x10">(2) 2x10</option>
-                    <option value="(3) 2x10">(3) 2x10</option>
-                    <option value="(2) 2x12">(2) 2x12</option>
-                </select>
-            </div>
-            <div class="form-group col-md-4">
-                <label for="waste_percentage">Waste Percentage:</label>
-                <div class="input-group">
-                    <input type="number" step="1" min="0" max="100" class="form-control" id="waste_percentage" name="waste_percentage" value="10">
-                    <div class="input-group-append">
-                        <span class="input-group-text">%</span>
+        </fieldset>
+        <!-- Framing Options -->
+        <fieldset class="border rounded p-3 mb-3">
+            <legend class="w-auto px-2" style="font-size: 1rem;">Framing Options</legend>
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="joist_spacing">Joist Spacing ({% if user_prefers_metric %}mm{% else %}inches{% endif %}):</label>
+                    <select class="form-control" id="joist_spacing" name="joist_spacing">
+                        {% if user_prefers_metric %}
+                            <option value="305" {% if results.joist_spacing|default:'406' == '305' %}selected{% endif %}>305 mm (12 in)</option>
+                            <option value="406" {% if results.joist_spacing|default:'406' == '406' %}selected{% endif %}>406 mm (16 in)</option>
+                            <option value="610" {% if results.joist_spacing|default:'406' == '610' %}selected{% endif %}>610 mm (24 in)</option>
+                        {% else %}
+                            <option value="12" {% if results.joist_spacing|default:'16' == '12' %}selected{% endif %}>12 in</option>
+                            <option value="16" {% if results.joist_spacing|default:'16' == '16' %}selected{% endif %}>16 in</option>
+                            <option value="24" {% if results.joist_spacing|default:'16' == '24' %}selected{% endif %}>24 in</option>
+                        {% endif %}
+                    </select>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="beam_span">Beam Span ({% if user_prefers_metric %}meters{% else %}feet{% endif %}):</label>
+                    <input type="number" step="{% if user_prefers_metric %}0.001{% else %}0.01{% endif %}" min="0" class="form-control" id="beam_span" name="beam_span" 
+                        {% if user_prefers_metric %}
+                            value="{{ results.beam_span|default_if_none:'3.66' }}"
+                        {% else %}
+                            value="{{ results.beam_span|default_if_none:'12' }}"
+                        {% endif %}
+                    >
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="waste_percentage">Waste Percentage:</label>
+                    <div class="input-group">
+                        <input type="number" step="1" min="0" max="100" class="form-control" id="waste_percentage" name="waste_percentage" value="{{ results.waste_percentage|default_if_none:'10' }}">
+                        <div class="input-group-append">
+                            <span class="input-group-text">%</span>
+                        </div>
                     </div>
                 </div>
             </div>
+        </fieldset>
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary my-2">Calculate Framing</button>
+        </div>
+    </form>
+    <!-- Results -->
+    <fieldset class="border rounded p-3">
+        <legend class="w-auto px-2" style="font-size: 1rem;">Results</legend>
+        <div id="results" class="mb-2">
+            {% if results.error %}
+                <div class="alert alert-warning">{{ results.error }}</div>
+            {% elif results.num_joists is not None %}
+                <div>Number of Joists: <strong>{{ results.num_joists }}</strong></div>
+                <div>Beam Length: <strong>{{ results.beam_length|floatformat:2 }} {{ results.beam_length_unit }}</strong></div>
+                <div>Rim Joist Length: <strong>{{ results.rim_joist_length|floatformat:2 }} {{ results.rim_joist_length_unit }}</strong></div>
+            {% endif %}
         </div>
     </fieldset>
-    <div class="text-center">
-        <button type="submit" class="btn btn-primary my-2">Calculate Framing</button>
-    </div>
-</form>
-<!-- Results -->
-<fieldset class="border rounded p-3">
-    <legend class="w-auto px-2" style="font-size: 1rem;">Results</legend>
-    <div id="results" class="mb-2">
-        <div>Number of Joists:</div>
-        <div>Beam Length:</div>
-        <div>Rim Joist Length:</div>
-    </div>
-</fieldset>
+</div>
 {% endblock %}
