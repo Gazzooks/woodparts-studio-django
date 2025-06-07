@@ -1,0 +1,136 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="frame">
+    <h2 class="mb-2">Lumber Grades Reference</h2>
+    <p class="mb-3">
+        Understanding lumber grades helps you select the right wood for your project, whether for structural framing, fine woodworking, or cabinetry. Lumber is graded based on appearance, strength, and intended use. Below are the most common grading systems for softwoods and hardwoods.
+    </p>
+
+    <div class="results-frame mb-4">
+        <h4 class="mb-2">Softwood Lumber Grades (Construction Lumber)</h4>
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered table-sm mb-0">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Grade</th>
+                        <th>Description</th>
+                        <th>Common Uses</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>SELECT STRUCTURAL</td>
+                        <td>Highest quality, fewest defects, highest strength</td>
+                        <td>Beams, posts, load-bearing framing</td>
+                    </tr>
+                    <tr>
+                        <td>NO. 1 (Construction)</td>
+                        <td>High quality, few knots, strong</td>
+                        <td>Framing, joists, rafters</td>
+                    </tr>
+                    <tr>
+                        <td>NO. 2 (Standard)</td>
+                        <td>More knots, some defects allowed, still strong</td>
+                        <td>General framing, studs, plates</td>
+                    </tr>
+                    <tr>
+                        <td>NO. 3 (Utility)</td>
+                        <td>More defects, larger knots, not for structural use</td>
+                        <td>Crates, bracing, non-load-bearing</td>
+                    </tr>
+                    <tr>
+                        <td>STUD</td>
+                        <td>Specifically graded for vertical use in walls</td>
+                        <td>Wall studs</td>
+                    </tr>
+                    <tr>
+                        <td>CONSTRUCTION HEART</td>
+                        <td>Primarily heartwood, strong and stable</td>
+                        <td>Framing, load-bearing</td>
+                    </tr>
+                    <tr>
+                        <td>CONSTRUCTION COMMON</td>
+                        <td>Mix of heartwood and sapwood, more defects</td>
+                        <td>General construction</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="mt-2" style="font-size:0.97em;">
+            <strong>Note:</strong> Softwood grades are stamped on each piece and may include additional marks for kiln drying (KD), pressure treatment, or species.
+        </div>
+    </div>
+
+    <div class="results-frame mb-4">
+        <h4 class="mb-2">Hardwood Lumber Grades (NHLA Rules)</h4>
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered table-sm mb-0">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Grade</th>
+                        <th>Description</th>
+                        <th>Yield (%)</th>
+                        <th>Common Uses</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>FAS (Firsts and Seconds)</td>
+                        <td>Best quality, long clear faces, minimal defects</td>
+                        <td>83⅓%+</td>
+                        <td>Fine furniture, cabinetry, millwork</td>
+                    </tr>
+                    <tr>
+                        <td>FAS 1-Face (F1F)</td>
+                        <td>One face FAS, reverse face #1 Common</td>
+                        <td>83⅓%+</td>
+                        <td>Cabinet doors, panels</td>
+                    </tr>
+                    <tr>
+                        <td>Select</td>
+                        <td>One face nearly FAS, reverse face #1 Common</td>
+                        <td>83⅓%+</td>
+                        <td>Furniture, visible parts</td>
+                    </tr>
+                    <tr>
+                        <td>#1 Common</td>
+                        <td>Good quality, shorter clear faces, more defects</td>
+                        <td>66⅔%+</td>
+                        <td>Furniture frames, panels, flooring</td>
+                    </tr>
+                    <tr>
+                        <td>#2 Common</td>
+                        <td>More defects, smaller clear areas</td>
+                        <td>50%+</td>
+                        <td>Cabinet frames, utility furniture</td>
+                    </tr>
+                    <tr>
+                        <td>#3A &amp; #3B Common</td>
+                        <td>Lowest grade, significant defects</td>
+                        <td>33⅓%+</td>
+                        <td>Boxes, crates, utility use</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="mt-2" style="font-size:0.97em;">
+            <strong>Note:</strong> Hardwood grades are based on the percentage of clear, defect-free wood in a board. Thickness, width, and length requirements apply to each grade.
+        </div>
+    </div>
+
+    <div class="results-frame">
+        <h5 class="mb-2">Other Grading Terms &amp; Stamps</h5>
+        <ul>
+            <li><b>S4S:</b> Surfaced Four Sides (planed smooth on all sides)</li>
+            <li><b>S2S:</b> Surfaced Two Sides (planed smooth on two faces, rough edges)</li>
+            <li><b>Rough:</b> Not planed or surfaced, as sawn from the mill</li>
+            <li><b>KD:</b> Kiln Dried (moisture reduced for stability)</li>
+            <li><b>PT:</b> Pressure Treated (for outdoor use)</li>
+            <li><b>MC:</b> Moisture Content (often marked as a percentage)</li>
+        </ul>
+        <div class="mt-2" style="font-size:0.97em;">
+            <strong>Tip:</strong> Always check the lumber stamp for grade, species, moisture content, and certification (e.g., FSC, SFI).
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="frame" style="min-height:600px;">
+    <h2 class="mb-3 text-center">WoodParts Studio Documentation</h2>
+    <div class="row">
+        <!-- Sidebar Table of Contents -->
+        <div class="col-md-3 mb-3" style="border-right:1px solid #ddd;">
+            <h5 class="mb-2">Contents</h5>
+            <ul class="list-unstyled" style="font-size:1.05em;">
+                <li><b>Getting Started</b>
+                    <ul>
+                        <li><a href="#introduction">Introduction</a></li>
+                        <li><a href="#user-interface">User Interface Overview</a></li>
+                        <li><a href="#first-project">Creating Your First Project</a></li>
+                    </ul>
+                </li>
+                <li><b>Tools</b>
+                    <ul>
+                        <li><a href="#cutlist">Cutlist Creator</a></li>
+                        <li><a href="#board-foot">Board Foot Calculator</a></li>
+                        <li><a href="#wall-panels">Wall Panels Calculator</a></li>
+                        <li><a href="#decking">Decking Calculator</a></li>
+                        <li><a href="#fraction">Fraction Calculator</a></li>
+                        <li><a href="#fraction-decimal">Fraction to Decimal Converter</a></li>
+                        <li><a href="#length-conversion">Length Conversions</a></li>
+                        <li><a href="#golden-ratio">Golden Ratio Calculator</a></li>
+                        <li><a href="#shelf">Shelf Calculator</a></li>
+                        <li><a href="#assets">Shop Assets Manager</a></li>
+                    </ul>
+                </li>
+                <li><b>References</b>
+                    <ul>
+                        <li><a href="#nominal-actual">Nominal to Actual Size</a></li>
+                        <li><a href="#screw-size">Screw Size Chart</a></li>
+                        <li><a href="#joint-types">Woodworking Joint Types</a></li>
+                        <li><a href="#wood-types">Wood Types</a></li>
+                        <li><a href="#finishing-guide">Finishing Guide</a></li>
+                        <li><a href="#planning-sheet">Project Planning Sheet</a></li>
+                    </ul>
+                </li>
+                <li><b>Project Management</b></li>
+            </ul>
+        </div>
+        <!-- Main Content Area -->
+        <div class="col-md-9">
+            <section id="introduction">
+                <h4>Welcome to WoodParts Studio Documentation</h4>
+                <p>
+                    WoodParts Studio is your comprehensive woodworking project management tool. This documentation will help you understand how to use all the features, tools, and references available in the application.
+                </p>
+                <p>
+                    Please select a topic from the table of contents on the left to view detailed information about that feature.
+                </p>
+            </section>
+            <section id="getting-started">
+                <h5>Getting Started</h5>
+                <p>
+                    If you’re new to WoodParts Studio, we recommend starting with the <b>Getting Started</b> section to learn the basics of the application.
+                </p>
+            </section>
+            <section id="need-help">
+                <h5>Need Help?</h5>
+                <p>
+                    If you have any questions or encounter issues not covered in this documentation, please contact our support team.
+                </p>
+            </section>
+            <!-- Optionally, add anchor sections for each topic as you expand documentation -->
+        </div>
+    </div>
+</div>
+{% endblock %}

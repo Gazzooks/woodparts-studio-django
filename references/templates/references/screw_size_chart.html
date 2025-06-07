@@ -1,0 +1,146 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="frame">
+    <h2 class="mb-2 text-center">Screw Size Chart</h2>
+    <p class="mb-3 text-center">
+        This reference chart provides information about different screw sizes, their dimensions, and recommended pilot hole sizes for various wood types.
+    </p>
+    <div class="results-frame">
+        <ul class="nav nav-tabs mb-3" id="screwTabs" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" id="wood-tab" data-toggle="tab" href="#wood" role="tab">Wood Screws</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="machine-tab" data-toggle="tab" href="#machine" role="tab">Machine Screws</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="drill-tab" data-toggle="tab" href="#drill" role="tab">Drill Size Chart</a>
+            </li>
+        </ul>
+        <div class="tab-content" id="screwTabsContent">
+            <!-- Wood Screws Tab -->
+            <div class="tab-pane fade show active" id="wood" role="tabpanel">
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered table-sm mb-0">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>Screw Size</th>
+                                <th>Diameter (in)</th>
+                                <th>Diameter (mm)</th>
+                                <th>Pilot Hole - Softwood</th>
+                                <th>Pilot Hole - Hardwood</th>
+                                <th>Common Uses</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>#2</td><td>0.086</td><td>2.18</td><td>1/16"</td><td>5/64"</td><td>Small crafts, light-duty</td></tr>
+                            <tr><td>#3</td><td>0.099</td><td>2.51</td><td>5/64"</td><td>3/32"</td><td>Small crafts, light hardware</td></tr>
+                            <tr><td>#4</td><td>0.112</td><td>2.84</td><td>3/32"</td><td>7/64"</td><td>Small hinges, light hardware</td></tr>
+                            <tr><td>#5</td><td>0.125</td><td>3.18</td><td>3/32"</td><td>1/8"</td><td>Light hinges, hardware</td></tr>
+                            <tr><td>#6</td><td>0.138</td><td>3.51</td><td>7/64"</td><td>9/64"</td><td>Medium hinges, hardware</td></tr>
+                            <tr><td>#7</td><td>0.151</td><td>3.84</td><td>7/64"</td><td>5/32"</td><td>Medium hardware</td></tr>
+                            <tr><td>#8</td><td>0.164</td><td>4.17</td><td>1/8"</td><td>11/64"</td><td>Standard for many applications</td></tr>
+                            <tr><td>#9</td><td>0.177</td><td>4.50</td><td>9/64"</td><td>3/16"</td><td>Cabinet hanging, furniture</td></tr>
+                            <tr><td>#10</td><td>0.190</td><td>4.83</td><td>5/32"</td><td>3/16"</td><td>Door hinges, shelving</td></tr>
+                            <tr><td>#12</td><td>0.216</td><td>5.49</td><td>11/64"</td><td>7/32"</td><td>Heavy hardware, shelving</td></tr>
+                            <tr><td>#14</td><td>0.268</td><td>6.81</td><td>13/64"</td><td>15/64"</td><td>Heavy construction</td></tr>
+                            <tr><td>#18</td><td>0.294</td><td>7.47</td><td>7/32"</td><td>1/4"</td><td>Very heavy construction</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="mt-3" style="font-size:0.97em;">
+                    <strong>Pilot Hole Tips:</strong>
+                    <ul>
+                        <li>For softwoods, use a pilot hole with a diameter of 50-70% of the screw’s root diameter.</li>
+                        <li>For hardwoods, use a pilot hole with a diameter of 70-90% of the screw’s root diameter.</li>
+                        <li>For wood screws, the pilot hole should be as deep as the threaded portion will penetrate.</li>
+                        <li>For a clearance hole, drill a hole slightly larger than the screw’s outside diameter.</li>
+                        <li>When screwing near the edge, always use a pilot hole to prevent splitting.</li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Machine Screws Tab -->
+            <div class="tab-pane fade" id="machine" role="tabpanel">
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered table-sm mb-0">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>Size</th>
+                                <th>Diameter (in)</th>
+                                <th>Diameter (mm)</th>
+                                <th>Threads per Inch</th>
+                                <th>Common Uses</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>#0</td><td>0.060</td><td>1.52</td><td>80</td><td>Electronics, tiny assemblies</td></tr>
+                            <tr><td>#1</td><td>0.073</td><td>1.85</td><td>64, 72</td><td>Electronics, small devices</td></tr>
+                            <tr><td>#2</td><td>0.086</td><td>2.18</td><td>56, 64</td><td>Small electronics, light hardware</td></tr>
+                            <tr><td>#3</td><td>0.099</td><td>2.51</td><td>48, 56</td><td>Small hardware, fasteners</td></tr>
+                            <tr><td>#4</td><td>0.112</td><td>2.84</td><td>40, 48</td><td>Light hardware, electronics</td></tr>
+                            <tr><td>#5</td><td>0.125</td><td>3.18</td><td>40, 44</td><td>Hardware, small brackets</td></tr>
+                            <tr><td>#6</td><td>0.138</td><td>3.51</td><td>32, 40</td><td>Medium hardware, brackets</td></tr>
+                            <tr><td>#8</td><td>0.164</td><td>4.17</td><td>32, 36</td><td>General purpose, medium hardware</td></tr>
+                            <tr><td>#10</td><td>0.190</td><td>4.83</td><td>24, 32</td><td>Furniture, medium hardware</td></tr>
+                            <tr><td>#12</td><td>0.216</td><td>5.49</td><td>24, 28</td><td>Heavy hardware, metal connections</td></tr>
+                            <tr><td>1/4</td><td>0.250</td><td>6.35</td><td>20, 28</td><td>Machinery, heavy hardware</td></tr>
+                            <tr><td>5/16</td><td>0.3125</td><td>7.94</td><td>18, 24</td><td>Heavy-duty connections</td></tr>
+                            <tr><td>3/8</td><td>0.375</td><td>9.53</td><td>16, 24</td><td>Heavy machinery, structural</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="mt-3" style="font-size:0.97em;">
+                    <strong>Thread Information:</strong>
+                    <div>
+                        Machine screws typically come in coarse (UNC) and fine (UNF) thread versions. The number after the dash in a machine screw size indicates threads per inch. For example, #8-32 is a #8 screw with 32 threads per inch (coarse thread).
+                    </div>
+                </div>
+            </div>
+            <!-- Drill Size Chart Tab -->
+            <div class="tab-pane fade" id="drill" role="tabpanel">
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered table-sm mb-0">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>Drill Size</th>
+                                <th>Diameter (in)</th>
+                                <th>Diameter (mm)</th>
+                                <th>Recommended For</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Wire Gauge Drills -->
+                            <tr><td colspan="4" class="font-weight-bold bg-light">Wire Gauge Drills</td></tr>
+                            <tr><td>#1</td><td>0.228</td><td>5.79</td><td>Clearance for #12 screw</td></tr>
+                            <tr><td>#7</td><td>0.201</td><td>5.10</td><td>Clearance for #10 screw</td></tr>
+                            <tr><td>#13</td><td>0.185</td><td>4.70</td><td>Tap drill for 1/4-20 thread</td></tr>
+                            <tr><td>#16</td><td>0.177</td><td>4.50</td><td>Clearance for #8 screw</td></tr>
+                            <tr><td>#21</td><td>0.159</td><td>4.04</td><td>Tap drill for #10-24 thread</td></tr>
+                            <tr><td>#25</td><td>0.149</td><td>3.81</td><td>Tap drill for #6 screw</td></tr>
+                            <tr><td>#29</td><td>0.136</td><td>3.45</td><td>Tap drill for #8-32 thread</td></tr>
+                            <tr><td>#33</td><td>0.113</td><td>2.87</td><td>Clearance for #4 screw</td></tr>
+                            <tr><td>#36</td><td>0.106</td><td>2.69</td><td>Tap drill for #6-32 thread</td></tr>
+                            <tr><td>#42</td><td>0.093</td><td>2.37</td><td>Clearance for #2 screw</td></tr>
+                            <tr><td>#43</td><td>0.089</td><td>2.26</td><td>Tap drill for #4-40 thread</td></tr>
+                            <tr><td>#50</td><td>0.070</td><td>1.78</td><td>Tap drill for #2-56 thread</td></tr>
+                            <!-- Fractional Inch Drills -->
+                            <tr><td colspan="4" class="font-weight-bold bg-light">Fractional Inch Drills</td></tr>
+                            <tr><td>1/16</td><td>0.0625</td><td>1.59</td><td>Pilot holes for small screws</td></tr>
+                            <tr><td>3/32</td><td>0.0938</td><td>2.38</td><td>Pilot holes for #4-#6 screws</td></tr>
+                            <tr><td>1/8</td><td>0.125</td><td>3.18</td><td>Pilot holes for #8-#10 screws</td></tr>
+                            <tr><td>5/32</td><td>0.156</td><td>3.97</td><td>Pilot holes for #12 screws</td></tr>
+                            <tr><td>3/16</td><td>0.188</td><td>4.76</td><td>Pilot holes for 1/4" screws</td></tr>
+                            <tr><td>1/4</td><td>0.250</td><td>6.35</td><td>General purpose</td></tr>
+                            <tr><td>5/16</td><td>0.313</td><td>7.94</td><td>Medium bolts and dowels</td></tr>
+                            <tr><td>3/8</td><td>0.375</td><td>9.53</td><td>Standard dowel size</td></tr>
+                            <tr><td>1/2</td><td>0.500</td><td>12.70</td><td>Large dowels and small hardware</td></tr>
+                            <tr><td>5/8</td><td>0.625</td><td>15.88</td><td>Large hardware</td></tr>
+                            <tr><td>3/4</td><td>0.750</td><td>19.05</td><td>Very large hardware and dowels</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

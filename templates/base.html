@@ -108,23 +108,9 @@
                             </div>
                         </div>
 
-                        <!-- Shop Management Submenu -->
-                        <div class="dropdown-submenu">
-                            <a class="dropdown-item dropdown-toggle" href="#"> 
-                                <i class="fas fa-warehouse"></i> Shop Management
-                            </a>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="{% url 'shop_assets:manager' %}">
-                                    <i class="fas fa-clipboard-list"></i> Shop Assets Manager...
-                                </a>
-                                <a class="dropdown-item" href="{% url 'shop_assets:manager' %}#tools">
-                                    <i class="fas fa-toolbox"></i> Tool Inventory...
-                                </a>
-                                <a class="dropdown-item" href="{% url 'shop_assets:manager' %}#maintenance">
-                                    <i class="fas fa-wrench"></i> Maintenance Tracker...
-                                </a>
-                            </div>
-                        </div>
+                        <!-- Shop Management menu -->
+                         <div class="dropdown-divider"></div>
+                         <a class="dropdown-item" href="{% url 'shop_assets:manager' %}"><i class="fas fa-warehouse"></i> Shop Asset Manager</a>
 
                         <!-- Cutlist Creator -->
                         <div class="dropdown-divider"></div>
@@ -138,24 +124,55 @@
 
                 <!-- References Menu - MOVED HERE TO LEFT SIDE -->
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="referencesDropdown" data-toggle="dropdown">
-                        <i class="fas fa-book"></i> References
+                    <a class="nav-link dropdown-toggle" href="#" id="referencesMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        References
                     </a>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="{% url 'references:wood_types' %}">
-                            <i class="fas fa-tree"></i> Wood Types
-                        </a>
-                        <a class="dropdown-item" href="{% url 'references:screw_chart' %}">
-                            <i class="fas fa-screwdriver"></i> Screw Chart
-                        </a>
-                        {% comment %} <!-- NOTE: Add new reference materials below this comment -->
-                        <!-- Example new entry:
-                        <a class="dropdown-item" href="{% url 'references:new_reference' %}">
-                            <i class="fas fa-new-icon"></i> New Reference
-                        </a>
-                        --> {% endcomment %}
-                    </div>
-                </li>
+                    <ul class="dropdown-menu" aria-labelledby="referencesMenu">
+                        <!-- Wood & Materials -->
+                        <li class="dropdown-submenu">
+                        <a class="dropdown-item dropdown-toggle" href="#">Wood & Materials</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{% url 'references:wood_types' %}">Wood Types Guide...</a></li>
+                            <li><a class="dropdown-item" href="{% url 'references:nominal_actual_sizes' %}">Nominal to Actual Sizes...</a></li>
+                            <li><a class="dropdown-item" href="{% url 'references:lumber_grades' %}">Lumber Grades...</a></li>
+                            <li><a class="dropdown-item" href="{% url 'references:material_properties' %}">Material Properties...</a></li>
+                        </ul>
+                        </li>
+                        <!-- Hardware & Fasteners -->
+                        <li class="dropdown-submenu">
+                        <a class="dropdown-item dropdown-toggle" href="#">Hardware & Fasteners</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{% url 'references:screw_size_chart' %}">Screw Size Chart...</a></li>
+                            <li><a class="dropdown-item" href="{% url 'references:bolt_nut_chart' %}">Bolt & Nut Chart...</a></li>
+                            <li><a class="dropdown-item" href="{% url 'references:nail_chart' %}">Nail Chart...</a></li>
+                            <li><a class="dropdown-item" href="{% url 'references:hardware_catalog' %}">Hardware Catalog...</a></li>
+                        </ul>
+                        </li>
+                        <!-- Joinery & Techniques -->
+                        <li class="dropdown-submenu">
+                        <a class="dropdown-item dropdown-toggle" href="#">Joinery & Techniques</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{% url 'references:joint_types' %}">Joint Types...</a></li>
+                            <li><a class="dropdown-item" href="{% url 'references:cutting_techniques' %}">Cutting Techniques...</a></li>
+                            <li><a class="dropdown-item" href="{% url 'references:assembly_methods' %}">Assembly Methods...</a></li>
+                        </ul>
+                        </li>
+                        <!-- Finishing -->
+                        <li class="dropdown-submenu">
+                        <a class="dropdown-item dropdown-toggle" href="#">Finishing</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{% url 'references:finishing_guide' %}">Finishing Guide...</a></li>
+                            <li><a class="dropdown-item" href="{% url 'references:stain_colors' %}">Stain Colors...</a></li>
+                            <li><a class="dropdown-item" href="{% url 'references:finish_compatibility' %}">Finish Compatibility...</a></li>
+                        </ul>
+                        </li>
+                        <!-- Standalone references -->
+                        <li><a class="dropdown-item" href="{% url 'references:documentation' %}">Documentation...</a></li>
+                        <li><a class="dropdown-item" href="{% url 'references:quick_reference_cards' %}">Quick Reference Cards...</a></li>
+                        <li><a class="dropdown-item" href="{% url 'references:safety_guidelines' %}">Safety Guidelines...</a></li>
+                    </ul>
+                    </li>    
+            
             </ul>
 
             <!-- RIGHT SIDE NAVIGATION -->
@@ -226,6 +243,12 @@
             $(document).click(function() {
                 $('.dropdown-submenu .dropdown-menu').removeClass('show');
             });
+        });
+
+        $('.dropdown-submenu').on('mouseenter', function() {
+            $(this).children('.dropdown-menu').addClass('show');
+        }).on('mouseleave', function() {
+            $(this).children('.dropdown-menu').removeClass('show');
         });
     </script>
 </body>

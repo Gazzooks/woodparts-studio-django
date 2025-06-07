@@ -1,0 +1,256 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="frame">
+    <h2 class="mb-2">Wood Finishing Guide</h2>
+    <p class="mb-3">
+        A comprehensive guide to wood finishing, covering finish types, application techniques, wood preparation, and troubleshooting.
+    </p>
+    <div class="results-frame">
+        <ul class="nav nav-tabs mb-3" id="finishingTabs" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" id="finish-types-tab" data-toggle="tab" href="#finish-types" role="tab">Finish Types</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="application-techniques-tab" data-toggle="tab" href="#application-techniques" role="tab">Application Techniques</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="wood-preparation-tab" data-toggle="tab" href="#wood-preparation" role="tab">Wood Preparation</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="troubleshooting-tab" data-toggle="tab" href="#troubleshooting" role="tab">Troubleshooting</a>
+            </li>
+        </ul>
+        <div class="tab-content" id="finishingTabsContent">
+            <!-- Finish Types Tab -->
+            <div class="tab-pane fade show active" id="finish-types" role="tabpanel">
+                <h4>Common Finish Types</h4>
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered table-sm mb-3">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>Finish</th>
+                                <th>Durability</th>
+                                <th>Appearance</th>
+                                <th>Application</th>
+                                <th>Best Uses</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Polyurethane (Oil-Based)</td><td>Very High</td><td>Amber tint, glossy to satin</td><td>Brush, wipe, spray</td><td>Floors, tables, high-wear surfaces</td></tr>
+                            <tr><td>Polyurethane (Water-Based)</td><td>High</td><td>Clear, minimal yellowing</td><td>Brush, spray</td><td>Indoor furniture, cabinets, trim</td></tr>
+                            <tr><td>Danish Oil</td><td>Medium</td><td>Enhances grain, satin</td><td>Wipe on, wipe off</td><td>Furniture, decorative items, moderate wear</td></tr>
+                            <tr><td>Tung Oil (Pure)</td><td>Medium</td><td>Natural look, satin</td><td>Wipe on, wipe off</td><td>Bowls, cutting boards, furniture</td></tr>
+                            <tr><td>Boiled Linseed Oil</td><td>Low-Medium</td><td>Amber color, enhances grain</td><td>Wipe on, wipe off</td><td>Interior furniture, antique look</td></tr>
+                            <tr><td>Shellac</td><td>Low</td><td>Warm amber, various sheens</td><td>Brush, pad, spray</td><td>Furniture, antiques, sealer coat</td></tr>
+                            <tr><td>Lacquer</td><td>Medium-High</td><td>Clear, various sheens</td><td>Spray</td><td>Fine furniture, musical instruments</td></tr>
+                            <tr><td>Varnish (Traditional)</td><td>High</td><td>Amber, glossy to satin</td><td>Brush</td><td>Exterior applications, boats, doors</td></tr>
+                            <tr><td>Water-Based Varnish</td><td>Medium-High</td><td>Clear, various sheens</td><td>Brush, spray</td><td>Interior furniture, cabinets</td></tr>
+                            <tr><td>Wax</td><td>Low</td><td>Natural, satin to matte</td><td>Rub on, buff</td><td>Final coat, antiques, low-wear items</td></tr>
+                            <tr><td>Gel Stain</td><td>Medium</td><td>Even coloring, minimal penetration</td><td>Wipe on</td><td>Difficult woods, fiberglass, metal</td></tr>
+                            <tr><td>Penetrating Stain</td><td>Low</td><td>Enhances grain with color</td><td>Wipe or brush</td><td>All bare wood before finishing</td></tr>
+                            <tr><td>Oil/Varnish Blends</td><td>Medium</td><td>Warm glow, hand-rubbed look</td><td>Wipe on</td><td>Furniture, moderate-wear surfaces</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- Application Techniques Tab -->
+            <div class="tab-pane fade" id="application-techniques" role="tabpanel">
+                <h4>Application Techniques</h4>
+                <div class="mb-4">
+                    <b>Brushing:</b> The most common method using a high-quality brush.<br>
+                    <span class="text-muted">Best for: Polyurethane, varnish, shellac, water-based finishes</span>
+                    <ul>
+                        <li>Choose a high-quality natural or synthetic brush appropriate for your finish</li>
+                        <li>Load the brush properly - about 1/3 of the bristle length</li>
+                        <li>Apply with the grain using long, even strokes</li>
+                        <li>Maintain a wet edge to prevent lap marks</li>
+                        <li>Allow proper drying time between coats</li>
+                        <li>Sand lightly between coats with fine sandpaper (320-400 grit)</li>
+                    </ul>
+                </div>
+                <div class="mb-4">
+                    <b>Wiping:</b> Applying finish with a cloth for a thin, even coat.<br>
+                    <span class="text-muted">Best for: Oils, Danish oil, oil/varnish blends, wipe-on poly</span>
+                    <ul>
+                        <li>Use a lint-free cloth (old t-shirts work well)</li>
+                        <li>Apply finish liberally to the surface</li>
+                        <li>Wipe off excess after a short period (follow product instructions)</li>
+                        <li>Allow to dry completely between coats</li>
+                        <li>Multiple thin coats are better than fewer thick coats</li>
+                        <li>Sand very lightly between coats if needed</li>
+                    </ul>
+                </div>
+                <div class="mb-4">
+                    <b>Spraying:</b> Using spray equipment for a smooth, even finish without brush marks.<br>
+                    <span class="text-muted">Best for: Lacquer, water-based finishes, conversion varnish</span>
+                    <ul>
+                        <li>Ensure proper ventilation and wear appropriate protective equipment</li>
+                        <li>Thin finish according to manufacturer's directions if needed</li>
+                        <li>Keep the gun perpendicular to the surface at a consistent distance</li>
+                        <li>Use overlapping passes for even coverage</li>
+                        <li>Apply multiple light coats rather than one heavy coat</li>
+                        <li>Allow proper flash time between coats</li>
+                    </ul>
+                </div>
+                <div class="mb-4">
+                    <b>Padding:</b> A French polishing technique using a pad to apply thin coats.<br>
+                    <span class="text-muted">Best for: Shellac (traditional French polish)</span>
+                    <ul>
+                        <li>Create a pad with a lint-free cloth wrapped around wool or cotton</li>
+                        <li>Charge the pad with shellac and a small amount of oil</li>
+                        <li>Apply in circular or figure-eight motions</li>
+                        <li>Use light pressure and keep the pad moving</li>
+                        <li>Build up many thin coats</li>
+                        <li>Allow proper drying between sessions</li>
+                    </ul>
+                </div>
+                <div class="mb-4">
+                    <b>Dipping:</b> Immersing the entire piece or parts in finish.<br>
+                    <span class="text-muted">Best for: Small items, production work</span>
+                    <ul>
+                        <li>Prepare a container large enough for the items</li>
+                        <li>Fill with appropriate finish</li>
+                        <li>Submerge items completely</li>
+                        <li>Remove and allow excess to drain</li>
+                        <li>Hang to dry in a dust-free environment</li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Wood Preparation Tab -->
+            <div class="tab-pane fade" id="wood-preparation" role="tabpanel">
+                <h4>Wood Preparation Steps</h4>
+                <ol>
+                    <li>
+                        <b>Complete All Construction First:</b>
+                        Finish all woodworking operations including joinery, shaping, and carving before starting the finishing process.
+                    </li>
+                    <li>
+                        <b>Sanding Progression:</b>
+                        Start with coarser grits and work up to finer grits. A typical progression might be: 80 → 120 → 150 → 180 → 220 grit. For some finishes, you may need to go finer to 320 or 400 grit.<br>
+                        <span class="text-muted">Always sand with the grain. Cross-grain scratches will show in the final finish.</span>
+                    </li>
+                    <li>
+                        <b>Raise the Grain:</b>
+                        For water-based finishes, raise the grain first by lightly wetting the surface with water, letting it dry, then lightly sanding with the final grit.<br>
+                        <span class="text-muted">This prevents the grain from raising when applying water-based finish.</span>
+                    </li>
+                    <li>
+                        <b>Surface Cleaning:</b>
+                        Remove all dust using a vacuum, compressed air, and/or tack cloth. Mineral spirits can be used to check for missed spots and to reveal glue residue.
+                    </li>
+                    <li>
+                        <b>Wood Conditioning:</b>
+                        For blotch-prone woods (pine, cherry, maple, birch), apply a pre-stain wood conditioner or washcoat of thinned shellac before staining.
+                    </li>
+                    <li>
+                        <b>Filling the Grain:</b>
+                        For open-grained woods (oak, ash, mahogany), consider using wood filler or grain filler for a smooth finish.<br>
+                        <span class="text-muted">Apply filler after staining but before applying finish if you want the pores to show the stain color.</span>
+                    </li>
+                    <li>
+                        <b>Final Wipe Down:</b>
+                        Just before finishing, wipe the surface with a clean, lint-free cloth to remove any remaining dust.
+                    </li>
+                </ol>
+                <h5 class="mt-4">Recommended Final Sanding Grits by Finish Type</h5>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-sm mb-0">
+                        <thead class="thead-light">
+                            <tr>
+                                <th>Finish Type</th>
+                                <th>Final Grit</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Oil Finishes</td><td>320-400</td></tr>
+                            <tr><td>Danish Oil, Tung Oil</td><td>320</td></tr>
+                            <tr><td>Varnish, Polyurethane</td><td>180-220</td></tr>
+                            <tr><td>Water-Based Finishes</td><td>220-320</td></tr>
+                            <tr><td>Shellac</td><td>320-400</td></tr>
+                            <tr><td>Lacquer</td><td>320-400</td></tr>
+                            <tr><td>Paint</td><td>150-180</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- Troubleshooting Tab -->
+            <div class="tab-pane fade" id="troubleshooting" role="tabpanel">
+                <h4>Troubleshooting Common Finishing Problems</h4>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-sm mb-0">
+                        <thead class="thead-light">
+                            <tr>
+                                <th>Problem</th>
+                                <th>Possible Causes</th>
+                                <th>Solutions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Bubbles in Finish</td>
+                                <td>Shaking the finish, applying too quickly, contaminated surface, excessive brush agitation</td>
+                                <td>Stir don't shake, apply more slowly, clean surface thoroughly, use proper brush technique, thin the finish</td>
+                            </tr>
+                            <tr>
+                                <td>Orange Peel (Rough Texture)</td>
+                                <td>Spraying too far away, finish too thick, improper atomization</td>
+                                <td>Adjust spray distance, thin the finish, check spray equipment settings</td>
+                            </tr>
+                            <tr>
+                                <td>Fish Eye (Small Circular Depressions)</td>
+                                <td>Silicone or oil contamination on the wood surface</td>
+                                <td>Clean thoroughly with solvent, use fish-eye eliminator additive, apply shellac sealer coat</td>
+                            </tr>
+                            <tr>
+                                <td>Blushing (Milky Appearance)</td>
+                                <td>Moisture trapped in the finish, high humidity during application</td>
+                                <td>Apply in lower humidity, add retarder, sand and recoat, apply thinner coats</td>
+                            </tr>
+                            <tr>
+                                <td>Runs and Sags</td>
+                                <td>Applying too much finish, uneven application, vertical surfaces</td>
+                                <td>Apply thinner coats, maintain even application, watch for runs while finish is wet</td>
+                            </tr>
+                            <tr>
+                                <td>Brush Marks</td>
+                                <td>Poor quality brush, finish drying too quickly, finish too thick</td>
+                                <td>Use better brush, add retarder, thin the finish, sand between coats</td>
+                            </tr>
+                            <tr>
+                                <td>Dust Nibs</td>
+                                <td>Dust in the air settling on wet finish</td>
+                                <td>Clean workspace, use tack cloth, sand between coats with fine paper (400+ grit)</td>
+                            </tr>
+                            <tr>
+                                <td>Blotchy Stain</td>
+                                <td>Uneven wood porosity, inadequate surface preparation</td>
+                                <td>Use pre-stain conditioner, apply washcoat of shellac, use gel stain</td>
+                            </tr>
+                            <tr>
+                                <td>Peeling or Poor Adhesion</td>
+                                <td>Contaminated surface, incompatible finishes, moisture issues</td>
+                                <td>Clean thoroughly, sand properly, ensure finish compatibility, check moisture content</td>
+                            </tr>
+                            <tr>
+                                <td>Finish Won't Dry</td>
+                                <td>Temperature too low, incompatible products, oil or silicone contamination</td>
+                                <td>Increase temperature, verify product compatibility, clean surface thoroughly</td>
+                            </tr>
+                            <tr>
+                                <td>Streaky Finish</td>
+                                <td>Uneven application, poor surface preparation, incompatible products</td>
+                                <td>Apply evenly, prepare surface properly, ensure product compatibility</td>
+                            </tr>
+                            <tr>
+                                <td>Cracking or Crazing</td>
+                                <td>Applied too thick, temperature changes, incompatible layers</td>
+                                <td>Apply thinner coats, maintain stable temperature, ensure compatibility between coats</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

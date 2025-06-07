@@ -1,0 +1,356 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="frame">
+    <h2 class="mb-2 text-center">Woodworking Joint Types</h2>
+    <p class="mb-3 text-center">
+        This reference guide shows common woodworking joints, their uses, and characteristics. Understanding different joints helps you choose the right technique for your project.
+    </p>
+    <div class="results-frame">
+        <ul class="nav nav-tabs mb-3" id="jointTabs" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" id="basic-tab" data-toggle="tab" href="#basic" role="tab">Basic Joints</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="box-tab" data-toggle="tab" href="#box" role="tab">Box &amp; Dovetail Joints</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="frame-tab" data-toggle="tab" href="#frame" role="tab">Frame Joints</a>
+            </li>
+        </ul>
+        <div class="tab-content" id="jointTabsContent" style="max-height:600px; overflow-y:auto;">
+            <!-- Basic Joints Tab -->
+            <div class="tab-pane fade show active" id="basic" role="tabpanel">
+                <!-- Butt Joint -->
+                <div class="card mb-3">
+                    <div class="card-body d-flex">
+                        <!-- Placeholder for image -->
+                        <div style="width:120px; min-width:120px; min-height:90px; background:#eee; border:1px solid #ccc; margin-right:24px; display:flex; align-items:center; justify-content:center;">
+                            <span class="text-muted">[Image]</span>
+                        </div>
+                        <div style="flex:1;">
+                            <h4 class="card-title mb-2">Butt Joint</h4>
+                            <div class="d-flex justify-content-between mb-2">
+                                <div>Strength: <b>Low</b></div>
+                                <div>Difficulty: <b>Easy</b></div>
+                            </div>
+                            <b>Description:</b>
+                            <div>
+                                The simplest joint where two pieces meet end to end or at a right angle. Usually reinforced with nails, screws, or dowels.
+                            </div>
+                            <b>Common Uses:</b>
+                            <div>
+                                Quick assembly, non-structural connections, rough framing
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Lap Joint -->
+                <div class="card mb-3">
+                    <div class="card-body d-flex">
+                        <div style="width:120px; min-width:120px; min-height:90px; background:#eee; border:1px solid #ccc; margin-right:24px; display:flex; align-items:center; justify-content:center;">
+                            <span class="text-muted">[Image]</span>
+                        </div>
+                        <div style="flex:1;">
+                            <h4 class="card-title mb-2">Lap Joint</h4>
+                            <div class="d-flex justify-content-between mb-2">
+                                <div>Strength: <b>Medium</b></div>
+                                <div>Difficulty: <b>Easy</b></div>
+                            </div>
+                            <b>Description:</b>
+                            <div>
+                                Overlapping two pieces by removing half the thickness from each. Stronger than a butt joint, but weaker than mortise and tenon.
+                            </div>
+                            <b>Common Uses:</b>
+                            <div>
+                                Frames, table legs, support braces, box construction
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Miter Joint -->
+                <div class="card mb-3">
+                    <div class="card-body d-flex">
+                        <div style="width:120px; min-width:120px; min-height:90px; background:#eee; border:1px solid #ccc; margin-right:24px; display:flex; align-items:center; justify-content:center;">
+                            <span class="text-muted">[Image]</span>
+                        </div>
+                        <div style="flex:1;">
+                            <h4 class="card-title mb-2">Miter Joint</h4>
+                            <div class="d-flex justify-content-between mb-2">
+                                <div>Strength: <b>Low–Medium</b></div>
+                                <div>Difficulty: <b>Easy</b></div>
+                            </div>
+                            <b>Description:</b>
+                            <div>
+                                Two pieces are cut at an angle (usually 45°) and joined to form a corner. Attractive, but not strong unless reinforced.
+                            </div>
+                            <b>Common Uses:</b>
+                            <div>
+                                Picture frames, decorative trim, boxes
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Dado Joint -->
+                <div class="card mb-3">
+                    <div class="card-body d-flex">
+                        <div style="width:120px; min-width:120px; min-height:90px; background:#eee; border:1px solid #ccc; margin-right:24px; display:flex; align-items:center; justify-content:center;">
+                            <span class="text-muted">[Image]</span>
+                        </div>
+                        <div style="flex:1;">
+                            <h4 class="card-title mb-2">Dado Joint</h4>
+                            <div class="d-flex justify-content-between mb-2">
+                                <div>Strength: <b>Medium</b></div>
+                                <div>Difficulty: <b>Moderate</b></div>
+                            </div>
+                            <b>Description:</b>
+                            <div>
+                                A groove cut across the grain of one piece to accept the end of another. Common in shelving and cabinetry.
+                            </div>
+                            <b>Common Uses:</b>
+                            <div>
+                                Bookcases, cabinets, drawer dividers
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Rabbet Joint -->
+                <div class="card mb-3">
+                    <div class="card-body d-flex">
+                        <div style="width:120px; min-width:120px; min-height:90px; background:#eee; border:1px solid #ccc; margin-right:24px; display:flex; align-items:center; justify-content:center;">
+                            <span class="text-muted">[Image]</span>
+                        </div>
+                        <div style="flex:1;">
+                            <h4 class="card-title mb-2">Rabbet Joint</h4>
+                            <div class="d-flex justify-content-between mb-2">
+                                <div>Strength: <b>Medium</b></div>
+                                <div>Difficulty: <b>Moderate</b></div>
+                            </div>
+                            <b>Description:</b>
+                            <div>
+                                A notch cut along the edge or end of a board to accept another piece. Used for box and cabinet backs, drawer bottoms.
+                            </div>
+                            <b>Common Uses:</b>
+                            <div>
+                                Cabinet and frame construction, drawer backs
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Biscuit Joint -->
+                <div class="card mb-3">
+                    <div class="card-body d-flex">
+                        <div style="width:120px; min-width:120px; min-height:90px; background:#eee; border:1px solid #ccc; margin-right:24px; display:flex; align-items:center; justify-content:center;">
+                            <span class="text-muted">[Image]</span>
+                        </div>
+                        <div style="flex:1;">
+                            <h4 class="card-title mb-2">Biscuit Joint</h4>
+                            <div class="d-flex justify-content-between mb-2">
+                                <div>Strength: <b>Medium</b></div>
+                                <div>Difficulty: <b>Moderate</b></div>
+                            </div>
+                            <b>Description:</b>
+                            <div>
+                                Uses a thin, oval-shaped "biscuit" inserted into slots cut in both pieces. Swells with glue to lock the joint.
+                            </div>
+                            <b>Common Uses:</b>
+                            <div>
+                                Panel glue-ups, casework, edge-joining boards
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Pocket Hole Joint -->
+                <div class="card mb-3">
+                    <div class="card-body d-flex">
+                        <div style="width:120px; min-width:120px; min-height:90px; background:#eee; border:1px solid #ccc; margin-right:24px; display:flex; align-items:center; justify-content:center;">
+                            <span class="text-muted">[Image]</span>
+                        </div>
+                        <div style="flex:1;">
+                            <h4 class="card-title mb-2">Pocket Hole Joint</h4>
+                            <div class="d-flex justify-content-between mb-2">
+                                <div>Strength: <b>Medium</b></div>
+                                <div>Difficulty: <b>Easy</b></div>
+                            </div>
+                            <b>Description:</b>
+                            <div>
+                                Angled holes are drilled to accept screws, joining pieces at right angles or edges. Fast, strong, and easy with a jig.
+                            </div>
+                            <b>Common Uses:</b>
+                            <div>
+                                Face frames, cabinets, quick assembly
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Box & Dovetail Joints Tab -->
+            <div class="tab-pane fade" id="box" role="tabpanel">
+                <!-- Box Joint -->
+                <div class="card mb-3">
+                    <div class="card-body d-flex">
+                        <div style="width:120px; min-width:120px; min-height:90px; background:#eee; border:1px solid #ccc; margin-right:24px; display:flex; align-items:center; justify-content:center;">
+                            <span class="text-muted">[Image]</span>
+                        </div>
+                        <div style="flex:1;">
+                            <h4 class="card-title mb-2">Box Joint (Finger Joint)</h4>
+                            <div class="d-flex justify-content-between mb-2">
+                                <div>Strength: <b>High</b></div>
+                                <div>Difficulty: <b>Moderate</b></div>
+                            </div>
+                            <b>Description:</b>
+                            <div>
+                                Interlocking square "fingers" are cut into the ends of both pieces, then glued. Strong and decorative.
+                            </div>
+                            <b>Common Uses:</b>
+                            <div>
+                                Drawer boxes, decorative boxes, casework
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Dovetail Joint -->
+                <div class="card mb-3">
+                    <div class="card-body d-flex">
+                        <div style="width:120px; min-width:120px; min-height:90px; background:#eee; border:1px solid #ccc; margin-right:24px; display:flex; align-items:center; justify-content:center;">
+                            <span class="text-muted">[Image]</span>
+                        </div>
+                        <div style="flex:1;">
+                            <h4 class="card-title mb-2">Dovetail Joint</h4>
+                            <div class="d-flex justify-content-between mb-2">
+                                <div>Strength: <b>Very High</b></div>
+                                <div>Difficulty: <b>Hard</b></div>
+                            </div>
+                            <b>Description:</b>
+                            <div>
+                                Interlocking trapezoidal "tails and pins" resist pulling apart. Beautiful and extremely strong.
+                            </div>
+                            <b>Common Uses:</b>
+                            <div>
+                                Drawer construction, fine boxes, casework
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Half-Blind Dovetail Joint -->
+                <div class="card mb-3">
+                    <div class="card-body d-flex">
+                        <div style="width:120px; min-width:120px; min-height:90px; background:#eee; border:1px solid #ccc; margin-right:24px; display:flex; align-items:center; justify-content:center;">
+                            <span class="text-muted">[Image]</span>
+                        </div>
+                        <div style="flex:1;">
+                            <h4 class="card-title mb-2">Half-Blind Dovetail</h4>
+                            <div class="d-flex justify-content-between mb-2">
+                                <div>Strength: <b>Very High</b></div>
+                                <div>Difficulty: <b>Hard</b></div>
+                            </div>
+                            <b>Description:</b>
+                            <div>
+                                Like a dovetail, but the joint is only visible from one side. Used for drawer fronts where the joint should not show.
+                            </div>
+                            <b>Common Uses:</b>
+                            <div>
+                                Drawer fronts, fine cabinetry
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Frame Joints Tab -->
+            <div class="tab-pane fade" id="frame" role="tabpanel">
+                <!-- Mortise and Tenon Joint -->
+                <div class="card mb-3">
+                    <div class="card-body d-flex">
+                        <div style="width:120px; min-width:120px; min-height:90px; background:#eee; border:1px solid #ccc; margin-right:24px; display:flex; align-items:center; justify-content:center;">
+                            <span class="text-muted">[Image]</span>
+                        </div>
+                        <div style="flex:1;">
+                            <h4 class="card-title mb-2">Mortise and Tenon Joint</h4>
+                            <div class="d-flex justify-content-between mb-2">
+                                <div>Strength: <b>Very High</b></div>
+                                <div>Difficulty: <b>Hard</b></div>
+                            </div>
+                            <b>Description:</b>
+                            <div>
+                                A tenon (tongue) on one piece fits into a mortise (hole) in the other. Classic, strong, and versatile.
+                            </div>
+                            <b>Common Uses:</b>
+                            <div>
+                                Chairs, tables, doors, frames, furniture
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Bridle Joint -->
+                <div class="card mb-3">
+                    <div class="card-body d-flex">
+                        <div style="width:120px; min-width:120px; min-height:90px; background:#eee; border:1px solid #ccc; margin-right:24px; display:flex; align-items:center; justify-content:center;">
+                            <span class="text-muted">[Image]</span>
+                        </div>
+                        <div style="flex:1;">
+                            <h4 class="card-title mb-2">Bridle Joint</h4>
+                            <div class="d-flex justify-content-between mb-2">
+                                <div>Strength: <b>High</b></div>
+                                <div>Difficulty: <b>Moderate</b></div>
+                            </div>
+                            <b>Description:</b>
+                            <div>
+                                Similar to mortise and tenon, but open on three sides. Easier to cut, strong for frames and legs.
+                            </div>
+                            <b>Common Uses:</b>
+                            <div>
+                                Frames, legs, rails, load-bearing joints
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Dowel Joint -->
+                <div class="card mb-3">
+                    <div class="card-body d-flex">
+                        <div style="width:120px; min-width:120px; min-height:90px; background:#eee; border:1px solid #ccc; margin-right:24px; display:flex; align-items:center; justify-content:center;">
+                            <span class="text-muted">[Image]</span>
+                        </div>
+                        <div style="flex:1;">
+                            <h4 class="card-title mb-2">Dowel Joint</h4>
+                            <div class="d-flex justify-content-between mb-2">
+                                <div>Strength: <b>Medium–High</b></div>
+                                <div>Difficulty: <b>Moderate</b></div>
+                            </div>
+                            <b>Description:</b>
+                            <div>
+                                Round wooden dowels are inserted into matching holes in both pieces. Good strength and alignment.
+                            </div>
+                            <b>Common Uses:</b>
+                            <div>
+                                Frames, panels, furniture, chairs
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Corner Bridle Joint -->
+                <div class="card mb-3">
+                    <div class="card-body d-flex">
+                        <div style="width:120px; min-width:120px; min-height:90px; background:#eee; border:1px solid #ccc; margin-right:24px; display:flex; align-items:center; justify-content:center;">
+                            <span class="text-muted">[Image]</span>
+                        </div>
+                        <div style="flex:1;">
+                            <h4 class="card-title mb-2">Corner Bridle Joint</h4>
+                            <div class="d-flex justify-content-between mb-2">
+                                <div>Strength: <b>High</b></div>
+                                <div>Difficulty: <b>Moderate</b></div>
+                            </div>
+                            <b>Description:</b>
+                            <div>
+                                A variation of the bridle joint, used at corners for strong, load-bearing frames.
+                            </div>
+                            <b>Common Uses:</b>
+                            <div>
+                                Table legs, bench legs, frames
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

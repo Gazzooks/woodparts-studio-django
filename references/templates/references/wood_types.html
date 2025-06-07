@@ -1,0 +1,188 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="frame">
+    <h2 class="mb-2">Wood Types Reference Guide</h2>
+    <p class="mb-3 text-center">
+        Comprehensive guide to wood types including hardwoods, softwoods, and plywood. Use this reference to select the right wood for your project based on characteristics, workability, and intended use.
+    </p>
+    <div class="results-frame">
+        <ul class="nav nav-tabs mb-3" id="woodTypeTabs" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" id="hardwoods-tab" data-toggle="tab" href="#hardwoods" role="tab">Hardwoods</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="softwoods-tab" data-toggle="tab" href="#softwoods" role="tab">Softwoods</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="plywood-tab" data-toggle="tab" href="#plywood" role="tab">Plywood &amp; Engineered</a>
+            </li>
+        </ul>
+        <div class="tab-content" id="woodTypeTabsContent">
+            <!-- Hardwoods Tab -->
+            <div class="tab-pane fade show active" id="hardwoods" role="tabpanel">
+                <div class="mb-2">
+                    Hardwoods come from deciduous trees and are generally denser and more durable. They're ideal for furniture, flooring, and fine woodworking projects.
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered table-sm">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>Wood Name</th>
+                                <th>Scientific Name</th>
+                                <th>Key Characteristics</th>
+                                <th>Common Uses</th>
+                                <th>Workability</th>
+                                <th>Availability</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Oak (Red)</td><td>Quercus rubra</td><td>Strong, durable, prominent grain, reddish-brown</td><td>Furniture, flooring, cabinets, trim</td><td>Good, can tear out</td><td>Common</td></tr>
+                            <tr><td>Oak (White)</td><td>Quercus alba</td><td>Strong, durable, tight grain, light brown</td><td>Furniture, flooring, barrels, boats</td><td>Good, stable</td><td>Common</td></tr>
+                            <tr><td>Maple (Hard)</td><td>Acer saccharum</td><td>Very hard, fine grain, light colored</td><td>Furniture, flooring, cutting boards</td><td>Excellent</td><td>Common</td></tr>
+                            <tr><td>Maple (Soft)</td><td>Acer rubrum</td><td>Moderate hardness, fine grain, light</td><td>Furniture, millwork, veneer</td><td>Good</td><td>Common</td></tr>
+                            <tr><td>Cherry</td><td>Prunus serotina</td><td>Medium hardness, fine grain, reddish-brown</td><td>Fine furniture, cabinets, millwork</td><td>Excellent</td><td>Common</td></tr>
+                            <tr><td>Walnut</td><td>Juglans nigra</td><td>Hard, rich chocolate brown, beautiful grain</td><td>Fine furniture, gunstocks, veneer</td><td>Excellent</td><td>Moderate</td></tr>
+                            <tr><td>Ash</td><td>Fraxinus americana</td><td>Hard, strong, prominent grain, light colored</td><td>Tool handles, sports equipment, furniture</td><td>Good</td><td>Common</td></tr>
+                            <tr><td>Hickory</td><td>Carya ovata</td><td>Very hard, strong, tough, light colored</td><td>Tool handles, ladder rungs, flooring</td><td>Difficult</td><td>Common</td></tr>
+                            <tr><td>Mahogany</td><td>Swietenia macrophylla</td><td>Medium hardness, straight grain, reddish</td><td>Fine furniture, boat building, millwork</td><td>Excellent</td><td>Moderate</td></tr>
+                            <tr><td>Birch</td><td>Betula alleghaniensis</td><td>Hard, fine grain, light colored</td><td>Furniture, plywood, veneer, millwork</td><td>Good</td><td>Common</td></tr>
+                            <tr><td>Poplar</td><td>Liriodendron tulipifera</td><td>Soft hardwood, light colored, straight grain</td><td>Paint-grade furniture, millwork, boxes</td><td>Excellent</td><td>Common</td></tr>
+                            <tr><td>Beech</td><td>Fagus grandifolia</td><td>Hard, fine grain, light colored</td><td>Furniture, flooring, tool handles</td><td>Good</td><td>Common</td></tr>
+                            <tr><td>Elm</td><td>Ulmus americana</td><td>Hard, interlocked grain, light brown</td><td>Furniture, flooring, veneer</td><td>Difficult</td><td>Limited</td></tr>
+                            <tr><td>Basswood</td><td>Tilia americana</td><td>Soft, fine grain, very light colored</td><td>Carving, millwork, boxes</td><td>Excellent</td><td>Common</td></tr>
+                            <tr><td>Cottonwood</td><td>Populus deltoides</td><td>Soft, light, straight grain</td><td>Pallets, crates, pulp</td><td>Good</td><td>Common</td></tr>
+                            <tr><td>Sycamore</td><td>Platanus occidentalis</td><td>Medium hardness, fine grain, light</td><td>Furniture, veneer, millwork</td><td>Good</td><td>Moderate</td></tr>
+                            <tr><td>Alder</td><td>Alnus rubra</td><td>Soft, fine grain, light</td><td>Furniture, millwork, veneer</td><td>Good</td><td>Common</td></tr>
+                            <tr><td>Willow</td><td>Salix nigra</td><td>Soft, light, straight grain</td><td>Baskets, cricket bats, artificial limbs</td><td>Good</td><td>Common</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- Softwoods Tab -->
+            <div class="tab-pane fade" id="softwoods" role="tabpanel">
+                <div class="mb-2">
+                    Softwoods come from coniferous (evergreen) trees and are generally easier to work with. They're commonly used for construction, framing, and general woodworking projects.
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered table-sm">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>Wood Name</th>
+                                <th>Scientific Name</th>
+                                <th>Key Characteristics</th>
+                                <th>Common Uses</th>
+                                <th>Workability</th>
+                                <th>Availability</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Pine (Southern Yellow)</td><td>Pinus palustris</td><td>Strong, resinous, yellow-orange color</td><td>Framing, flooring, millwork, furniture</td><td>Good</td><td>Common</td></tr>
+                            <tr><td>Pine (Eastern White)</td><td>Pinus strobus</td><td>Light, straight grain, cream colored</td><td>Millwork, furniture, paneling</td><td>Excellent</td><td>Common</td></tr>
+                            <tr><td>Pine (Ponderosa)</td><td>Pinus ponderosa</td><td>Moderate strength, straight grain, light</td><td>Millwork, furniture, paneling</td><td>Good</td><td>Common</td></tr>
+                            <tr><td>Douglas Fir</td><td>Pseudotsuga menziesii</td><td>Strong, straight grain, reddish-brown</td><td>Framing, plywood, millwork</td><td>Good</td><td>Common</td></tr>
+                            <tr><td>Fir (Balsam)</td><td>Abies balsamea</td><td>Soft, straight grain, light colored</td><td>Framing, millwork, pulp</td><td>Good</td><td>Common</td></tr>
+                            <tr><td>Hemlock</td><td>Tsuga canadensis</td><td>Moderate strength, even grain, light</td><td>Framing, millwork, boxes</td><td>Good</td><td>Common</td></tr>
+                            <tr><td>Spruce (Sitka)</td><td>Picea sitchensis</td><td>Light, strong, straight grain</td><td>Aircraft, musical instruments, millwork</td><td>Good</td><td>Moderate</td></tr>
+                            <tr><td>Spruce (White)</td><td>Picea glauca</td><td>Light, moderate strength, straight grain</td><td>Framing, millwork, pulp</td><td>Good</td><td>Common</td></tr>
+                            <tr><td>Cedar (Western Red)</td><td>Thuja plicata</td><td>Lightweight, decay resistant, reddish</td><td>Siding, roofing, outdoor projects</td><td>Good</td><td>Common</td></tr>
+                            <tr><td>Cedar (Eastern Red)</td><td>Juniperus virginiana</td><td>Aromatic, decay resistant, red heartwood</td><td>Closet lining, outdoor projects</td><td>Good</td><td>Common</td></tr>
+                            <tr><td>Redwood</td><td>Sequoia sempervirens</td><td>Lightweight, decay resistant, reddish</td><td>Outdoor projects, siding, decking</td><td>Good</td><td>Moderate</td></tr>
+                            <tr><td>Cypress</td><td>Taxodium distichum</td><td>Decay resistant, light colored, durable</td><td>Outdoor projects, millwork</td><td>Good</td><td>Moderate</td></tr>
+                            <tr><td>Larch</td><td>Larix occidentalis</td><td>Hard softwood, strong, light colored</td><td>Framing, flooring, millwork</td><td>Good</td><td>Common</td></tr>
+                            <tr><td>Tamarack</td><td>Larix laricina</td><td>Hard softwood, strong, decay resistant</td><td>Posts, poles, rough construction</td><td>Fair</td><td>Limited</td></tr>
+                            <tr><td>Yew</td><td>Taxus brevifolia</td><td>Very soft softwood, fine grain, orange-red</td><td>Archery bows, turning, carving</td><td>Good</td><td>Rare</td></tr>
+                            <tr><td>Juniper</td><td>Juniperus scopulorum</td><td>Dense, decay resistant, aromatic</td><td>Posts, craft projects, turning</td><td>Good</td><td>Limited</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- Plywood & Engineered Tab -->
+            <div class="tab-pane fade" id="plywood" role="tabpanel">
+                <div class="mb-2">
+                    Plywood and engineered lumber are manufactured wood products made from wood veneers, fibers, or particles. They offer consistent properties and are available in large sheets.
+                </div>
+                <!-- Plywood Grade Guide as a table, full width -->
+                <div class="mb-3">
+                    <div class="card card-body bg-light">
+                        <strong class="mb-2 d-block">Plywood Grade Guide</strong>
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-sm mb-0">
+                                <thead class="thead-light">
+                                    <tr>
+                                        <th style="width:110px;">Grade</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>A</td>
+                                        <td>Smooth, sanded, paintable surface with minimal defects</td>
+                                    </tr>
+                                    <tr>
+                                        <td>B</td>
+                                        <td>Solid surface with minor defects, can be painted</td>
+                                    </tr>
+                                    <tr>
+                                        <td>C</td>
+                                        <td>Some defects allowed, good for structural use</td>
+                                    </tr>
+                                    <tr>
+                                        <td>D</td>
+                                        <td>Allows larger defects, structural use only</td>
+                                    </tr>
+                                    <tr>
+                                        <td>X</td>
+                                        <td>Exterior glue (waterproof)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>CDX</td>
+                                        <td>Common construction grade with exterior glue</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Marine</td>
+                                        <td>Void-free construction with waterproof glue</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered table-sm">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>Product Name</th>
+                                <th>Construction</th>
+                                <th>Key Characteristics</th>
+                                <th>Common Uses</th>
+                                <th>Common Grades</th>
+                                <th>Availability</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Birch Plywood</td><td>Hardwood veneers</td><td>Strong, light colored</td><td>Furniture, cabinets, millwork</td><td>A, B, C</td><td>Common</td></tr>
+                            <tr><td>Oak Plywood</td><td>Oak face veneer</td><td>Oak grain pattern, durable</td><td>Furniture, paneling, cabinets</td><td>A, B</td><td>Common</td></tr>
+                            <tr><td>Maple Plywood</td><td>Maple face veneer</td><td>Light colored, hard surface</td><td>Furniture, cabinets, millwork</td><td>A, B</td><td>Common</td></tr>
+                            <tr><td>Cherry Plywood</td><td>Cherry face veneer</td><td>Rich reddish, beautiful grain</td><td>Fine furniture, cabinets</td><td>A, B</td><td>Common</td></tr>
+                            <tr><td>Walnut Plywood</td><td>Walnut face veneer</td><td>Dark chocolate color, premium grade</td><td>Fine furniture, high-end millwork</td><td>A</td><td>Limited</td></tr>
+                            <tr><td>Pine Plywood</td><td>Pine face veneer</td><td>Light economical, knotty</td><td>General construction, sheathing</td><td>C, D</td><td>Common</td></tr>
+                            <tr><td>Fir Plywood</td><td>Douglas Fir veneers</td><td>Strong, structural, durable</td><td>Sheathing, subflooring, concrete forms</td><td>CDX, OSB</td><td>Common</td></tr>
+                            <tr><td>Marine Plywood</td><td>Waterproof glue</td><td>Moisture-resistant</td><td>Boat building, outdoor projects</td><td>Marine Grade</td><td>Moderate</td></tr>
+                            <tr><td>Baltic Birch</td><td>Multiple birch veneers</td><td>Void-free edges, strong</td><td>Furniture, jigs, cabinets</td><td>B/BB</td><td>Common</td></tr>
+                            <tr><td>Apple Ply</td><td>Hardwood core, smooth faces</td><td>Consistent thickness, smooth surface</td><td>Furniture, millwork, shelving</td><td>Furniture Grade</td><td>Common</td></tr>
+                            <tr><td>MDF (Medium Density)</td><td>Wood fibers, resin binder</td><td>Economical, smooth surface</td><td>Painted furniture, millwork</td><td>Standard</td><td>Common</td></tr>
+                            <tr><td>Particleboard</td><td>Wood particles, resin</td><td>Economical, easy to machine</td><td>Furniture core, shelving</td><td>Standard</td><td>Common</td></tr>
+                            <tr><td>OSB (Oriented Strand)</td><td>Wood strands, oriented layers</td><td>Structural, economical</td><td>Sheathing, subflooring</td><td>Structural</td><td>Common</td></tr>
+                            <tr><td>Hardboard</td><td>Wood fibers, high density</td><td>Very smooth, dense surface</td><td>Backing panels, templates</td><td>Standard, Tempered</td><td>Common</td></tr>
+                            <tr><td>Melamine Board</td><td>Particleboard, melamine surface</td><td>Durable surface, various colors</td><td>Shelving, cabinets, furniture</td><td>Various</td><td>Common</td></tr>
+                            <tr><td>Bamboo Plywood</td><td>Bamboo veneers</td><td>Sustainable, unique grain</td><td>Furniture, flooring, millwork</td><td>Various</td><td>Growing</td></tr>
+                            <tr><td>Lumber Core Plywood</td><td>Solid wood core, face veneers</td><td>Very strong, holds screws well</td><td>Workbenches, heavy-duty furniture</td><td>Various</td><td>Moderate</td></tr>
+                            <tr><td>Flexible Plywood</td><td>Thin cross-bands</td><td>Bends easily for curves</td><td>Curved furniture, architectural work</td><td>Bendable</td><td>Limited</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

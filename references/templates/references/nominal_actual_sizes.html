@@ -1,0 +1,127 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="frame">
+    <h2 class="mb-2 text-center">Nominal to Actual Size Reference</h2>
+    <p class="mb-3 text-center">
+        In woodworking, the nominal size of lumber differs from its actual dimensions. This reference chart shows the relationship between nominal and actual sizes for common lumber.
+    </p>
+    <div class="results-frame">
+        <ul class="nav nav-tabs mb-3" id="sizeTabs" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" id="dim-tab" data-toggle="tab" href="#dimensional" role="tab">Dimensional Lumber</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="ply-tab" data-toggle="tab" href="#plywood" role="tab">Plywood &amp; Sheet Goods</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="hard-tab" data-toggle="tab" href="#hardwoods" role="tab">Hardwoods</a>
+            </li>
+        </ul>
+        <div class="tab-content" id="sizeTabsContent">
+            <!-- Dimensional Lumber Tab -->
+            <div class="tab-pane fade show active" id="dimensional" role="tabpanel">
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered table-sm mb-0">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>Nominal Size</th>
+                                <th>Actual Size (inches)</th>
+                                <th>Actual Size (mm)</th>
+                                <th>Common Uses</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>1×2</td><td>3/4" × 1-1/2"</td><td>19mm × 38mm</td><td>Trim, small framing</td></tr>
+                            <tr><td>1×3</td><td>3/4" × 2-1/2"</td><td>19mm × 64mm</td><td>Trim, strapping, furring</td></tr>
+                            <tr><td>1×4</td><td>3/4" × 3-1/2"</td><td>19mm × 89mm</td><td>Trim, shelving, facing</td></tr>
+                            <tr><td>1×6</td><td>3/4" × 5-1/2"</td><td>19mm × 140mm</td><td>Siding, shelving, trim</td></tr>
+                            <tr><td>1×8</td><td>3/4" × 7-1/4"</td><td>19mm × 184mm</td><td>Shelving, siding, fascia</td></tr>
+                            <tr><td>1×10</td><td>3/4" × 9-1/4"</td><td>19mm × 235mm</td><td>Shelving, siding, fascia</td></tr>
+                            <tr><td>1×12</td><td>3/4" × 11-1/4"</td><td>19mm × 286mm</td><td>Shelving, siding, fascia</td></tr>
+                            <tr><td>2×2</td><td>1-1/2" × 1-1/2"</td><td>38mm × 38mm</td><td>Furring, small framing</td></tr>
+                            <tr><td>2×3</td><td>1-1/2" × 2-1/2"</td><td>38mm × 64mm</td><td>Framing, blocking</td></tr>
+                            <tr><td>2×4</td><td>1-1/2" × 3-1/2"</td><td>38mm × 89mm</td><td>Wall framing, general construction</td></tr>
+                            <tr><td>2×6</td><td>1-1/2" × 5-1/2"</td><td>38mm × 140mm</td><td>Wall/floor framing, decking</td></tr>
+                            <tr><td>2×8</td><td>1-1/2" × 7-1/4"</td><td>38mm × 184mm</td><td>Floor joists, headers</td></tr>
+                            <tr><td>2×10</td><td>1-1/2" × 9-1/4"</td><td>38mm × 235mm</td><td>Floor joists, headers, beams</td></tr>
+                            <tr><td>2×12</td><td>1-1/2" × 11-1/4"</td><td>38mm × 286mm</td><td>Floor joists, headers, beams</td></tr>
+                            <tr><td>3×3</td><td>2-1/2" × 2-1/2"</td><td>89mm × 89mm</td><td>Posts, heavy framing</td></tr>
+                            <tr><td>4×6</td><td>3-1/2" × 5-1/2"</td><td>89mm × 140mm</td><td>Beams, posts</td></tr>
+                            <tr><td>6×6</td><td>5-1/2" × 5-1/2"</td><td>140mm × 140mm</td><td>Heavy posts, timber framing</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="mt-3">
+                    <strong>Note:</strong>
+                    <div style="font-size: 0.97em;">
+                        Actual sizes may vary slightly between manufacturers and grade of lumber. These are the standard dimensions for surfaced dry lumber in North America.
+                    </div>
+                </div>
+            </div>
+            <!-- Plywood & Sheet Goods Tab -->
+            <div class="tab-pane fade" id="plywood" role="tabpanel">
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered table-sm mb-0">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>Nominal Size</th>
+                                <th>Actual Size (inches)</th>
+                                <th>Actual Size (mm)</th>
+                                <th>Common Uses</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>1/4" Plywood</td><td>1/4"</td><td>6.4mm</td><td>Cabinet backs, drawer bottoms</td></tr>
+                            <tr><td>3/8" Plywood</td><td>3/8"</td><td>9.5mm</td><td>Cabinet backs, drawer bottoms</td></tr>
+                            <tr><td>1/2" Plywood</td><td>15/32"</td><td>12.0mm</td><td>Shelving, cabinet sides</td></tr>
+                            <tr><td>5/8" Plywood</td><td>19/32"</td><td>15.1mm</td><td>Subflooring, cabinet sides</td></tr>
+                            <tr><td>3/4" Plywood</td><td>23/32"</td><td>18.3mm</td><td>Cabinets, furniture, shelving</td></tr>
+                            <tr><td>1" Plywood</td><td>31/32"</td><td>24.6mm</td><td>Heavy-duty shelving</td></tr>
+                            <tr><td>4×8 Sheet</td><td>48" × 96"</td><td>1220mm × 2440mm</td><td>Standard sheet size</td></tr>
+                            <tr><td>4×10 Sheet</td><td>48" × 120"</td><td>1220mm × 3050mm</td><td>Extended sheet size</td></tr>
+                            <tr><td>MDF - 1/4"</td><td>1/4"</td><td>6.4mm</td><td>Cabinet backs, craft projects</td></tr>
+                            <tr><td>MDF - 1/2"</td><td>1/2"</td><td>12.7mm</td><td>Cabinet components, shelving</td></tr>
+                            <tr><td>MDF - 3/4"</td><td>3/4"</td><td>19.0mm</td><td>Furniture, shelving, cabinets</td></tr>
+                            <tr><td>Particle Board - 1/2"</td><td>1/2"</td><td>12.7mm</td><td>Inexpensive shelving</td></tr>
+                            <tr><td>Particle Board - 3/4"</td><td>3/4"</td><td>19.0mm</td><td>Inexpensive cabinets, substrates</td></tr>
+                            <tr><td>OSB - 7/16"</td><td>7/16"</td><td>11.1mm</td><td>Wall sheathing</td></tr>
+                            <tr><td>OSB - 1/2"</td><td>1/2"</td><td>12.7mm</td><td>Roof decking</td></tr>
+                            <tr><td>OSB - 5/8"</td><td>5/8"</td><td>15.9mm</td><td>Subflooring</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- Hardwoods Tab -->
+            <div class="tab-pane fade" id="hardwoods" role="tabpanel">
+                <h5 class="mt-2 mb-3">Hardwood Lumber</h5>
+                <div>Unlike dimensional lumber, hardwoods are sold by the board foot, a unit of volume equivalent to a board that is 1" thick, 12" wide, and 12" long. Hardwoods are typically sold in specific thickness classifications:</div>
+                <div class="table-responsive mt-3">
+                    <table class="table table-striped table-bordered table-sm mb-0">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>Nominal Thickness</th>
+                                <th>Actual Thickness (inches)</th>
+                                <th>Actual Thickness (mm)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>4/4 (Four quarters)</td><td>13/16" – 7/8"</td><td>20.6mm – 22.2mm</td></tr>
+                            <tr><td>5/4 (Five quarters)</td><td>1-1/16" – 1-1/8"</td><td>27.0mm – 28.6mm</td></tr>
+                            <tr><td>6/4 (Six quarters)</td><td>1-5/16" – 1-3/8"</td><td>33.3mm – 34.9mm</td></tr>
+                            <tr><td>8/4 (Eight quarters)</td><td>1-13/16" – 1-7/8"</td><td>46.0mm – 47.6mm</td></tr>
+                            <tr><td>12/4 (Twelve quarters)</td><td>2-13/16" – 2-7/8"</td><td>71.4mm – 73.0mm</td></tr>
+                            <tr><td>16/4 (Sixteen quarters)</td><td>3-13/16" – 3-7/8"</td><td>96.8mm – 98.4mm</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="mt-3">
+                    <strong>Note:</strong>
+                    <div style="font-size: 0.97em;">
+                        Hardwood actual thicknesses can vary based on final surfacing. Rough sawn lumber will be slightly thicker than the final surfaced dimensions shown here. Width and length are typically measured in inches and are exact measurements.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

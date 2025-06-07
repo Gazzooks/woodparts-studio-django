@@ -1,0 +1,246 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="frame">
+    <h2 class="mb-2">Material Properties of Wood</h2>
+    <p class="mb-3">
+        Wood is a natural, anisotropic material whose properties vary by species, structure, and moisture content. Understanding these properties helps you select the right wood for each application.
+    </p>
+
+    <div class="results-frame mb-4">
+        <h4>Wood Structure &amp; Composition</h4>
+        <ul>
+            <li>
+                <b>Cellular Structure:</b>
+                Wood consists mainly of cellulose, hemicellulose, and lignin, arranged in a cellular matrix for strength and flexibility.
+                <a href="https://www.conradfp.com/pdf/ch4-Mechanical-Properties-of-Wood.pdf" target="_blank" data-toggle="tooltip" title="Chapter 4--Mechanical Properties of Wood (PDF)">[1]</a>
+            </li>
+            <li>
+                <b>Types:</b>
+                <b>Softwoods</b> have simpler cell structures (mostly tracheids); <b>hardwoods</b> have more diverse cell types (vessels, fibers).
+                <a href="https://www.nature.com/articles/s41598-021-83500-w" target="_blank" data-toggle="tooltip" title="Variation in wood physical properties and effects of climate for five geographic sources of Chinese fir">[2]</a>
+            </li>
+            <li>
+                <b>Heartwood vs. Sapwood:</b>
+                Heartwood is dead, durable, and drier; sapwood is living and transports nutrients.
+                <a href="https://ownwoodenhouse.com/index.pl?act=NEWSSHOW&id=2011062001" target="_blank" data-toggle="tooltip" title="Wood main physical properties">[3]</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="results-frame mb-4">
+        <h4>Directional Properties (Anisotropy)</h4>
+        <p>
+            Wood properties vary by direction due to its structure:
+        </p>
+        <ul>
+            <li>
+                <b>Longitudinal:</b> Along the grain (strongest, least shrinkage)
+            </li>
+            <li>
+                <b>Radial:</b> Perpendicular to growth rings (moderate shrinkage)
+            </li>
+            <li>
+                <b>Tangential:</b> Along growth rings (most shrinkage, weakest)
+                <a href="https://www.dot.state.mn.us/bridge/pdf/insp/USFS-TimberBridgeManual/em7700_8_chapter03.pdf" target="_blank" data-toggle="tooltip" title="Properties of Wood and Structural Wood Products (PDF)">[4]</a>
+            </li>
+        </ul>
+        <div class="mt-2" style="font-size:0.97em;">
+            <strong>Tip:</strong> Always consider grain direction in design and joinery for strength and stability.
+        </div>
+    </div>
+
+    <div class="results-frame mb-4">
+        <h4>Key Physical Properties</h4>
+        <ul>
+            <li>
+                <b>Density:</b> Varies by species and moisture; denser woods are generally stronger and harder.
+                <a href="https://www.nature.com/articles/s41598-021-83500-w" target="_blank" data-toggle="tooltip" title="Variation in wood physical properties and effects of climate">[2]</a>
+            </li>
+            <li>
+                <b>Moisture Content:</b> Wood absorbs/releases moisture from the air, affecting size (swelling/shrinkage), strength, and durability.
+                <a href="https://www.dot.state.mn.us/bridge/pdf/insp/USFS-TimberBridgeManual/em7700_8_chapter03.pdf" target="_blank" data-toggle="tooltip" title="Properties of Wood and Structural Wood Products (PDF)">[4]</a>
+            </li>
+            <li>
+                <b>Durability:</b> Natural resistance to decay and insects depends on species and heartwood content; treatments can improve durability.
+                <a href="https://ownwoodenhouse.com/index.pl?act=NEWSSHOW&id=2011062001" target="_blank" data-toggle="tooltip" title="Wood main physical properties">[3]</a>
+            </li>
+            <li>
+                <b>Thermal Insulation:</b> Wood is a good insulator compared to metals or concrete.
+                <a href="https://www.ippc.int/static/media/files/publications/en/2013/06/05/1367336207_TPFQ_2013_Jun_36_Simpson&TenWold.pdf" target="_blank" data-toggle="tooltip" title="Physical Properties and Moisture Relations of Wood (PDF)">[5]</a>
+            </li>
+            <li>
+                <b>Fire Properties:</b> Wood chars predictably, providing some fire resistance; properties depend on density and moisture.
+                <a href="https://www.conradfp.com/pdf/ch4-Mechanical-Properties-of-Wood.pdf" target="_blank" data-toggle="tooltip" title="Chapter 4--Mechanical Properties of Wood (PDF)">[1]</a>
+            </li>
+            <li>
+                <b>Acoustics:</b> Wood transmits sound differently based on density and structure, making it ideal for musical instruments.
+                <a href="https://ownwoodenhouse.com/index.pl?act=NEWSSHOW&id=2011062001" target="_blank" data-toggle="tooltip" title="Wood main physical properties">[3]</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="results-frame mb-4">
+        <h4>Key Mechanical Properties</h4>
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered table-sm mb-0">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Property</th>
+                        <th>Description</th>
+                        <th>Design Consideration</th>
+                        <th>Source</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Elasticity</td>
+                        <td>Ability to return to original shape after bending</td>
+                        <td>Important for beams, joists, and springy parts</td>
+                        <td>
+                            <a href="https://www.conradfp.com/pdf/ch4-Mechanical-Properties-of-Wood.pdf" target="_blank" data-toggle="tooltip" title="Mechanical Properties of Wood (PDF)">[1]</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Strength</td>
+                        <td>Resistance to breaking under load (bending, compression, tension, shear)</td>
+                        <td>Choose species with adequate strength for structural parts</td>
+                        <td>
+                            <a href="https://www.engineeringtoolbox.com/timber-mechanical-properties-d_1789.html" target="_blank" data-toggle="tooltip" title="Timber Mechanical Properties">[6]</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Hardness</td>
+                        <td>Resistance to surface wear and denting</td>
+                        <td>Matters for flooring, workbenches, tool handles</td>
+                        <td>
+                            <a href="https://www.engineeringtoolbox.com/timber-mechanical-properties-d_1789.html" target="_blank" data-toggle="tooltip" title="Timber Mechanical Properties">[6]</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Toughness</td>
+                        <td>Ability to absorb energy and resist shock</td>
+                        <td>Important for tool handles, sports equipment</td>
+                        <td>
+                            <a href="https://www.dot.state.mn.us/bridge/pdf/insp/USFS-TimberBridgeManual/em7700_8_chapter03.pdf" target="_blank" data-toggle="tooltip" title="Properties of Wood and Structural Wood Products (PDF)">[4]</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Workability</td>
+                        <td>Ease of cutting, shaping, gluing, and finishing</td>
+                        <td>Some woods are easier to machine and finish than others</td>
+                        <td>
+                            <a href="https://ownwoodenhouse.com/index.pl?act=NEWSSHOW&id=2011062001" target="_blank" data-toggle="tooltip" title="Wood main physical properties">[3]</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Creep</td>
+                        <td>Slow, permanent deformation under constant load</td>
+                        <td>Consider for shelving, long beams</td>
+                        <td>
+                            <a href="https://www.ippc.int/static/media/files/publications/en/2013/06/05/1367336207_TPFQ_2013_Jun_36_Simpson&TenWold.pdf" target="_blank" data-toggle="tooltip" title="Physical Properties and Moisture Relations of Wood (PDF)">[5]</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="mt-2" style="font-size:0.97em;">
+            <strong>Note:</strong> Mechanical properties are affected by species, moisture content, grain direction, and presence of defects (knots, checks, etc.).
+        </div>
+    </div>
+
+    <div class="results-frame mb-4">
+        <h4>Special Properties</h4>
+        <ul>
+            <li>
+                <b>Hygroscopicity:</b> Wood absorbs and releases moisture, causing dimensional changes (swelling/shrinking).
+                <a href="https://www.ippc.int/static/media/files/publications/en/2013/06/05/1367336207_TPFQ_2013_Jun_36_Simpson&TenWold.pdf" target="_blank" data-toggle="tooltip" title="Physical Properties and Moisture Relations of Wood (PDF)">[5]</a>
+            </li>
+            <li>
+                <b>Cleavability:</b> Resistance to splitting; varies by species and grain.
+                <a href="https://www.dot.state.mn.us/bridge/pdf/insp/USFS-TimberBridgeManual/em7700_8_chapter03.pdf" target="_blank" data-toggle="tooltip" title="Properties of Wood and Structural Wood Products (PDF)">[4]</a>
+            </li>
+            <li>
+                <b>Stability:</b> Some woods are more dimensionally stable than others under changing humidity.
+                <a href="https://www.nature.com/articles/s41598-021-83500-w" target="_blank" data-toggle="tooltip" title="Variation in wood physical properties and effects of climate">[2]</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="results-frame">
+        <h5>Summary Table: Typical Ranges for Common Species</h5>
+        <div class="table-responsive">
+            <table class="table table-bordered table-sm mb-0">
+                <thead class="thead-light">
+                    <tr>
+                        <th>Species</th>
+                        <th>Density (kg/m³)</th>
+                        <th>Hardness (Janka, lbf)</th>
+                        <th>Bending Strength (MPa)</th>
+                        <th>Stability</th>
+                        <th>Source</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Red Oak</td><td>700</td><td>1290</td><td>102</td><td>Moderate</td>
+                        <td>
+                            <a href="https://www.engineeringtoolbox.com/timber-mechanical-properties-d_1789.html" target="_blank" data-toggle="tooltip" title="Timber Mechanical Properties">[6]</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>White Oak</td><td>770</td><td>1360</td><td>110</td><td>High</td>
+                        <td>
+                            <a href="https://www.engineeringtoolbox.com/timber-mechanical-properties-d_1789.html" target="_blank" data-toggle="tooltip" title="Timber Mechanical Properties">[6]</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Maple (Hard)</td><td>705</td><td>1450</td><td>110</td><td>Moderate</td>
+                        <td>
+                            <a href="https://www.engineeringtoolbox.com/timber-mechanical-properties-d_1789.html" target="_blank" data-toggle="tooltip" title="Timber Mechanical Properties">[6]</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Cherry</td><td>560</td><td>950</td><td>94</td><td>High</td>
+                        <td>
+                            <a href="https://www.engineeringtoolbox.com/timber-mechanical-properties-d_1789.html" target="_blank" data-toggle="tooltip" title="Timber Mechanical Properties">[6]</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Walnut</td><td>610</td><td>1010</td><td>100</td><td>High</td>
+                        <td>
+                            <a href="https://www.engineeringtoolbox.com/timber-mechanical-properties-d_1789.html" target="_blank" data-toggle="tooltip" title="Timber Mechanical Properties">[6]</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Pine (White)</td><td>420</td><td>380</td><td>62</td><td>Low</td>
+                        <td>
+                            <a href="https://www.engineeringtoolbox.com/timber-mechanical-properties-d_1789.html" target="_blank" data-toggle="tooltip" title="Timber Mechanical Properties">[6]</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Douglas Fir</td><td>530</td><td>660</td><td>88</td><td>Moderate</td>
+                        <td>
+                            <a href="https://www.engineeringtoolbox.com/timber-mechanical-properties-d_1789.html" target="_blank" data-toggle="tooltip" title="Timber Mechanical Properties">[6]</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Birch</td><td>670</td><td>1260</td><td>114</td><td>Moderate</td>
+                        <td>
+                            <a href="https://www.engineeringtoolbox.com/timber-mechanical-properties-d_1789.html" target="_blank" data-toggle="tooltip" title="Timber Mechanical Properties">[6]</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="mt-2" style="font-size:0.97em;">
+            <strong>Note:</strong> Values are typical for kiln-dried wood at 12% moisture content; actual values vary by sample and source.
+        </div>
+    </div>
+</div>
+
+<script>
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+</script>
+{% endblock %}

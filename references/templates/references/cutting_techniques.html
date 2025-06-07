@@ -1,0 +1,163 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="frame">
+    <h2 class="mb-2">Woodworking Cutting Techniques</h2>
+    <p class="mb-3">
+        Mastering wood cutting techniques is essential for accuracy, safety, and quality in woodworking. This guide covers the most common cuts, specialized techniques, and best practices for a variety of woodworking projects.
+    </p>
+
+    <div class="results-frame mb-4">
+        <h4>Essential Woodworking Cuts</h4>
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered table-sm mb-0">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Cut Type</th>
+                        <th>Description</th>
+                        <th>Common Tools</th>
+                        <th>Typical Uses</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Rip Cut</td>
+                        <td>Cut made <b>parallel</b> to the wood grain, reducing width of a board.<br>
+                            <span class="text-muted">Easy and fast, but can splinter edges if not done carefully.</span>
+                        </td>
+                        <td>Table saw, circular saw, band saw</td>
+                        <td>Cabinets, flooring, resizing boards <a href="https://learn.kregtool.com/learn/wood-cutting/" target="_blank" data-toggle="tooltip" title="Kreg: Wood Cutting 101">[1]</a></td>
+                    </tr>
+                    <tr>
+                        <td>Crosscut</td>
+                        <td>Cut made <b>across</b> the wood grain, reducing length of a board.<br>
+                            <span class="text-muted">Fundamental for sizing stock and framing.</span>
+                        </td>
+                        <td>Table saw, miter saw, circular saw, hand saw</td>
+                        <td>Framing, trim, cutting boards to length <a href="https://learn.kregtool.com/learn/wood-cutting/" target="_blank" data-toggle="tooltip" title="Kreg: Wood Cutting 101">[1]</a></td>
+                    </tr>
+                    <tr>
+                        <td>Miter Cut</td>
+                        <td>Angled cut across the face of the wood, typically at 45° for corners.</td>
+                        <td>Miter saw, table saw (with miter gauge), miter box</td>
+                        <td>Picture frames, trim, molding <a href="https://www.findbuytool.com/blogs/university/types-of-woodworking-cuts" target="_blank" data-toggle="tooltip" title="FindBuyTool: Types of Woodworking Cuts">[5]</a></td>
+                    </tr>
+                    <tr>
+                        <td>Bevel Cut</td>
+                        <td>Cut made at an angle to the thickness of the wood (not 90° to the face).</td>
+                        <td>Table saw, circular saw, miter saw</td>
+                        <td>Edge treatments, joints, trim <a href="https://www.findbuytool.com/blogs/university/types-of-woodworking-cuts" target="_blank" data-toggle="tooltip" title="FindBuyTool: Types of Woodworking Cuts">[5]</a></td>
+                    </tr>
+                    <tr>
+                        <td>Compound Cut</td>
+                        <td>Combination of miter and bevel cuts (angle to face and edge).</td>
+                        <td>Compound miter saw, table saw</td>
+                        <td>Crown molding, complex trim <a href="https://www.findbuytool.com/blogs/university/types-of-woodworking-cuts" target="_blank" data-toggle="tooltip" title="FindBuyTool: Types of Woodworking Cuts">[5]</a></td>
+                    </tr>
+                    <tr>
+                        <td>Curve Cut</td>
+                        <td>Cutting along a curved path for decorative or functional shapes.</td>
+                        <td>Jigsaw, band saw, coping saw</td>
+                        <td>Chair backs, cabriole legs, decorative edges <a href="https://simplewoodworker.com/types-of-woodworking-cuts/" target="_blank" data-toggle="tooltip" title="Simple Woodworker: Types of Woodworking Cuts">[3]</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="mt-2" style="font-size:0.97em;">
+            <strong>Tip:</strong> Always mark your cut line clearly and secure the workpiece before cutting.
+        </div>
+    </div>
+
+    <div class="results-frame mb-4">
+        <h4>Specialized Joinery & Slot Cuts</h4>
+        <ul>
+            <li><b>Dado Cut:</b> A wide, flat-bottomed slot cut across the grain, used for shelving and strong joints. <span class="text-muted">Tools: Table saw with dado blade, router</span></li>
+            <li><b>Groove Cut:</b> Like a dado, but runs with the grain. Used for panels, drawer bottoms, and frames. <span class="text-muted">Tools: Table saw, router</span></li>
+            <li><b>Rabbet Cut:</b> An L-shaped recess along the edge or end of a board, for joining backs, glass, or panels. <span class="text-muted">Tools: Table saw, router, jointer</span></li>
+            <li><b>Resawing:</b> Cutting a board into thinner pieces, often on a band saw. <span class="text-muted">Used for making veneers, book-matched panels.</span></li>
+            <li><b>Joinery Cuts:</b> Mortise &amp; tenon, dovetail, and finger joints are all specialized cuts for strong, durable connections.</li>
+        </ul>
+        <div class="mt-2" style="font-size:0.97em;">
+            <strong>See also:</strong> <a href="{% url 'references:joint_types' %}">Woodworking Joint Types</a>
+        </div>
+    </div>
+
+    <div class="results-frame mb-4">
+        <h4>Wood Sawing Methods (Board Orientation)</h4>
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered table-sm mb-0">
+                <thead class="thead-light">
+                    <tr>
+                        <th>Method</th>
+                        <th>Description</th>
+                        <th>Grain Pattern</th>
+                        <th>Best For</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Plain Sawn (Flat Sawn)</td>
+                        <td>Boards are cut parallel to the pith, producing varied grain and wider boards.</td>
+                        <td>Cathedral or wavy patterns, more variation</td>
+                        <td>General woodworking, furniture, flooring</td>
+                    </tr>
+                    <tr>
+                        <td>Quarter Sawn</td>
+                        <td>Log is quartered, then boards are cut perpendicular to growth rings.</td>
+                        <td>Straight grain, ray flecks (esp. oak), less movement</td>
+                        <td>Fine furniture, flooring, visible surfaces</td>
+                    </tr>
+                    <tr>
+                        <td>Rift Sawn</td>
+                        <td>Boards are cut at a slight angle to the growth rings, after quarter sawing.</td>
+                        <td>Very straight, uniform grain, minimal fleck</td>
+                        <td>Table legs, high-end furniture, stability</td>
+                    </tr>
+                    <tr>
+                        <td>Live Sawn</td>
+                        <td>Boards are cut straight through the log, showing all grain orientations.</td>
+                        <td>Mix of cathedral and straight grain</td>
+                        <td>Rustic furniture, wide boards</td>
+                    </tr>
+                    <tr>
+                        <td>Rotary Cut</td>
+                        <td>Log is peeled in a spiral, producing wide, continuous sheets.</td>
+                        <td>Swirly, non-uniform grain</td>
+                        <td>Plywood, veneers</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="mt-2" style="font-size:0.97em;">
+            <strong>Reference:</strong>
+            <a href="https://media.planchersmirage.com/webfolder_download/458b14f4f7ca2ee84bc906f6ce3ad9c3/wood-sawing-cutting-methods-e/7622504a478dc834c11a58ed58276e720a43aa9d/wood-sawing-cutting-methods-e.pdf" target="_blank" data-toggle="tooltip" title="Planchers Mirage: Wood Sawing Methods PDF">[Sawing Methods PDF]</a>
+        </div>
+    </div>
+
+    <div class="results-frame mb-4">
+        <h4>Other Essential Techniques</h4>
+        <ul>
+            <li><b>Chiseling:</b> Used for mortises, tenons, and shaping. Keep chisels sharp and use a mallet for control.</li>
+            <li><b>Routing:</b> For edge profiles, grooves, and joinery. Use the right bit and make multiple shallow passes.</li>
+            <li><b>Planing:</b> Smooths and flattens wood. Use a hand plane for fine work, a power planer for rapid material removal.</li>
+            <li><b>Turning:</b> Uses a lathe to create round or cylindrical shapes (spindles, bowls, legs).</li>
+            <li><b>Jigsawing:</b> For curved, intricate, or irregular cuts. Use the right blade for the material and desired finish.</li>
+        </ul>
+    </div>
+
+    <div class="results-frame">
+        <h5>Safety Tips &amp; Best Practices</h5>
+        <ul>
+            <li>Always wear eye and hearing protection, and use guards and safety features on all tools <a href="https://learn.kregtool.com/learn/cutting/" target="_blank" data-toggle="tooltip" title="Kreg: Cutting Safety Tips">[1]</a>.</li>
+            <li>Secure your workpiece before cutting to prevent kickback or shifting.</li>
+            <li>Use sharp, clean blades and bits for better results and safer operation.</li>
+            <li>Mark cut lines clearly and double-check measurements before cutting.</li>
+            <li>Practice on scrap wood before making critical cuts, especially with new tools or techniques.</li>
+        </ul>
+    </div>
+</div>
+<script>
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+</script>
+{% endblock %}
