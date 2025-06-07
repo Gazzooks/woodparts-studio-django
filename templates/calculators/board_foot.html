@@ -1,85 +1,87 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-<div class="container mt-5">
+<div class="container mt-4">
+    <h2 class="text-center mb-4">
+        <i class="fas fa-ruler-combined"></i> Board Foot Calculator
+        <span data-unit="{% if user_prefers_metric %}millimeters{% else %}inches{% endif %}"
+              title="Board feet = (Thickness × Width × Length) / 144 × Quantity.">
+            <i class="fas fa-info-circle ml-2"></i>
+        </span>
+    </h2>
     <div class="row justify-content-center">
         <div class="col-md-8 col-lg-6">
-            <div class="card shadow">
-                <div class="card-header bg-primary text-white">
-                    <h4 class="mb-0">
-                        <i class="fas fa-ruler-combined"></i> Board Foot Calculator
-                        <span data-unit="{% if user_prefers_metric %}millimeters{% else %}inches{% endif %}"
-                              title="Board feet = (Thickness × Width × Length) / 144 × Quantity.">
-                            <i class="fas fa-info-circle ml-2"></i>
-                        </span>
-                    </h4>
-                </div>
-                <div class="card-body">
-                    <form method="post" class="needs-validation" novalidate>
-                        {% csrf_token %}
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <label for="id_length">
-                                    Length ({% if user_prefers_metric %}mm{% else %}in{% endif %})
-                                    <span tabindex="0" data-toggle="tooltip"
-                                          title="Typical board length, e.g., 2438 for 8 feet (metric) or 96 for 8 feet (imperial).">
-                                        <i class="fas fa-info-circle"></i>
-                                    </span>
-                                </label>
-                                <input type="number" step="0.01" min="0" class="form-control" id="id_length" name="length"
-                                       placeholder="e.g. {% if user_prefers_metric %}2438{% else %}96{% endif %}" required>
-                                <div class="invalid-feedback">Please enter the board length in {% if user_prefers_metric %}mm{% else %}inches{% endif %}.</div>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="id_width">
-                                    Width ({% if user_prefers_metric %}mm{% else %}inches{% endif %})
-                                    <span tabindex="0" data-toggle="tooltip"
-                                          title="Typical board width, e.g., 203 for 8 inches (metric) or 8 for 8 inches (imperial).">
-                                        <i class="fas fa-info-circle"></i>
-                                    </span>
-                                </label>
-                                <input type="number" step="0.01" min="0" class="form-control" id="id_width" name="width"
-                                       placeholder="e.g. {% if user_prefers_metric %}203{% else %}8{% endif %}" required>
-                                <div class="invalid-feedback">Please enter the board width in {% if user_prefers_metric %}mm{% else %}inches{% endif %}.</div>
-                            </div>
+            <form method="post" class="frame needs-validation" novalidate>
+                {% csrf_token %}
+                <fieldset class="frame mb-3">
+                    <legend>Board Foot Inputs</legend>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="id_length">
+                                Length ({% if user_prefers_metric %}mm{% else %}in{% endif %})
+                                <span tabindex="0" data-toggle="tooltip"
+                                      title="Typical board length, e.g., 2438 for 8 feet (metric) or 96 for 8 feet (imperial).">
+                                    <i class="fas fa-info-circle"></i>
+                                </span>
+                            </label>
+                            <input type="number" step="0.01" min="0" class="form-control" id="id_length" name="length"
+                                   placeholder="e.g. {% if user_prefers_metric %}2438{% else %}96{% endif %}" required>
+                            <div class="invalid-feedback">Please enter the board length in {% if user_prefers_metric %}mm{% else %}inches{% endif %}.</div>
                         </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <label for="id_thickness">
-                                    Thickness ({% if user_prefers_metric %}mm{% else %}inches{% endif %})
-                                    <span tabindex="0" data-toggle="tooltip"
-                                          title="Typical board thickness, e.g., 19 for 3/4 inch (metric) or 0.75 for 3/4 inch (imperial).">
-                                        <i class="fas fa-info-circle"></i>
-                                    </span>
-                                </label>
-                                <input type="number" step="0.01" min="0" class="form-control" id="id_thickness" name="thickness"
-                                       placeholder="e.g. {% if user_prefers_metric %}19{% else %}0.75{% endif %}" required>
-                                <div class="invalid-feedback">Please enter the board thickness in {% if user_prefers_metric %}mm{% else %}inches{% endif %}.</div>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="id_quantity">
-                                    Quantity
-                                    <span tabindex="0" data-toggle="tooltip"
-                                          title="How many boards of this size?">
-                                        <i class="fas fa-info-circle"></i>
-                                    </span>
-                                </label>
-                                <input type="number" step="1" min="1" class="form-control" id="id_quantity" name="quantity" value="1" required>
-                                <div class="invalid-feedback">Please enter a quantity (at least 1).</div>
-                            </div>
+                        <div class="form-group col-md-6">
+                            <label for="id_width">
+                                Width ({% if user_prefers_metric %}mm{% else %}inches{% endif %})
+                                <span tabindex="0" data-toggle="tooltip"
+                                      title="Typical board width, e.g., 203 for 8 inches (metric) or 8 for 8 inches (imperial).">
+                                    <i class="fas fa-info-circle"></i>
+                                </span>
+                            </label>
+                            <input type="number" step="0.01" min="0" class="form-control" id="id_width" name="width"
+                                   placeholder="e.g. {% if user_prefers_metric %}203{% else %}8{% endif %}" required>
+                            <div class="invalid-feedback">Please enter the board width in {% if user_prefers_metric %}mm{% else %}inches{% endif %}.</div>
                         </div>
-                        <button type="submit" class="btn btn-primary btn-block my-2">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="id_thickness">
+                                Thickness ({% if user_prefers_metric %}mm{% else %}inches{% endif %})
+                                <span tabindex="0" data-toggle="tooltip"
+                                      title="Typical board thickness, e.g., 19 for 3/4 inch (metric) or 0.75 for 3/4 inch (imperial).">
+                                    <i class="fas fa-info-circle"></i>
+                                </span>
+                            </label>
+                            <input type="number" step="0.01" min="0" class="form-control" id="id_thickness" name="thickness"
+                                   placeholder="e.g. {% if user_prefers_metric %}19{% else %}0.75{% endif %}" required>
+                            <div class="invalid-feedback">Please enter the board thickness in {% if user_prefers_metric %}mm{% else %}inches{% endif %}.</div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="id_quantity">
+                                Quantity
+                                <span tabindex="0" data-toggle="tooltip"
+                                      title="How many boards of this size?">
+                                    <i class="fas fa-info-circle"></i>
+                                </span>
+                            </label>
+                            <input type="number" step="1" min="1" class="form-control" id="id_quantity" name="quantity" value="1" required>
+                            <div class="invalid-feedback">Please enter a quantity (at least 1).</div>
+                        </div>
+                    </div>
+                    <div class="text-center mt-3">
+                        <button type="submit" class="btn btn-primary">
                             <i class="fas fa-calculator"></i> Calculate
                         </button>
-                    </form>
-                    {% if result %}
-                        <div class="alert alert-success mt-3">
-                            <strong>Results:</strong><br>
-                            Total Board Feet: <span class="font-weight-bold">{{ result|floatformat:2 }}</span>
-                        </div>
-                    {% endif %}
-                </div>
-            </div>
+                    </div>
+                </fieldset>
+            </form>
+            {% if result %}
+                <fieldset class="results-frame mt-3">
+                    <legend>Results</legend>
+                    <div class="alert alert-success">
+                        <strong>Total Board Feet:</strong>
+                        <span class="font-weight-bold">{{ result|floatformat:2 }}</span>
+                    </div>
+                </fieldset>
+            {% endif %}
         </div>
     </div>
 </div>
@@ -110,8 +112,10 @@
     // Set dynamic main tooltip
     document.addEventListener('DOMContentLoaded', function() {
         var tooltipEl = document.querySelector('[data-unit]');
-        var unit = tooltipEl.getAttribute('data-unit');
-        tooltipEl.setAttribute('title', 'Board feet = (Thickness × Width × Length) / 144 × Quantity. All dimensions in ' + unit + '.');
+        if (tooltipEl) {
+            var unit = tooltipEl.getAttribute('data-unit');
+            tooltipEl.setAttribute('title', 'Board feet = (Thickness × Width × Length) / 144 × Quantity. All dimensions in ' + unit + '.');
+        }
     });
 </script>
 {% endblock %}

@@ -108,6 +108,24 @@
                             </div>
                         </div>
 
+                        <!-- Shop Management Submenu -->
+                        <div class="dropdown-submenu">
+                            <a class="dropdown-item dropdown-toggle" href="#"> 
+                                <i class="fas fa-warehouse"></i> Shop Management
+                            </a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="{% url 'shop_assets:manager' %}">
+                                    <i class="fas fa-clipboard-list"></i> Shop Assets Manager...
+                                </a>
+                                <a class="dropdown-item" href="{% url 'shop_assets:manager' %}#tools">
+                                    <i class="fas fa-toolbox"></i> Tool Inventory...
+                                </a>
+                                <a class="dropdown-item" href="{% url 'shop_assets:manager' %}#maintenance">
+                                    <i class="fas fa-wrench"></i> Maintenance Tracker...
+                                </a>
+                            </div>
+                        </div>
+
                         <!-- Cutlist Creator -->
                         <div class="dropdown-divider"></div>
                             {% if request.resolver_match.kwargs.project_id %}

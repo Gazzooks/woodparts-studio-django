@@ -34,6 +34,9 @@ INSTALLED_APPS = [
     'django_tables2',
     'django_filters',
     'mathfilters',
+    'bootstrap_modal_forms',
+    'widget_tweaks',
+
     
     # Local apps (order matters for dependencies)
     'core',
@@ -51,7 +54,7 @@ INSTALLED_APPS = [
     'fraction_decimal_mm',
     'references',
     'guides',
-    'shop_management',
+    'shop_assets',
     'api',
     
 ]

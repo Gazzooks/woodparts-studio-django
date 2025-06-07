@@ -1,0 +1,131 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">
+                        <i class="fas fa-divide"></i> Fraction Calculator
+                        <span data-toggle="tooltip" title="Add, subtract, multiply, or divide two fractions.">
+                            <i class="fas fa-info-circle ml-2"></i>
+                        </span>
+                    </h4>
+                </div>
+                <div class="card-body">
+                    <form id="fractionForm" method="post" class="needs-validation" novalidate>
+                        {% csrf_token %}
+                        <div class="form-row">
+                            <div class="form-group col-6">
+                                <label for="fraction1">
+                                    Fraction 1
+                                    <span tabindex="0" data-toggle="tooltip" title="Enter a fraction (e.g., 1/2 or 3 1/4).">
+                                        <i class="fas fa-info-circle"></i>
+                                    </span>
+                                </label>
+                                <input type="text" class="form-control" id="fraction1" name="fraction1"
+                                       placeholder="e.g., 1/2 or 3 1/4"
+                                       pattern="^(\d+\s)?\d+\/\d+$|^\d+$"
+                                       required>
+                                <div class="invalid-feedback">
+                                    Please enter a valid fraction (e.g., 1/2 or 3 1/4).
+                                </div>
+                            </div>
+                            <div class="form-group col-6">
+                                <label for="operation">
+                                    Operation
+                                    <span tabindex="0" data-toggle="tooltip" title="Choose an operation: +, -, ×, ÷">
+                                        <i class="fas fa-info-circle"></i>
+                                    </span>
+                                </label>
+                                <select class="form-control" id="operation" name="operation" required>
+                                    <option value="add">+ (Add)</option>
+                                    <option value="subtract">- (Subtract)</option>
+                                    <option value="multiply">× (Multiply)</option>
+                                    <option value="divide">÷ (Divide)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-6">
+                                <label for="fraction2">
+                                    Fraction 2
+                                    <span tabindex="0" data-toggle="tooltip" title="Enter a fraction (e.g., 1/2 or 3 1/4).">
+                                        <i class="fas fa-info-circle"></i>
+                                    </span>
+                                </label>
+                                <input type="text" class="form-control" id="fraction2" name="fraction2"
+                                       placeholder="e.g., 1/2 or 3 1/4"
+                                       pattern="^(\d+\s)?\d+\/\d+$|^\d+$"
+                                       required>
+                                <div class="invalid-feedback">
+                                    Please enter a valid fraction (e.g., 1/2 or 3 1/4).
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block my-2">
+                            <i class="fas fa-calculator"></i> Calculate
+                        </button>
+                    </form>
+                    <div id="result" class="alert alert-success mt-3" style="display: none;">
+                        <strong>Result:</strong><br>
+                        <span id="resultText"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap 4 tooltips activation and validation -->
+<script>
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    });
+</script>
+<script>
+        // Bootstrap 4 validation
+    (function () {
+        'use strict'
+        window.addEventListener('load', function () {
+            var forms = document.getElementsByClassName('needs-validation');
+            var validation = Array.prototype.filter.call(forms, function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();
+</script>
+<script>
+    // AJAX form submission for dynamic results (optional)
+    $('#fractionForm').on('submit', function(e) {
+    e.preventDefault();
+    var $form = $(this);
+    $.ajax({
+        type: $form.attr('method'),
+        url: $form.attr('action'),
+        data: $form.serialize(),
+        success: function(data) {
+            console.log('AJAX response:', data); // <-- Add this line
+            if (data.success) {
+                $('#resultText').html(
+                    data.calculation + '<br>' +
+                    '<strong>Simplified:</strong> ' + data.result + '<br>' +
+                    '<strong>Decimal:</strong> ' + data.decimal
+                );
+                $('#result').show();
+            } else {
+                $('#resultText').html('<span class="text-danger">' + data.error + '</span>');
+                $('#result').show();
+            }
+        }
+    });
+});
+</script>
+{% endblock %}

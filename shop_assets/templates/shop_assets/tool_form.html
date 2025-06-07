@@ -1,0 +1,73 @@
+<!-- Do NOT extend base.html for modal AJAX content -->
+<div class="modal-header">
+    <h5 class="modal-title" id="toolModalLabel">{{ action|default:"Add Tool" }}</h5>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<<form method="post" id="tool-form" action="{% if action == 'Edit Tool' %}{% url 'shop_assets:edit_tool' tool.id %}{% else %}{% url 'shop_assets:add_tool' %}{% endif %}">
+    {% csrf_token %}
+    <div class="modal-body p-0">
+        <div class="frame mb-0" style="box-shadow:none;">
+            <!-- Tool Details Section -->
+            <div class="results-frame mb-3">
+                <div class="section-title mb-2" style="color:#337ab7; font-weight:600;">Tool Details</div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="{{ form.name.id_for_label }}">Name</label>
+                        {{ form.name }}
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="{{ form.type.id_for_label }}">Type</label>
+                        {{ form.type }}
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="{{ form.brand.id_for_label }}">Brand</label>
+                        {{ form.brand }}
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="{{ form.model.id_for_label }}">Model</label>
+                        {{ form.model }}
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="{{ form.serial_number.id_for_label }}">Serial Number</label>
+                        {{ form.serial_number }}
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="{{ form.location.id_for_label }}">Location</label>
+                        {{ form.location }}
+                    </div>
+                </div>
+            </div>
+            <!-- Purchase Info Section -->
+            <div class="results-frame mb-3">
+                <div class="section-title mb-2" style="color:#337ab7; font-weight:600;">Purchase Info</div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="{{ form.purchase_date.id_for_label }}">Purchase Date</label>
+                        {{ form.purchase_date }}
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="{{ form.purchase_price.id_for_label }}">Purchase Price</label>
+                        {{ form.purchase_price }}
+                    </div>
+                </div>
+            </div>
+            <!-- Notes Section -->
+            <div class="results-frame">
+                <div class="section-title mb-2" style="color:#337ab7; font-weight:600;">Notes</div>
+                <div class="form-group mb-0">
+                    {{ form.notes }}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-primary">{{ action|default:"Add Tool" }}</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+    </div>
+</form>

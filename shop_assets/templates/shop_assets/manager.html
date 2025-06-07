@@ -1,0 +1,561 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="frame">
+    <h2 class="mb-2">Shop Assets Manager</h2>
+    <p class="mb-3">Manage your workshop assets including tools, consumables, and equipment. Track maintenance, locations, and inventory levels.</p>
+
+    <!-- Tabs -->
+    <ul class="nav nav-tabs mb-3" id="assetTabs" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="tools-tab" data-toggle="tab" data-target="#tools" type="button" role="tab">Tools</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="maintenance-tab" data-toggle="tab" data-target="#maintenance" type="button" role="tab">Maintenance Log</button>
+        </li>
+    </ul>
+
+    <div class="tab-content" id="assetTabsContent">
+        <!-- Tools Tab -->
+        <div class="tab-pane fade show active" id="tools" role="tabpanel" aria-labelledby="tools-tab">
+            <div class="results-frame mb-3">
+                <!-- Search & Filter -->
+                <div class="form-row align-items-center mb-3">
+                    <div class="col-auto">
+                        <label for="search-tools" class="sr-only">Search</label>
+                        <input type="text" id="search-tools" class="form-control" placeholder="Search tools...">
+                    </div>
+                    <div class="col-auto">
+                        <label for="filter-type" class="sr-only">Type</label>
+                        <select id="filter-type" class="form-control">
+                            <option value="all">All Types</option>
+                            <option value="Table Saw">Table Saw</option>
+                            <option value="Miter Saw">Miter Saw</option>
+                            <option value="Band Saw">Band Saw</option>
+                            <option value="Jointer">Jointer</option>
+                            <option value="Planer">Planer</option>
+                            <option value="Drill Press">Drill Press</option>
+                            <option value="Router">Router</option>
+                            <option value="Circular Saw">Circular Saw</option>
+                            <option value="Jigsaw">Jigsaw</option>
+                            <option value="Scroll Saw">Scroll Saw</option>
+                            <option value="Lathe">Lathe</option>
+                            <option value="Belt Sander">Belt Sander</option>
+                            <option value="Orbital Sander">Orbital Sander</option>
+                            <option value="Hand Saw">Hand Saw</option>
+                            <option value="Chisel">Chisel</option>
+                            <option value="Clamps">Clamps</option>
+                            <option value="Hammer">Hammer</option>
+                            <option value="Tape Measure">Tape Measure</option>
+                            <option value="Square">Square</option>
+                            <option value="Dust Collector">Dust Collector</option>
+                        </select>
+                    </div>
+                </div>
+                <!-- Tools Inventory Table -->
+                <div class="table-responsive mb-2">
+                    <table class="table table-striped table-bordered" id="tools-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Tool Name</th>
+                                <th>Type</th>
+                                <th>Brand</th>
+                                <th>Model</th>
+                                <th>Serial Number</th>
+                                <th>Location</th>
+                                <th>Purchase Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for tool in tools %}
+                            <tr data-tool-id="{{ tool.id }}">
+                                <td>{{ tool.id }}</td>
+                                <td>{{ tool.name }}</td>
+                                <td>{{ tool.type }}</td>
+                                <td>{{ tool.brand }}</td>
+                                <td>{{ tool.model }}</td>
+                                <td>{{ tool.serial_number }}</td>
+                                <td>{{ tool.location }}</td>
+                                <td>{{ tool.purchase_date }}</td>
+                            </tr>
+                            {% empty %}
+                            <tr>
+                                <td colspan="8">No tools found.</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <!-- Action Buttons -->
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <button class="btn btn-primary" id="add-tool-btn">+ Add Tool</button>
+                        <button class="btn btn-secondary" id="edit-tool-btn" disabled>Edit Tool</button>
+                        <button class="btn btn-danger" id="delete-tool-btn" disabled>Delete Tool</button>
+                        <button class="btn btn-primary" id="add-maintenance-btn" disabled>🔧 Add Maintenance</button>
+                    </div>
+                    <div>
+                        <button type="button" class="btn btn-secondary" id="import-tools-btn" title="Tip: Click to select a .csv file for importing.">Import Tools</button>
+                        <a href="{% url 'shop_assets:export_tools' %}" class="btn btn-secondary" title="Tip: To choose where to save, enable 'Ask where to save each file before downloading' in your browser settings.">
+                            Export Tools
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Maintenance Log Tab -->
+        <div class="tab-pane fade" id="maintenance" role="tabpanel" aria-labelledby="maintenance-tab">
+            <div class="results-frame mb-3">
+                <!-- Filter Maintenance Records -->
+                <div class="form-row align-items-center mb-3">
+                    <div class="col-auto">
+                        <label for="search-maintenance" class="sr-only">Search</label>
+                        <input type="text" id="search-maintenance" class="form-control" placeholder="Search notes or tool...">
+                    </div>
+                    <div class="col-auto">
+                        <label for="filter-maint-tool" class="sr-only">Tool</label>
+                        <select id="filter-maint-tool" class="form-control">
+                            <option value="all">All Tools</option>
+                            {% for tool in tools %}
+                            <option value="{{ tool.name }}">{{ tool.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="col-auto">
+                        <label for="filter-maint-type" class="sr-only">Type</label>
+                        <select id="filter-maint-type" class="form-control">
+                            <option value="all">All Types</option>
+                            <option>Routine</option>
+                            <option>Repair</option>
+                            <option>Calibration</option>
+                            <option>Cleaning</option>
+                            <option>Replacement</option>
+                            <option>Inspection</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+                </div>
+                <!-- Maintenance History Table -->
+                <div class="table-responsive mb-2">
+                    <table class="table table-striped table-bordered" id="maintenance-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Tool Name</th>
+                                <th>Date</th>
+                                <th>Maintenance Type</th>
+                                <th>Notes</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for record in maintenance_records %}
+                            <tr data-maintenance-id="{{ record.id }}">
+                                <td>{{ record.id }}</td>
+                                <td>{{ record.tool.name }}</td>
+                                <td>{{ record.maintenance_date }}</td>
+                                <td>{{ record.maintenance_type }}</td>
+                                <td>{{ record.notes }}</td>
+                            </tr>
+                            {% empty %}
+                            <tr>
+                                <td colspan="5">No maintenance records found.</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <!-- Action Buttons -->
+                <div class="d-flex justify-content-between mb-2">
+                    <div>
+                        <button class="btn btn-primary" id="add-maintenance-btn2">+ Add Maintenance</button>
+                        <button class="btn btn-secondary" id="edit-maintenance-btn" disabled>Edit</button>
+                        <button class="btn btn-danger" id="delete-maintenance-btn" disabled>Delete</button>
+                    </div>
+                    <div>
+                        <a href="#" class="btn btn-secondary" id="import-maintenance-btn">Import Maintenance Log</a>
+                        <a href="{% url 'shop_assets:export_maintenance' %}" class="btn btn-secondary">Export Maintenance Log</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Add/Edit Tool Modal -->
+<div class="modal fade" id="toolModal" tabindex="-1" role="dialog" aria-labelledby="toolModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content" id="tool-modal-content">
+      <!-- Form content loaded via AJAX -->
+    </div>
+  </div>
+</div>
+
+<!-- Maintenance Modal -->
+<div class="modal fade" id="maintenanceModal" tabindex="-1" role="dialog" aria-labelledby="maintenanceModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content" id="maintenance-modal-content">
+      <!-- AJAX-loaded content goes here -->
+    </div>
+  </div>
+</div>
+
+<script>
+// CSRF setup for AJAX
+function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = cookies[i].trim();
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+
+var csrftoken = getCookie('csrftoken');
+$.ajaxSetup({
+    beforeSend: function(xhr, settings) {
+        if (!/^(GET|HEAD|OPTIONS|TRACE)$/i.test(settings.type) && !this.crossDomain) {
+            xhr.setRequestHeader("X-CSRFToken", csrftoken);
+        }
+    }
+});
+
+// Table row selection logic
+let selectedToolId = null;
+const table = document.getElementById('tools-table');
+const editBtn = document.getElementById('edit-tool-btn');
+const deleteBtn = document.getElementById('delete-tool-btn');
+const addMaintBtn = document.getElementById('add-maintenance-btn');
+
+// Enable/disable action buttons based on row selection
+$(document).on('click', '#tools-table tbody tr[data-tool-id]', function() {
+    $('#tools-table tbody tr').removeClass('selected');
+    $(this).addClass('selected');
+    selectedToolId = $(this).data('tool-id');
+    editBtn.disabled = false;
+    deleteBtn.disabled = false;
+    addMaintBtn.disabled = false;
+});
+
+// Add Tool Button - Load form via AJAX
+$('#add-tool-btn').on('click', function() {
+    $.get("{% url 'shop_assets:add_tool' %}", function(response) {
+        // If view returns JSON, use response.form_html; else use response directly
+        var html = response.form_html || response;
+        $('#tool-modal-content').html(html);
+        $('#toolModal').modal('show');
+    });
+});
+
+// AJAX submit for the Add and Edit Tool form
+$(document).on('submit', '#tool-form', function(event) {
+    event.preventDefault();
+    var $form = $(this);
+    var actionUrl = $form.attr('action');
+    $.ajax({
+        url: actionUrl,
+        type: 'POST',
+        data: $form.serialize(),
+        dataType: 'json',
+        success: function(response) {
+            if (response.success) {
+                if (actionUrl.endsWith('/add/')) {
+                    // Add: append the new row
+                    $('#tools-table tbody').append(response.row_html);
+                } else {
+                    // Edit: replace the existing row
+                    $('#tools-table tbody tr[data-tool-id="' + response.tool_id + '"]').replaceWith(response.row_html);
+                }
+                $('#toolModal').modal('hide');
+            } else {
+                $('#tool-modal-content').html(response.form_html);
+            }
+        },
+        error: function() {
+            alert('There was an error saving the tool.');
+        }
+    });
+});
+
+
+// Edit Tool Button - Load form via AJAX
+$('#edit-tool-btn').on('click', function() {
+    if (!selectedToolId) return;
+    $.get(`/shop-assets/tools/${selectedToolId}/edit/`, function(response) {
+        var html = response.form_html || response;
+        $('#tool-modal-content').html(html);
+        $('#toolModal').modal('show');
+    });
+});
+
+
+// Delete Tool Button - Load confirm modal via AJAX
+$('#delete-tool-btn').on('click', function() {
+    if (!selectedToolId) return;
+    $.get(`/shop-assets/tools/${selectedToolId}/delete/`, function(response) {
+        $('#tool-modal-content').html(response.form_html);
+        $('#toolModal').modal('show');
+    });
+});
+
+// AJAX submit for the Delete Tool form
+$(document).on('submit', '#delete-tool-form', function(event) {
+    event.preventDefault();
+    var $form = $(this);
+    var actionUrl = $form.attr('action') || `/shop-assets/tools/${selectedToolId}/delete/`;
+    $.ajax({
+        url: actionUrl,
+        type: 'POST',
+        data: $form.serialize(),
+        dataType: 'json',
+        success: function(response) {
+            if (response.success) {
+                // Remove the row from the table
+                $('#tools-table tbody tr[data-tool-id="' + response.tool_id + '"]').remove();
+                $('#toolModal').modal('hide');
+            }
+        },
+        error: function() {
+            alert('There was an error deleting the tool.');
+        }
+    });
+});
+
+// Maintenance row selection logic
+let selectedMaintenanceId = null;
+$(document).on('click', '#maintenance-table tbody tr[data-maintenance-id]', function() {
+    $('#maintenance-table tbody tr').removeClass('selected');
+    $(this).addClass('selected');
+    selectedMaintenanceId = $(this).data('maintenance-id');
+    $('#edit-maintenance-btn').prop('disabled', false);
+    $('#delete-maintenance-btn').prop('disabled', false);
+});
+
+/// Add Maintenance Button - Load form via AJAX
+$('#add-maintenance-btn2').on('click', function() {
+    $.get("{% url 'shop_assets:add_maintenance' %}", function(response) {
+        var html = response.form_html || response;
+        $('#maintenance-modal-content').html(html);
+        $('#maintenanceModal').modal('show');
+    });
+});
+
+// AJAX submit for the Add/Edit Maintenance form
+$(document).on('submit', '#maintenance-form', function(event) {
+    event.preventDefault();
+    var $form = $(this);
+    var actionUrl = $form.attr('action');
+    $.ajax({
+        url: actionUrl,
+        type: 'POST',
+        data: $form.serialize(),
+        dataType: 'json',
+        success: function(response) {
+            if (response.success) {
+                if (actionUrl.endsWith('/add/')) {
+                    $('#maintenance-table tbody').append(response.row_html);
+                } else {
+                    $('#maintenance-table tbody tr[data-maintenance-id="' + response.record_id + '"]').replaceWith(response.row_html);
+                }
+                $('#maintenanceModal').modal('hide');
+            } else {
+                $('#maintenance-modal-content').html(response.form_html);
+            }
+        },
+        error: function() {
+            alert('There was an error saving the maintenance record.');
+        }
+    });
+});
+
+// Edit Maintenance Button
+$('#edit-maintenance-btn').on('click', function() {
+    if (!selectedMaintenanceId) return;
+    $.get(`/shop-assets/maintenance/${selectedMaintenanceId}/edit/`, function(response) {
+        var html = response.form_html || response;
+        $('#maintenance-modal-content').html(html);
+        $('#maintenanceModal').modal('show');
+    });
+});
+
+// Delete Maintenance Button
+$('#delete-maintenance-btn').on('click', function() {
+    if (!selectedMaintenanceId) return;
+    $.get(`/shop-assets/maintenance/${selectedMaintenanceId}/delete/`, function(response) {
+        $('#maintenance-modal-content').html(response.form_html);
+        $('#maintenanceModal').modal('show');
+    });
+});
+
+// AJAX submit for Delete Maintenance
+$(document).on('submit', '#delete-maintenance-form', function(event) {
+    event.preventDefault();
+    var $form = $(this);
+    var actionUrl = $form.attr('action');
+    $.ajax({
+        url: actionUrl,
+        type: 'POST',
+        data: $form.serialize(),
+        dataType: 'json',
+        success: function(response) {
+            if (response.success) {
+                $('#maintenance-table tbody tr[data-maintenance-id="' + response.record_id + '"]').remove();
+                $('#maintenanceModal').modal('hide');
+            }
+        },
+        error: function() {
+            alert('There was an error deleting the maintenance record.');
+        }
+    });
+});
+
+// Show import modal for Tools
+$('a[href$="import_tools"]').on('click', function(e) {
+    e.preventDefault();
+    $.get("{% url 'shop_assets:import_tools' %}", function(response) {
+        var html = response.form_html || response;
+        $('#tool-modal-content').html(html);
+        $('#toolModal').modal('show');
+    });
+});
+
+$('#import-tools-btn').on('click', function(e) {
+    e.preventDefault();
+    $.get("{% url 'shop_assets:import_tools' %}", function(response) {
+        var html = response.form_html || response;
+        $('#tool-modal-content').html(html);
+        $('#toolModal').modal('show');
+    });
+});
+
+// Show import modal for Maintenance
+$('a[href$="import_maintenance"]').on('click', function(e) {
+    e.preventDefault();
+    $.get("{% url 'shop_assets:import_maintenance' %}", function(response) {
+        var html = response.form_html || response;
+        $('#maintenance-modal-content').html(html);
+        $('#maintenanceModal').modal('show');
+    });
+});
+
+// AJAX submit for import forms
+$(document).on('submit', '#import-form', function(event) {
+    event.preventDefault();
+    var $form = $(this);
+    var actionUrl = $form.attr('action');
+    var formData = new FormData(this);
+    $.ajax({
+        url: actionUrl,
+        type: 'POST',
+        data: formData,
+        processData: false,
+        contentType: false,
+        dataType: 'json',
+        success: function(response) {
+            if (response.success) {
+                // Optionally, refresh the table or show a success message
+                $('#toolModal, #maintenanceModal').modal('hide');
+                alert(response.count + " records imported.");
+                // Optionally, reload the page or fetch updated table rows via AJAX
+            } else {
+                // Show form with errors
+                $('#tool-modal-content, #maintenance-modal-content').html(response.form_html);
+            }
+        },
+        error: function() {
+            alert('There was an error importing the file.');
+        }
+    });
+});
+
+function filterTools() {
+    var search = $('#search-tools').val().toLowerCase();
+    var type = $('#filter-type').val();
+
+    $('#tools-table tbody tr').each(function() {
+        var row = $(this);
+        var name = row.find('td:nth-child(2)').text().toLowerCase();
+        var toolType = row.find('td:nth-child(3)').text();
+
+        var matchesSearch = !search || name.includes(search);
+        var matchesType = (type === 'all' || toolType === type);
+
+        if (matchesSearch && matchesType) {
+            row.show();
+        } else {
+            row.hide();
+        }
+    });
+}
+
+// Live search as you type
+$('#search-tools').on('keyup', filterTools);
+
+// Filter by type
+$('#filter-type').on('change', filterTools);
+
+function filterMaintenance() {
+    var search = $('#search-maintenance').val().toLowerCase();
+    var tool = $('#filter-maint-tool').val();
+    var type = $('#filter-maint-type').val();
+
+    $('#maintenance-table tbody tr').each(function() {
+        var row = $(this);
+        var toolName = row.find('td:nth-child(2)').text();
+        var maintType = row.find('td:nth-child(4)').text();
+        var notes = row.find('td:nth-child(5)').text().toLowerCase();
+
+        var matchesSearch = !search || toolName.toLowerCase().includes(search) || notes.includes(search);
+        var matchesTool = (tool === 'all' || toolName === tool);
+        var matchesType = (type === 'all' || maintType === type);
+
+        if (matchesSearch && matchesTool && matchesType) {
+            row.show();
+        } else {
+            row.hide();
+        }
+    });
+}
+
+$('#search-maintenance').on('keyup', filterMaintenance);
+$('#filter-maint-tool').on('change', filterMaintenance);
+$('#filter-maint-type').on('change', filterMaintenance);
+
+$('#import-maintenance-btn').on('click', function(e) {
+    e.preventDefault();
+    $.get("{% url 'shop_assets:import_maintenance' %}", function(response) {
+        var html = response.form_html || response;
+        $('#maintenance-modal-content').html(html);
+        $('#maintenanceModal').modal('show');
+    });
+});
+
+// Optionally, clear modal content when closed
+$('#toolModal').on('hidden.bs.modal', function () {
+    $('#tool-modal-content').html('');
+    // Optionally, reset form or selection
+});
+</script>
+
+<script>
+// Save the last active tab to sessionStorage when changed
+$('button[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+    sessionStorage.setItem('shopAssetsActiveTab', $(e.target).attr('data-target'));
+});
+
+// On page load, check for a saved tab and show it
+var activeTab = sessionStorage.getItem('shopAssetsActiveTab');
+if (activeTab) {
+    $('button[data-toggle="tab"][data-target="' + activeTab + '"]').tab('show');
+}
+
+</script>
+{% endblock %}

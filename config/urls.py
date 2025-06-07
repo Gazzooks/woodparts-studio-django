@@ -34,6 +34,7 @@ urlpatterns = [
     path('parts/', include('parts.urls', namespace='parts')),
     path('materials/', include('materials.urls', namespace='materials')),
     path('cutlists/', include('cutlists.urls')),
+    path('shop-assets/', include('shop_assets.urls')),
 
     # Calculator application URLs
     path('calculators/', include('calculators.urls')),

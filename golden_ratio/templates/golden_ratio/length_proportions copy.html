@@ -15,10 +15,10 @@
             <a class="nav-link {% if active_tab == 'golden_rectangle' %}active{% endif %}" href="{% url 'golden_ratio:golden_rectangle' %}">Golden Rectangle</a>
         </li>
     </ul>
-    <form method="post" class="frame mb-4">
+    <form method="post" class="mb-4">
         {% csrf_token %}
-        <fieldset class="frame mb-3">
-            <legend>Calculate Proportional Lengths</legend>
+        <fieldset class="border rounded p-3 mb-3">
+            <legend class="w-auto px-2" style="font-size: 1rem;">Calculate Proportional Lengths</legend>
             <div class="form-row align-items-center">
                 <div class="form-group col-md-5">
                     <label for="known_length">Known Length:</label>
@@ -43,8 +43,8 @@
     {% if results and results.longer_a and results.shorter_b and results.total_ab %}
     <div class="row g-4">
         <div class="col-12 col-md-6">
-            <fieldset class="results-frame h-100">
-                <legend>Results</legend>
+            <fieldset class="border rounded p-3 h-100">
+                <legend class="w-auto px-2" style="font-size: 1rem;">Results</legend>
                 <div class="alert alert-secondary py-1 px-2 small mb-2">
                     <strong>A</strong> is the longer segment, <strong>B</strong> is the shorter segment.
                 </div>
@@ -78,8 +78,8 @@
             </fieldset>
         </div>
         <div class="col-12 col-md-6">
-            <fieldset class="frame h-100">
-                <legend>Golden Ratio Segments (to scale)</legend>
+            <fieldset class="border rounded p-3 h-100">
+                <legend class="w-auto px-2" style="font-size: 1rem;">Golden Ratio Segments (to scale)</legend>
                 <div class="visual-bars-container">
                     {% with max_length=results.total_ab %}
                         {% with scale=100|div:max_length %}

@@ -15,10 +15,10 @@
             <a class="nav-link {% if active_tab == 'golden_rectangle' %}active{% endif %}" href="{% url 'golden_ratio:golden_rectangle' %}">Golden Rectangle</a>
         </li>
     </ul>
-    <form method="post" class="frame mb-4">
+    <form method="post" class="mb-4">
         {% csrf_token %}
-        <fieldset class="frame mb-3">
-            <legend>Calculate Golden Rectangle Dimensions</legend>
+        <fieldset class="border rounded p-3 mb-3">
+            <legend class="w-auto px-2" style="font-size: 1rem;">Calculate Golden Rectangle Dimensions</legend>
             <div class="form-row align-items-center">
                 <div class="form-group col-md-3">
                     <label>Known Dimension:</label>
@@ -56,8 +56,8 @@
     {% if results %}
         <div class="row g-4">
             <div class="col-12 col-md-6">
-                <fieldset class="results-frame h-100">
-                    <legend>Results</legend>
+                <fieldset class="border rounded p-3 h-100">
+                    <legend class="w-auto px-2" style="font-size: 1rem;">Results</legend>
                     <div class="mb-2">
                         {% if results.error %}
                             <div class="alert alert-warning py-2 px-3">{{ results.error }}</div>
@@ -79,8 +79,8 @@
                 </fieldset>
             </div>
             <div class="col-12 col-md-6">
-                <fieldset class="frame h-100">
-                    <legend>Visual Representation</legend>
+                <fieldset class="border rounded p-3 h-100">
+                    <legend class="w-auto px-2" style="font-size: 1rem;">Visual Representation</legend>
                     {% if results.width and results.height %}
                         <div class="visual-golden-rectangle-container">
                             {% with max_dim=results.width|max_value:results.height %}
@@ -129,6 +129,7 @@
             var widthRadio = document.querySelector('input[name="known_dim"][value="width"]');
             var heightRadio = document.querySelector('input[name="known_dim"][value="height"]');
             var valueLabel = document.getElementById('value-label');
+
             function updateLabel() {
                 if (widthRadio.checked) {
                     valueLabel.textContent = 'Value (Width)';
@@ -136,6 +137,7 @@
                     valueLabel.textContent = 'Value (Height)';
                 }
             }
+
             widthRadio.addEventListener('change', updateLabel);
             heightRadio.addEventListener('change', updateLabel);
             updateLabel(); // initialize

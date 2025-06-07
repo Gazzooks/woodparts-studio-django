@@ -1,0 +1,18 @@
+<form method="post" enctype="multipart/form-data" id="import-form">
+    {% csrf_token %}
+    <div class="modal-header">
+        <h5 class="modal-title">{{ action }}</h5>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+    </div>
+    <div class="modal-body">
+        {{ form.file.label_tag }}
+        {{ form.file }}
+        {% for error in form.file.errors %}
+            <div class="text-danger">{{ error }}</div>
+        {% endfor %}
+    </div>
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-primary">{{ action }}</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+    </div>
+</form>

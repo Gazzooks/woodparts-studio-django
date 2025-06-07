@@ -8300,3 +8300,780 @@ Traceback (most recent call last):
 django.urls.exceptions.NoReverseMatch: Reverse for 'fraction_to_decimal_mm' not found. 'fraction_to_decimal_mm' is not a valid view function or pattern name.
 Watching for file changes with StatReloader
 Not Found: /favicon.ico
+Watching for file changes with StatReloader
+Not Found: /favicon.ico
+Watching for file changes with StatReloader
+/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/config/settings.py changed, reloading.
+Watching for file changes with StatReloader
+/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/shop_assets/models.py changed, reloading.
+Watching for file changes with StatReloader
+/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/shop_assets/admin.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /dashboard/
+Traceback (most recent call last):
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/urls/base.py", line 81, in reverse
+    extra, resolver = resolver.namespace_dict[ns]
+                      ~~~~~~~~~~~~~~~~~~~~~~~^^^^
+KeyError: 'shop_assets'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/urls/base.py", line 92, in reverse
+    raise NoReverseMatch("%s is not a registered namespace" % key)
+django.urls.exceptions.NoReverseMatch: 'shop_assets' is not a registered namespace
+/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/config/urls.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/shop_assets/views.py changed, reloading.
+Watching for file changes with StatReloader
+/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/shop_assets/views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/config/settings.py changed, reloading.
+Watching for file changes with StatReloader
+/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/shop_assets/views.py changed, reloading.
+Watching for file changes with StatReloader
+Not Found: /favicon.ico
+Watching for file changes with StatReloader
+Internal Server Error: /shop-assets/tools/add/
+Traceback (most recent call last):
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/shop_assets/views.py", line 33, in add_tool
+    return render(request, 'shop_assets/tool_form.html', {'form': form, 'action': 'Add Tool'})
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/backends/django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/loaders/cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/loaders/base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/base.py", line 489, in parse
+    raise self.error(token, e)
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/base.py", line 487, in parse
+    filter_expression = self.compile_filter(token.contents)
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/base.py", line 609, in compile_filter
+    return FilterExpression(token, self)
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/base.py", line 705, in __init__
+    filter_func = parser.find_filter(filter_name)
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/base.py", line 615, in find_filter
+    raise TemplateSyntaxError("Invalid filter: '%s'" % filter_name)
+django.template.exceptions.TemplateSyntaxError: Invalid filter: 'add_class'
+/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/shop_assets/forms.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /shop-assets/tools/add/
+Traceback (most recent call last):
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/shop_assets/views.py", line 33, in add_tool
+    return render(request, 'shop_assets/tool_form.html', {'form': form, 'action': 'Add Tool'})
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/backends/django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/loaders/cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/loaders/base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/base.py", line 489, in parse
+    raise self.error(token, e)
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/base.py", line 487, in parse
+    filter_expression = self.compile_filter(token.contents)
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/base.py", line 609, in compile_filter
+    return FilterExpression(token, self)
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/base.py", line 705, in __init__
+    filter_func = parser.find_filter(filter_name)
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/base.py", line 615, in find_filter
+    raise TemplateSyntaxError("Invalid filter: '%s'" % filter_name)
+django.template.exceptions.TemplateSyntaxError: Invalid filter: 'add_class'
+Watching for file changes with StatReloader
+Internal Server Error: /shop-assets/tools/add/
+Traceback (most recent call last):
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/shop_assets/views.py", line 33, in add_tool
+    return render(request, 'shop_assets/tool_form.html', {'form': form, 'action': 'Add Tool'})
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/backends/django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/loaders/cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/loaders/base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/base.py", line 489, in parse
+    raise self.error(token, e)
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/base.py", line 487, in parse
+    filter_expression = self.compile_filter(token.contents)
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/base.py", line 609, in compile_filter
+    return FilterExpression(token, self)
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/base.py", line 705, in __init__
+    filter_func = parser.find_filter(filter_name)
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/base.py", line 615, in find_filter
+    raise TemplateSyntaxError("Invalid filter: '%s'" % filter_name)
+django.template.exceptions.TemplateSyntaxError: Invalid filter: 'add_class'
+/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/config/settings.py changed, reloading.
+Watching for file changes with StatReloader
+/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/shop_assets/forms.py changed, reloading.
+Watching for file changes with StatReloader
+/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/shop_assets/forms.py changed, reloading.
+Watching for file changes with StatReloader
+Not Found: /favicon.ico
+/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/shop_assets/forms.py changed, reloading.
+Watching for file changes with StatReloader
+/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/shop_assets/forms.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Forbidden (CSRF token missing.): /shop-assets/
+Forbidden (CSRF token missing.): /shop-assets/
+/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/shop_assets/views.py changed, reloading.
+Watching for file changes with StatReloader
+/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/shop_assets/views.py changed, reloading.
+Watching for file changes with StatReloader
+/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/shop_assets/views.py changed, reloading.
+Watching for file changes with StatReloader
+/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/shop_assets/views.py changed, reloading.
+Watching for file changes with StatReloader
+Not Found: /shop-assets/injection-tss-mv3.js.map
+Not Found: /shop-assets/injection-tss-mv3.js.map
+Not Found: /shop-assets/injection-tss-mv3.js.map
+Not Found: /shop-assets/injection-tss-mv3.js.map
+/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/shop_assets/views.py changed, reloading.
+Watching for file changes with StatReloader
+/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/shop_assets/views.py changed, reloading.
+Watching for file changes with StatReloader
+Not Found: /fraction-decimal-mm/injection-tss-mv3.js.map
+Not Found: /fraction-decimal-mm/injection-tss-mv3.js.map
+Not Found: /shop-assets/injection-tss-mv3.js.map
+Not Found: /shop-assets/injection-tss-mv3.js.map
+Not Found: /shop-assets/injection-tss-mv3.js.map
+Not Found: /shop-assets/injection-tss-mv3.js.map
+/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/shop_assets/views.py changed, reloading.
+Watching for file changes with StatReloader
+Not Found: /shop-assets/injection-tss-mv3.js.map
+Not Found: /shop-assets/injection-tss-mv3.js.map
+/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/shop_assets/urls.py changed, reloading.
+Watching for file changes with StatReloader
+/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/shop_assets/views.py changed, reloading.
+Watching for file changes with StatReloader
+/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/shop_assets/forms.py changed, reloading.
+Watching for file changes with StatReloader
+/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/shop_assets/forms.py changed, reloading.
+Watching for file changes with StatReloader
+Internal Server Error: /shop-assets/maintenance/2/delete/
+Traceback (most recent call last):
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/shop_assets/views.py", line 118, in delete_maintenance
+    form_html = render_to_string('shop_assets/maintenance_confirm_delete.html', {'record': record}, request=request)
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: shop_assets/maintenance_confirm_delete.html
+Internal Server Error: /shop-assets/maintenance/2/delete/
+Traceback (most recent call last):
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/shop_assets/views.py", line 118, in delete_maintenance
+    form_html = render_to_string('shop_assets/maintenance_confirm_delete.html', {'record': record}, request=request)
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: shop_assets/maintenance_confirm_delete.html
+Internal Server Error: /shop-assets/maintenance/3/delete/
+Traceback (most recent call last):
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/shop_assets/views.py", line 118, in delete_maintenance
+    form_html = render_to_string('shop_assets/maintenance_confirm_delete.html', {'record': record}, request=request)
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: shop_assets/maintenance_confirm_delete.html
+Internal Server Error: /shop-assets/maintenance/3/edit/
+Traceback (most recent call last):
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/shop_assets/views.py", line 109, in edit_maintenance
+    form_html = render_to_string('shop_assets/maintenance_form.html', {'form': form, 'action': 'Edit Maintenance Record'}, request=request)
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/defaulttags.py", line 327, in render
+    return nodelist.render(context)
+           ~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/urls/base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/urls/resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'edit_maintenance' with arguments '('',)' not found. 1 pattern(s) tried: ['shop\\-assets/maintenance/(?P<pk>[0-9]+)/edit/\\Z']
+Internal Server Error: /shop-assets/maintenance/3/edit/
+Traceback (most recent call last):
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/shop_assets/views.py", line 109, in edit_maintenance
+    form_html = render_to_string('shop_assets/maintenance_form.html', {'form': form, 'action': 'Edit Maintenance Record'}, request=request)
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/defaulttags.py", line 327, in render
+    return nodelist.render(context)
+           ~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/urls/base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/urls/resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'edit_maintenance' with arguments '('',)' not found. 1 pattern(s) tried: ['shop\\-assets/maintenance/(?P<pk>[0-9]+)/edit/\\Z']
+Internal Server Error: /shop-assets/maintenance/3/edit/
+Traceback (most recent call last):
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/shop_assets/views.py", line 109, in edit_maintenance
+    form_html = render_to_string('shop_assets/maintenance_form.html', {'form': form, 'action': 'Edit Maintenance Record'}, request=request)
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/defaulttags.py", line 327, in render
+    return nodelist.render(context)
+           ~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/urls/base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/urls/resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'edit_maintenance' with arguments '('',)' not found. 1 pattern(s) tried: ['shop\\-assets/maintenance/(?P<pk>[0-9]+)/edit/\\Z']
+Internal Server Error: /shop-assets/maintenance/2/edit/
+Traceback (most recent call last):
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/shop_assets/views.py", line 109, in edit_maintenance
+    form_html = render_to_string('shop_assets/maintenance_form.html', {'form': form, 'action': 'Edit Maintenance Record'}, request=request)
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/defaulttags.py", line 327, in render
+    return nodelist.render(context)
+           ~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/urls/base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/urls/resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'edit_maintenance' with arguments '('',)' not found. 1 pattern(s) tried: ['shop\\-assets/maintenance/(?P<pk>[0-9]+)/edit/\\Z']
+/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/shop_assets/views.py changed, reloading.
+Watching for file changes with StatReloader
+Not Found: /favicon.ico
+Internal Server Error: /shop-assets/maintenance/4/delete/
+Traceback (most recent call last):
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/shop_assets/views.py", line 119, in delete_maintenance
+    form_html = render_to_string('shop_assets/maintenance_confirm_delete.html', {'record': record}, request=request)
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: shop_assets/maintenance_confirm_delete.html
+Watching for file changes with StatReloader
+Internal Server Error: /shop-assets/maintenance/4/delete/
+Traceback (most recent call last):
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/shop_assets/views.py", line 119, in delete_maintenance
+    form_html = render_to_string('shop_assets/maintenance_confirm_delete.html', {'record': record}, request=request)
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: shop_assets/maintenance_confirm_delete.html
+Internal Server Error: /shop-assets/maintenance/1/edit/
+Traceback (most recent call last):
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/base.py", line 510, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'endif'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/shop_assets/views.py", line 109, in edit_maintenance
+    form_html = render_to_string('shop_assets/maintenance_form.html', {'form': form, 'action': 'Edit Maintenance Record', 'record': record}, request=request)
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/backends/django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/loaders/cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/loaders/base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/base.py", line 518, in parse
+    raise self.error(token, e)
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/defaulttags.py", line 962, in do_if
+    nodelist = parser.parse(("elif", "else", "endif"))
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/base.py", line 518, in parse
+    raise self.error(token, e)
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/loader_tags.py", line 299, in do_extends
+    nodelist = parser.parse()
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/base.py", line 512, in parse
+    self.invalid_block_tag(token, command, parse_until)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/base.py", line 577, in invalid_block_tag
+    raise self.error(
+    ...<3 lines>...
+    )
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 3: 'endif'. Did you forget to register or load this tag?
+Internal Server Error: /shop-assets/maintenance/1/delete/
+Traceback (most recent call last):
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/shop_assets/views.py", line 119, in delete_maintenance
+    form_html = render_to_string('shop_assets/maintenance_confirm_delete.html', {'record': record}, request=request)
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: shop_assets/maintenance_confirm_delete.html
+Internal Server Error: /shop-assets/maintenance/add/
+Traceback (most recent call last):
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/base.py", line 510, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'endif'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/shop_assets/views.py", line 93, in add_maintenance
+    form_html = render_to_string('shop_assets/maintenance_form.html', {'form': form, 'action': 'Add Maintenance Record'}, request=request)
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/backends/django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/loaders/cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/loaders/base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/base.py", line 518, in parse
+    raise self.error(token, e)
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/defaulttags.py", line 962, in do_if
+    nodelist = parser.parse(("elif", "else", "endif"))
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/base.py", line 518, in parse
+    raise self.error(token, e)
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/loader_tags.py", line 299, in do_extends
+    nodelist = parser.parse()
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/base.py", line 512, in parse
+    self.invalid_block_tag(token, command, parse_until)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/base.py", line 577, in invalid_block_tag
+    raise self.error(
+    ...<3 lines>...
+    )
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 3: 'endif'. Did you forget to register or load this tag?
+Watching for file changes with StatReloader
+Internal Server Error: /shop-assets/maintenance/4/delete/
+Traceback (most recent call last):
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/shop_assets/views.py", line 119, in delete_maintenance
+    form_html = render_to_string('shop_assets/maintenance_confirm_delete.html', {'record': record}, request=request)
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/.venv/lib64/python3.13/site-packages/django/template/loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: shop_assets/maintenance_confirm_delete.html
+/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/shop_assets/views.py changed, reloading.
+Watching for file changes with StatReloader
+Not Found: /favicon.ico
+/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/shop_assets/views.py changed, reloading.
+Watching for file changes with StatReloader
+/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/shop_assets/views.py changed, reloading.
+Watching for file changes with StatReloader
+/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/shop_assets/forms.py changed, reloading.
+Watching for file changes with StatReloader
+/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/shop_assets/views.py changed, reloading.
+Watching for file changes with StatReloader
+/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/shop_assets/views.py changed, reloading.
+Watching for file changes with StatReloader
+/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/shop_assets/views.py changed, reloading.
+Watching for file changes with StatReloader
+/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/shop_assets/views.py changed, reloading.
+Watching for file changes with StatReloader
+/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/shop_assets/views.py changed, reloading.
+Watching for file changes with StatReloader
+/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/shop_assets/urls.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Not Found: /favicon.ico
+Not Found: /favicon.ico
+Watching for file changes with StatReloader
+Not Found: /favicon.ico
+/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/shop_assets/views.py changed, reloading.
+Watching for file changes with StatReloader
+/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/shop_assets/views.py changed, reloading.
+Watching for file changes with StatReloader
+/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/shop_assets/views.py changed, reloading.
+Watching for file changes with StatReloader
+/home/Bebonkin/Desktop/Code/Web Based/Django/wp_studio/shop_assets/views.py changed, reloading.
+Watching for file changes with StatReloader
+Not Found: /shop-assets/injection-tss-mv3.js.map
+Not Found: /calculators/board-foot/injection-tss-mv3.js.map
+Not Found: /shop-assets/injection-tss-mv3.js.map
+Not Found: /shop-assets/injection-tss-mv3.js.map
+Not Found: /shop-assets/injection-tss-mv3.js.map
+Not Found: /shop-assets/injection-tss-mv3.js.map
+Not Found: /shop-assets/injection-tss-mv3.js.map
