@@ -1,46 +1,158 @@
 {% extends "base.html" %}
-{% block title %}{{ object.name }} - Project Details{% endblock %}
+{% load static %}
+{% block title %}{{ project.name }} - Project Details{% endblock %}
 
 {% block content %}
 <div class="container mt-4">
-    <div class="card">
-        <div class="card-header">
-            <h3 class="card-title">
-                <i class="fas fa-project-diagram"></i> {{ object.name }}
-                <span class="badge bg-{% if object.status == 'active' %}success{% elif object.status == 'completed' %}primary{% elif object.status == 'on_hold' %}warning{% else %}secondary{% endif %} float-end">
-                    {{ object.get_status_display }}
-                </span>
-            </h3>
-        </div>
-        <div class="card-body">
-            <div class="row">
-                <div class="col-md-6">
-                    <p><strong>Owner:</strong> {{ object.owner }}</p>
-                    <p><strong>Created:</strong> {{ object.datecreated|date:"M d, Y, g:i A" }}</p>
-                    <p><strong>Last Modified:</strong> {{ object.datemodified|date:"M d, Y, g:i A" }}</p>
-                </div>
-                <div class="col-md-6">
-                    <p><strong>Description:</strong></p>
-                    <p>{{ object.description|default:"No description provided." }}</p>
-                </div>
-            </div>
-            <div class="row mt-3">
-                <div class="col-12">
-                    <h5><i class="fas fa-sticky-note"></i> Notes</h5>
-                    <p>{{ object.notes|default:"No notes available."|linebreaks }}</p>
-                </div>
-            </div>
-        </div>
-        <div class="card-footer">
-            <div class="btn-group">
-                <a href="{% url 'projects:edit' object.pk %}" class="btn btn-outline-primary">
-                    <i class="fas fa-edit"></i> Edit Project
-                </a>
-                <a href="{% url 'projects:list' %}" class="btn btn-outline-secondary">
-                    <i class="fas fa-list"></i> Back to List
-                </a>
-            </div>
-        </div>
+  <div class="card shadow-sm rounded mb-4">
+    <div class="card-header bg-white border-bottom-0 pb-0">
+      <h4 class="fw-bold text-primary mb-2" style="font-size: 1.2rem">
+        <i class="fas fa-project-diagram"></i> Project Details
+      </h4>
+      <div class="mb-2">
+        <span class="fw-semibold project-name">{{ project.name }}</span>
+        <span class="badge bg-{% if project.status == 'active' %}success{% elif project.status == 'completed' %}primary{% elif project.status == 'on_hold' %}warning{% else %}secondary{% endif %} ms-2 project-status">
+          {{ project.get_status_display }}
+        </span>
+      </div>
     </div>
+    <div class="card-body pt-0">
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <p class="mb-1"><strong>Owner:</strong> {{ project.owner }}</p>
+          <p class="mb-1">
+            <strong>Created:</strong> <span class="project-created">{{ project.datecreated|date:"M d, Y, g:i A" }}</span>
+          </p>
+          <p class="mb-1">
+            <strong>Last Modified:</strong> <span class="project-modified">{{ project.datemodified|date:"M d, Y, g:i A" }}</span>
+          </p>
+        </div>
+        <div class="col-md-6">
+          <p class="mb-1"><strong>Description:</strong></p>
+          <p class="mb-1 project-description">{{ project.description|default:"No description provided." }}</p>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-12">
+          <h6 class="fw-bold text-secondary mb-1">
+            <i class="fas fa-sticky-note"></i> Notes
+          </h6>
+          <div class="ps-2 project-notes">{{ project.notes|default:"No notes available."|linebreaks }}</div>
+        </div>
+      </div>
+      <hr />
+      <h5 class="fw-bold text-primary mb-3">
+        <i class="fas fa-cubes"></i> Parts List
+      </h5>
+      {% if parts %}
+      <div class="table-responsive">
+        <table class="table table-striped align-middle mb-0">
+          <thead class="table-light">
+            <tr>
+              <th>Name</th>
+              <th>Length</th>
+              <th>Width</th>
+              <th>Thickness</th>
+              <th>Material</th>
+              <th>Quantity</th>
+              <th>Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for part in parts %}
+            <tr>
+              <td>{{ part.name }}</td>
+              <td>{{ part.length }}</td>
+              <td>{{ part.width }}</td>
+              <td>{{ part.thickness }}</td>
+              <td>{{ part.material }}</td>
+              <td>{{ part.quantity }}</td>
+              <td>{{ part.notes }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      {% else %}
+      <div class="alert alert-info mb-0">
+        No parts have been added to this project yet.
+      </div>
+      {% endif %}
+    </div>
+    <div class="card-footer bg-white border-top-0">
+      <div class="d-flex flex-wrap gap-2">
+        <a href="{% url 'parts:manager' project.id %}" class="btn btn-primary">
+          <i class="fas fa-cubes"></i> Parts List for Project
+        </a>
+        <a href="{% url 'projects:edit' project.id %}" class="btn btn-secondary" id="edit-project-btn">
+          <i class="fas fa-edit"></i> Edit Project
+        </a>
+        <a href="{% url 'projects:delete' project.id %}" class="btn btn-danger">
+          <i class="fas fa-trash"></i> Delete Project
+        </a>
+      </div>
+    </div>
+  </div>
 </div>
+
+<!-- Edit Project Modal -->
+<div class="modal fade" id="editProjectModal" tabindex="-1" aria-labelledby="editProjectModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <!-- AJAX content will be loaded here -->
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+$(function() {
+  // Open modal and load form via AJAX
+  $('#edit-project-btn').on('click', function(e) {
+    e.preventDefault();
+    var url = $(this).attr('href');
+    $('#editProjectModal .modal-content').html('<div class="modal-body text-center py-5"><span class="spinner-border"></span></div>');
+    $('#editProjectModal').modal('show');
+    $.get(url, function(data) {
+      if (data.form_html) {
+        $('#editProjectModal .modal-content').html(data.form_html);
+      } else {
+        $('#editProjectModal .modal-content').html(data);
+      }
+    });
+  });
+
+  // Delegate submit handler for dynamically loaded form
+  $('#editProjectModal').on('submit', 'form', function(e) {
+    e.preventDefault();
+    var form = $(this);
+    var url = form.attr('action');
+    var method = form.attr('method');
+    var data = form.serialize();
+    $.ajax({
+      url: url,
+      method: method,
+      data: data,
+      success: function(response) {
+        if (response.success) {
+          $('#editProjectModal').modal('hide');
+          // Update fields in the DOM with new values (no reload)
+          $('.project-name').text(response.name);
+          $('.project-description').text(response.description || 'No description provided.');
+          $('.project-status').text(response.status);
+          $('.project-notes').html(response.notes || 'No notes available.');
+          $('.project-created').text(response.created);
+          $('.project-modified').text(response.modified);
+        } else {
+          $('#editProjectModal .modal-content').html(response.form_html);
+        }
+      },
+      error: function(xhr) {
+        $('#editProjectModal .modal-content').html('<div class="modal-body text-danger">Server error. Please try again.</div>');
+      }
+    });
+  });
+});
+</script>
 {% endblock %}

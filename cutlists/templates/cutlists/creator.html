@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>{% if cutlist %}Edit{% else %}Create New{% endif %} Cutlist</h2>
+    <div class="mb-3">
+        <strong>Project:</strong> {{ project.name }}<br>
+        <strong>Units:</strong> {{ measurement_units|title }}<br>
+        <strong>Kerf Thickness:</strong> {{ kerf_thickness }} {{ measurement_units }}
+    </div>
+    {% if no_parts %}
+        <div class="alert alert-warning">
+            This project has no parts. <a href="{% url 'parts:add' project.id %}">Add parts to this project</a> before creating a cutlist.
+        </div>
+    {% else %}
+    <form method="post">
+        {% csrf_token %}
+        <div class="card mb-4">
+            <div class="card-body">
+                {{ form|crispy }}
+            </div>
+        </div>
+
+        <h4>Cutlist Parts</h4>
+        <div id="parts-formset-container">
+            {{ parts_formset.management_form }}
+            {% for form in parts_formset %}
+                <div class="formset-row card mb-2">
+                    <div class="card-body">
+                        {{ form|crispy }}
+                        {% if form.DELETE %}
+                            <div class="form-group">
+                                {{ form.DELETE|as_crispy_field }}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <button type="button" id="add-part-form" class="btn btn-secondary mt-3">
+            <i class="fas fa-plus"></i> Add Part
+        </button>
+
+        <h4 class="mt-4">Stock Materials</h4>
+        <div id="stock-formset-container">
+            {{ stock_formset.management_form }}
+            {% for form in stock_formset %}
+                <div class="formset-row card mb-2">
+                    <div class="card-body">
+                        {{ form|crispy }}
+                        {% if form.DELETE %}
+                            <div class="form-group">
+                                {{ form.DELETE|as_crispy_field }}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <button type="button" id="add-stock-form" class="btn btn-secondary mt-3">
+            <i class="fas fa-plus"></i> Add Stock Material
+        </button>
+
+        <div class="mt-4">
+            <button type="submit" class="btn btn-primary">
+                <i class="fas fa-save"></i> Save Cutlist
+            </button>
+            <button type="button" onclick="window.print();" class="btn btn-outline-secondary">
+                <i class="fas fa-print"></i> Print
+            </button>
+            <!-- Placeholder for export functionality -->
+            <button type="button" class="btn btn-outline-success" disabled>
+                <i class="fas fa-file-export"></i> Export (CSV/PDF)
+            </button>
+        </div>
+    </form>
+    {% endif %}
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/jquery.formset.js' %}"></script>
+<script>
+$(document).ready(function() {
+    $('#parts-formset-container .formset-row').formset({
+        prefix: '{{ parts_formset.prefix }}',
+        deleteText: '<i class="fas fa-trash"></i> Remove',
+        addText: '<i class="fas fa-plus"></i> Add Another Part'
+    });
+    $('#stock-formset-container .formset-row').formset({
+        prefix: '{{ stock_formset.prefix }}',
+        deleteText: '<i class="fas fa-trash"></i> Remove',
+        addText: '<i class="fas fa-plus"></i> Add Another Stock Material'
+    });
+});
+</script>
+{% endblock %}

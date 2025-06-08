@@ -19,10 +19,12 @@ from django.urls import path, include
 from django.views.generic import TemplateView
 from django.contrib.auth.views import LoginView, LogoutView
 from django.conf import settings
+from django.views.generic.base import RedirectView
 from django.conf.urls.static import static
 # from projects.views import ProjectDashboardView
 
 urlpatterns = [
+    path('favicon.ico', RedirectView.as_view(url=static('images/favicon.ico'))),
     path('admin/', admin.site.urls),
     path('', TemplateView.as_view(template_name='landing.html'), name='landing'),
     path('dashboard/', include('projects.urls')),

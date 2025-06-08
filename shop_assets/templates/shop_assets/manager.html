@@ -245,6 +245,15 @@ $(document).on('click', '#tools-table tbody tr[data-tool-id]', function() {
     addMaintBtn.disabled = false;
 });
 
+// (Optional) Deselect row and disable buttons if the selected row is clicked again
+$(document).on('click', '#tools-table tbody tr.selected', function(e) {
+    $(this).removeClass('selected table-active');
+    selectedToolId = null;
+    $('#edit-tool-btn').prop('disabled', true);
+    $('#delete-tool-btn').prop('disabled', true);
+    $('#add-maintenance-btn').prop('disabled', true);
+});
+
 // Add Tool Button - Load form via AJAX
 $('#add-tool-btn').on('click', function() {
     $.get("{% url 'shop_assets:add_tool' %}", function(response) {
@@ -326,6 +335,21 @@ $(document).on('submit', '#delete-tool-form', function(event) {
         error: function() {
             alert('There was an error deleting the tool.');
         }
+    });
+});
+
+// Add Maintenance button logic
+$('#add-maintenance-btn').on('click', function(e) {
+    e.preventDefault();
+    if (!selectedToolId) {
+        alert('Please select a tool from the list before adding maintenance.');
+        return;
+    }
+    // Load the maintenance form via AJAX, passing selectedToolId if needed
+    $.get("{% url 'shop_assets:add_maintenance' %}", { tool_id: selectedToolId }, function(response) {
+        var html = response.form_html || response;
+        $('#maintenance-modal-content').html(html);
+        $('#maintenanceModal').modal('show');
     });
 });
 

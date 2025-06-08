@@ -7,49 +7,80 @@ from django.http import JsonResponse, HttpResponse
 from django.views.generic import TemplateView, ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.db.models import Count, Sum, Q
 from django.core.paginator import Paginator
-from django.utils import timezone
+from django.utils import timezone, dateformat
 from .models import Project, ProjectTimeline, ProjectNote
 from .forms import ProjectForm, ProjectSettingsForm, ProjectNoteForm
 from parts.models import Part
 import json
+from django.template.loader import render_to_string
 
 
 # Create a simple DashboardView first - we'll expand it later when models are ready
 class DashboardView(LoginRequiredMixin, TemplateView):
     """Main dashboard view for logged-in users"""
     template_name = 'projects/dashboard.html'
-    
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        # Recent projects: get the 5 most recent by date created
-        context['recent_projects'] = Project.objects.order_by('-datecreated')[:5]
-        # Optional: Add other dynamic stats as needed (total_projects, active_projects, etc.)
-        context['total_projects'] = Project.objects.count()
-        context['active_projects'] = Project.objects.filter(status='active')
-        context['completed_projects'] = Project.objects.filter(status='completed')
-        # Optional: Add total_parts if you have a related model
-        # context['total_parts'] = Part.objects.count()  # Uncomment if you have a Part model
+        user = self.request.user
+
+        # Recent projects: 5 most recently modified
+        context['recent_projects'] = Project.objects.filter(owner=user).order_by('-datemodified')[:5]
+
+        # Total projects owned by the user
+        context['total_projects'] = Project.objects.filter(owner=user).count()
+
+        # Active projects: not completed or archived
+        context['active_projects_count'] = Project.objects.filter(
+            owner=user
+        ).exclude(status__in=['completed', 'archived']).count()
+
+        # Completed projects
+        context['completed_projects'] = Project.objects.filter(
+            owner=user, status='completed'
+        ).count()
+
+        # Current project (from session)
+        project_id = self.request.session.get('current_project_id')
+        current_project = None
+        total_parts = 0
+        if project_id:
+            current_project = Project.objects.filter(pk=project_id, owner=user).first()
+            if current_project:
+                # Assumes related name for parts is 'parts'
+                total_parts = current_project.parts.count()
+
+        context['current_project'] = current_project
+        context['total_parts'] = total_parts
+
         return context
 
 # Alias for backward compatibility
-ProjectDashboardView = DashboardView
-
-# Placeholder views - we'll implement these properly after models are working
+# ProjectDashboardView = DashboardView
 class ProjectListView(LoginRequiredMixin, ListView):
     """List all projects for the current user"""
     model = Project
-    template_name = 'projects/project_list.html'  # Optional, Django will look for this by default
+    template_name = 'projects/project_list.html'
     context_object_name = 'object_list'
 
-# class ProjectDetailView(LoginRequiredMixin, TemplateView):
-#     """Project detail view"""
-#     template_name = 'projects/project_detail.html'
-class ProjectDetailView(DetailView):
-    model = Project
-    
+    def get_queryset(self):
+        # Only show projects owned by the logged-in user
+        return Project.objects.filter(owner=self.request.user)
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['current_project'] = self.get_object()
+        context['current_project_id'] = self.request.session.get('current_project_id')
+        return context
+
+class ProjectDetailView(LoginRequiredMixin, DetailView):
+    model = Project
+    template_name = 'projects/project_detail.html'
+    context_object_name = 'project'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        # Fetch only parts related to this project
+        context['parts'] = Part.objects.filter(project=self.object)
         return context
 
 class ProjectCreateView(LoginRequiredMixin, CreateView):
@@ -60,15 +91,30 @@ class ProjectCreateView(LoginRequiredMixin, CreateView):
     success_url = reverse_lazy('projects:list')
 
 class ProjectUpdateView(LoginRequiredMixin, UpdateView):
-    """Update existing project"""
     model = Project
-    fields = ['name', 'description', 'status', 'notes']  # Owner is now removed
-    template_name = 'projects/project_form.html'
-    success_url = reverse_lazy('projects:list')
+    form_class = ProjectForm
+    template_name = 'projects/project_form_modal.html'
+
+    def get(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        if request.headers.get('x-requested-with') == 'XMLHttpRequest':
+            context = self.get_context_data()
+            html = render_to_string(self.template_name, context, request=request)
+            return JsonResponse({'form_html': html})
+        return super().get(request, *args, **kwargs)
 
     def form_valid(self, form):
-        form.instance.owner = self.request.user
+        project = form.save()
+        if self.request.headers.get('x-requested-with') == 'XMLHttpRequest':
+            # You may want to return updated fields as JSON for partial updates
+            return JsonResponse({'success': True})
         return super().form_valid(form)
+
+    def form_invalid(self, form):
+        if self.request.headers.get('x-requested-with') == 'XMLHttpRequest':
+            form_html = render_to_string(self.template_name, self.get_context_data(form=form), request=self.request)
+            return JsonResponse({'success': False, 'form_html': form_html})
+        return super().form_invalid(form)
 
 class ProjectDeleteView(LoginRequiredMixin, DeleteView):
     """Delete project"""
@@ -192,3 +238,21 @@ def project_statistics_api(request, pk):
         stats['materials_breakdown'][part.material]['board_feet'] += part.board_feet
     
     return JsonResponse(stats)
+
+@login_required
+def set_current_project(request, pk):
+    project = get_object_or_404(Project, pk=pk, owner=request.user)
+    request.session['current_project_id'] = project.id
+    return redirect('projects:detail', pk=project.id)
+
+@login_required
+def close_current_project(request):
+    request.session.pop('current_project_id', None)  # Safely remove the key if it exists
+    return redirect('projects:dashboard')
+
+@login_required
+def get_context_data(self, **kwargs):
+    context = super().get_context_data(**kwargs)
+    context['current_project_id'] = self.request.session.get('current_project_id')
+    return context
+

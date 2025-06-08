@@ -287,3 +287,11 @@ tr.selected, tr.selected td {
 .table tbody tr:nth-child(odd) {
     background-color: #fff;     /* white */
 }
+
+/* part_forms Notes field: width 100 */
+textarea#id_notes {
+    width: 100% !important;
+    min-width: 100% !important;
+    max-width: 100% !important;
+    resize: vertical;
+}

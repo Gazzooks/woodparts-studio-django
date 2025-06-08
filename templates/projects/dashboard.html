@@ -3,249 +3,240 @@
 
 {% block title %}Dashboard - WoodParts Studio{% endblock %}
 
-{% block breadcrumb %}
-<nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item active">Dashboard</li>
-    </ol>
-</nav>
-{% endblock %}
-
 {% block content %}
-<div class="row">
-    <!-- Welcome Section - equivalent to your welcome screen -->
-    <div class="col-12">
-        <div class="jumbotron bg-primary text-white p-4 rounded mb-4">
-            <div class="container">
-                <h1 class="display-4">
-                    <i class="fas fa-hammer"></i> Welcome to WoodParts Studio!
-                </h1>
-                <p class="lead">Manage your woodworking projects efficiently with our comprehensive tools.</p>
-                <div class="btn-group" role="group">
-                    <a href="{% url 'projects:create' %}" class="btn btn-light btn-lg">
-                        <i class="fas fa-plus"></i> New Project
-                    </a>
-                    <a href="{% url 'projects:list' %}" class="btn btn-outline-light btn-lg">
-                        <i class="fas fa-folder-open"></i> Open Project
-                    </a>
-                </div>
-            </div>
-        </div>
+<div class="container mt-4">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="fw-bold text-primary mb-0"><i class="fas fa-hammer"></i> Dashboard</h2>
+    <div>
+      <a href="{% url 'projects:create' %}" class="btn btn-success mr-2">
+        <i class="fas fa-plus"></i> New Project
+      </a>
+      <a href="{% url 'projects:list' %}" class="btn btn-secondary">
+        <i class="fas fa-folder-open"></i> Open Project
+      </a>
     </div>
-    
+  </div>
+
+  <div class="row">
     <!-- Statistics Cards -->
     <div class="col-md-3 mb-4">
-        <div class="card bg-primary text-white">
-            <div class="card-body">
-                <div class="d-flex justify-content-between">
-                    <div>
-                        <h5 class="card-title">Total Projects</h5>
-                        <h2 class="mb-0">{{ total_projects }}</h2>
-                    </div>
-                    <div class="align-self-center">
-                        <i class="fas fa-project-diagram fa-2x"></i>
-                    </div>
-                </div>
+      <div class="card bg-primary text-white">
+        <div class="card-body">
+          <div class="d-flex justify-content-between">
+            <div>
+              <h5 class="card-title">Total Projects</h5>
+              <h2 class="mb-0">{{ total_projects }}</h2>
             </div>
+            <div class="align-self-center">
+              <i class="fas fa-project-diagram fa-2x"></i>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
-    
     <div class="col-md-3 mb-4">
-        <div class="card bg-success text-white">
-            <div class="card-body">
-                <div class="d-flex justify-content-between">
-                    <div>
-                        <h5 class="card-title">Active Projects</h5>
-                        <h2 class="mb-0">{{ active_projects.count }}</h2>
-                    </div>
-                    <div class="align-self-center">
-                        <i class="fas fa-play fa-2x"></i>
-                    </div>
-                </div>
+      <div class="card bg-success text-white">
+        <div class="card-body">
+          <div class="d-flex justify-content-between">
+            <div>
+              <h5 class="card-title">Active Projects</h5>
+              <h2 class="mb-0">{{ active_projects_count }}</h2>
             </div>
+            <div class="align-self-center">
+              <i class="fas fa-play fa-2x"></i>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
-    
     <div class="col-md-3 mb-4">
-        <div class="card bg-info text-white">
-            <div class="card-body">
-                <div class="d-flex justify-content-between">
-                    <div>
-                        <h5 class="card-title">Completed</h5>
-                        <h2 class="mb-0">{{ completed_projects.count }}</h2>
-                    </div>
-                    <div class="align-self-center">
-                        <i class="fas fa-check fa-2x"></i>
-                    </div>
-                </div>
+      <div class="card bg-info text-white">
+        <div class="card-body">
+          <div class="d-flex justify-content-between">
+            <div>
+              <h5 class="card-title">Completed</h5>
+              <h2 class="mb-0">{{ completed_projects }}</h2>
             </div>
+            <div class="align-self-center">
+              <i class="fas fa-check fa-2x"></i>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
-    
     <div class="col-md-3 mb-4">
-        <div class="card bg-warning text-white">
-            <div class="card-body">
-                <div class="d-flex justify-content-between">
-                    <div>
-                        <h5 class="card-title">Total Parts</h5>
-                        <h2 class="mb-0">{{ total_parts }}</h2>
-                    </div>
-                    <div class="align-self-center">
-                        <i class="fas fa-cogs fa-2x"></i>
-                    </div>
-                </div>
-            </div>
+  <div class="card bg-warning text-white">
+    <div class="card-body">
+      <div class="d-flex justify-content-between">
+        <div>
+          <h5 class="card-title">Total Parts</h5>
+          {% if current_project %}
+            <h2 class="mb-0">{{ total_parts }}</h2>
+            <small>for <a href="{% url 'projects:detail' current_project.id %}" class="text-white text-underline">{{ current_project.name }}</a></small>
+          {% else %}
+            <h2 class="mb-0">0</h2>
+            <small>No active project</small>
+          {% endif %}
         </div>
+        <div class="align-self-center">
+          <i class="fas fa-cogs fa-2x"></i>
+        </div>
+      </div>
     </div>
+  </div>
 </div>
 
-<div class="row">
-    <!-- Recent Projects - equivalent to your recent projects tree -->
-    <div class="col-md-8">
-        <div class="card">
-            <div class="card-header d-flex justify-content-between align-items-center">
-                <h5 class="mb-0"><i class="fas fa-clock"></i> Recent Projects</h5>
-                <a href="{% url 'projects:list' %}" class="btn btn-sm btn-outline-primary">View All</a>
-            </div>
-            <div class="card-body">
-                {% if recent_projects %}
-                    <div class="table-responsive">
-                        <table class="table table-hover">
-                            <thead>
-                                <tr>
-                                    <th>Project Name</th>
-                                    <th>Status</th>
-                                    <th>Last Modified</th>
-                                    <th>Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {% for project in recent_projects %}
-                                <tr>
-                                    <td>
-                                        <a href="{{ project.get_absolute_url }}" class="text-decoration-none">
-                                            <strong>{{ project.name }}</strong>
-                                        </a>
-                                        {% if project.description %}
-                                            <br><small class="text-muted">{{ project.description|truncatechars:50 }}</small>
-                                        {% endif %}
-                                    </td>
-                                    <td>
-                                        <span class="badge bg-{% if project.status == 'active' %}success{% elif project.status == 'completed' %}primary{% elif project.status == 'on_hold' %}warning{% else %}secondary{% endif %}">
-                                            {{ project.get_status_display }}
-                                        </span>
-                                    </td>
-                                    <td>
-                                        <small>{{ project.datemodified|date:"M d, Y" }}</small>
-                                        <br><small class="text-muted">{{ project.datemodified|time:"g:i A" }}</small>
-                                    </td>
-                                    <td>
-                                        <div class="btn-group btn-group-sm">
-                                            <a href="{{ project.get_absolute_url }}" class="btn btn-outline-primary" title="View">
-                                                <i class="fas fa-eye"></i>
-                                            </a>
-                                            <a href="{% url 'parts:manager' project.id %}" class="btn btn-outline-secondary" title="Parts">
-                                                <i class="fas fa-cogs"></i>
-                                            </a>
-                                        </div>
-                                    </td>
-                                </tr>
-                                {% endfor %}
-                            </tbody>
-                        </table>
-                    </div>
-                {% else %}
-                    <div class="text-center py-4">
-                        <i class="fas fa-folder-open fa-3x text-muted mb-3"></i>
-                        <p class="text-muted">No projects yet.</p>
-                        <a href="{% url 'projects:create' %}" class="btn btn-primary">
-                            <i class="fas fa-plus"></i> Create your first project
-                        </a>
-                    </div>
-                {% endif %}
-            </div>
-        </div>
-    </div>
+  </div>
+
+  <div class="row">
     
+    <!-- Recent Projects -->
+    <div class="col-md-8">
+        <!-- Current project working on -->
+        {% if request.session.current_project_id %}
+            <div class="alert alert-info mb-3 d-flex justify-content-between align-items-center">
+                <div>
+                Working on project:
+                <strong>
+                    <a href="{% url 'projects:detail' request.session.current_project_id %}">
+                    {{ current_project.name }}
+                    </a>
+                </strong>
+                </div>
+                <a href="{% url 'projects:close_current_project' %}" class="btn btn-sm btn-outline-secondary">
+                Close Project
+                </a>
+            </div>
+        {% endif %}
+        <!-- Recent Projects frame list -->
+      <div class="card">
+        <div class="card-header d-flex justify-content-between align-items-center">
+          <h5 class="mb-0"><i class="fas fa-clock"></i> Recent Projects</h5>
+          <a href="{% url 'projects:list' %}" class="btn btn-sm btn-outline-primary">View All</a>
+        </div>
+        <div class="card-body">
+          {% if recent_projects %}
+            <div class="table-responsive">
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th>Project Name</th>
+                    <th>Status</th>
+                    <th>Last Modified</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for project in recent_projects %}
+                  <tr>
+                    <td>
+                      <a href="{{ project.get_absolute_url }}" class="text-decoration-none">
+                        <strong>{{ project.name }}</strong>
+                      </a>
+                      {% if project.description %}
+                        <br><small class="text-muted">{{ project.description|truncatechars:50 }}</small>
+                      {% endif %}
+                    </td>
+                    <td>
+                      <span class="badge bg-{% if project.status == 'active' %}success{% elif project.status == 'completed' %}primary{% elif project.status == 'on_hold' %}warning{% else %}secondary{% endif %}">
+                        {{ project.get_status_display }}
+                      </span>
+                    </td>
+                    <td>
+                      <small>{{ project.datemodified|date:"M d, Y" }}</small>
+                      <br><small class="text-muted">{{ project.datemodified|time:"g:i A" }}</small>
+                    </td>
+                    <td>
+                      <div class="btn-group btn-group-sm">
+                        <a href="{{ project.get_absolute_url }}" class="btn btn-outline-primary" title="View">
+                          <i class="fas fa-eye"></i>
+                        </a>
+                        <a href="{% url 'parts:manager' project.id %}" class="btn btn-outline-secondary" title="Parts">
+                          <i class="fas fa-cogs"></i>
+                        </a>
+                      </div>
+                    </td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          {% else %}
+            <div class="text-center py-4">
+              <i class="fas fa-folder-open fa-3x text-muted mb-3"></i>
+              <p class="text-muted">No projects yet.</p>
+              <a href="{% url 'projects:create' %}" class="btn btn-primary">
+                <i class="fas fa-plus"></i> Create your first project
+              </a>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
     <!-- Quick Tools and Recent Activity -->
     <div class="col-md-4">
-        <!-- Quick Tools -->
-        <div class="card mb-4">
-            <div class="card-header">
-                <h5 class="mb-0"><i class="fas fa-tools"></i> Quick Tools</h5>
-            </div>
-            <div class="card-body">
-                <div class="d-grid gap-2">
-                    <a href="{% url 'calculators:board_foot' %}" class="btn btn-outline-primary btn-sm">
-                        <i class="fas fa-calculator"></i> Board Foot Calculator
-                    </a>
-                    <a href="{% url 'calculators:fraction' %}" class="btn btn-outline-primary btn-sm">
-                        <i class="fas fa-divide"></i> Fraction Calculator
-                    </a>
-                    <a href="{% url 'converters:length' %}" class="btn btn-outline-primary btn-sm">
-                        <i class="fas fa-ruler"></i> Length Converter
-                    </a>
-                    <a href="{% url 'references:wood_types' %}" class="btn btn-outline-secondary btn-sm">
-                        <i class="fas fa-tree"></i> Wood Types Guide
-                    </a>
-                    <a href="{% url 'references:screw_chart' %}" class="btn btn-outline-secondary btn-sm">
-                        <i class="fas fa-list"></i> Screw Size Chart
-                    </a>
-                </div>
-            </div>
+      <!-- Quick Tools -->
+      <div class="card mb-4">
+        <div class="card-header">
+          <h5 class="mb-0"><i class="fas fa-tools"></i> Quick Tools</h5>
         </div>
-        
-        <!-- Recent Activity -->
-        <div class="card">
-            <div class="card-header">
-                <h5 class="mb-0"><i class="fas fa-history"></i> Recent Activity</h5>
-            </div>
-            <div class="card-body">
-                {% if recent_activity.projects %}
-                    <h6 class="text-muted">Recent Projects</h6>
-                    {% for project in recent_activity.projects %}
-                        <div class="d-flex align-items-center mb-2">
-                            <i class="fas fa-project-diagram text-primary me-2"></i>
-                            <small>
-                                <a href="{{ project.get_absolute_url }}">{{ project.name }}</a>
-                                <br><span class="text-muted">{{ project.datemodified|timesince }} ago</span>
-                            </small>
-                        </div>
-                    {% endfor %}
-                {% endif %}
-                
-                {% if recent_activity.parts %}
-                    <h6 class="text-muted mt-3">Recent Parts</h6>
-                    {% for part in recent_activity.parts %}
-                        <div class="d-flex align-items-center mb-2">
-                            <i class="fas fa-cog text-secondary me-2"></i>
-                            <small>
-                                {{ part.partname }}
-                                <br><span class="text-muted">{{ part.created_at|timesince }} ago</span>
-                            </small>
-                        </div>
-                    {% endfor %}
-                {% endif %}
-                
-                {% if not recent_activity.projects and not recent_activity.parts %}
-                    <p class="text-muted text-center">No recent activity</p>
-                {% endif %}
-            </div>
+        <div class="card-body">
+          <div class="d-grid gap-2">
+            <a href="{% url 'calculators:board_foot' %}" class="btn btn-outline-primary btn-sm">
+              <i class="fas fa-calculator"></i> Board Foot Calculator
+            </a>
+            <a href="{% url 'calculators:fraction' %}" class="btn btn-outline-primary btn-sm">
+              <i class="fas fa-divide"></i> Fraction Calculator
+            </a>
+            <a href="{% url 'converters:length' %}" class="btn btn-outline-primary btn-sm">
+              <i class="fas fa-ruler"></i> Length Converter
+            </a>
+            <a href="{% url 'references:wood_types' %}" class="btn btn-outline-secondary btn-sm">
+              <i class="fas fa-tree"></i> Wood Types Guide
+            </a>
+            <a href="{% url 'references:screw_size_chart' %}" class="btn btn-outline-secondary btn-sm">
+              <i class="fas fa-list"></i> Screw Size Chart
+            </a>
+          </div>
         </div>
+      </div>      
+
+      <!-- Recent Activity -->
+      <div class="card">
+        <div class="card-header">
+          <h5 class="mb-0"><i class="fas fa-history"></i> Recent Activity</h5>
+        </div>
+        <div class="card-body">
+          {% if recent_activity.projects %}
+            <h6 class="text-muted">Recent Projects</h6>
+            {% for project in recent_activity.projects %}
+              <div class="d-flex align-items-center mb-2">
+                <i class="fas fa-project-diagram text-primary me-2"></i>
+                <small>
+                  <a href="{{ project.get_absolute_url }}">{{ project.name }}</a>
+                  <br><span class="text-muted">{{ project.datemodified|timesince }} ago</span>
+                </small>
+              </div>
+            {% endfor %}
+          {% endif %}
+          {% if recent_activity.parts %}
+            <h6 class="text-muted mt-3">Recent Parts</h6>
+            {% for part in recent_activity.parts %}
+              <div class="d-flex align-items-center mb-2">
+                <i class="fas fa-cog text-secondary me-2"></i>
+                <small>
+                  {{ part.partname }}
+                  <br><span class="text-muted">{{ part.created_at|timesince }} ago</span>
+                </small>
+              </div>
+            {% endfor %}
+          {% endif %}
+          {% if not recent_activity.projects and not recent_activity.parts %}
+            <p class="text-muted text-center">No recent activity</p>
+          {% endif %}
+        </div>
+      </div>
     </div>
+  </div>
 </div>
-{% endblock %}
-
-{% block extra_js %}
-<script>
-// Auto-refresh dashboard data every 5 minutes
-setInterval(function() {
-    // You could implement AJAX refresh here
-}, 300000);
-
-// Add click handlers for quick actions
-$(document).ready(function() {
-    // Add any dashboard-specific JavaScript here
-});
-</script>
 {% endblock %}

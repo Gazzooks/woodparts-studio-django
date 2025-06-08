@@ -20,14 +20,38 @@
             {% for project in object_list %}
             <tr>
                 <td>{{ project.name }}</td>
-                <td>{{ project.get_status_display }}</td>
-                <td>{{ project.owner }}</td>
-                <td>{{ project.datecreated }}</td>
                 <td>
-                    <a href="{% url 'projects:edit' project.pk %}" class="btn btn-sm btn-outline-primary">
+                  <span class="badge bg-{% if project.status == 'active' %}success{% elif project.status == 'completed' %}primary{% elif project.status == 'on_hold' %}warning{% else %}secondary{% endif %}">
+                    {{ project.get_status_display }}
+                  </span>
+                </td>
+                <td>{{ project.owner }}</td>
+                <td>{{ project.datecreated|date:"M d, Y" }}</td>
+                <td>
+                    {% if current_project_id and project.id == current_project_id %}
+                        <div class="d-inline-block" data-toggle="tooltip" title="You must close the current project before opening another.">
+                            <button class="btn btn-danger btn-sm" disabled style="pointer-events: none;">
+                                <i class="fas fa-lock"></i> Currently Working on This Project
+                            </button>
+                        </div>
+                        <a href="{% url 'projects:close_current_project' %}"
+                        class="btn btn-outline-secondary btn-sm ml-2"
+                        data-toggle="tooltip"
+                        title="Close the current project to work on another.">
+                            <i class="fas fa-times"></i> Close Project
+                        </a>
+                    {% else %}
+                        <a href="{% url 'projects:set_current_project' project.id %}"
+                        class="btn btn-outline-primary btn-sm"
+                        data-toggle="tooltip"
+                        title="Set this project as your current working project.">
+                            <i class="fas fa-sign-in-alt"></i> Work on this Project
+                        </a>
+                    {% endif %}
+                    <a href="{% url 'projects:edit' project.pk %}" class="btn btn-sm btn-outline-primary" data-toggle="tooltip" title="Edit Project">
                         <i class="fas fa-edit"></i>
                     </a>
-                    <a href="{% url 'projects:delete' project.pk %}" class="btn btn-sm btn-outline-danger">
+                    <a href="{% url 'projects:delete' project.pk %}" class="btn btn-sm btn-outline-danger" data-toggle="tooltip" title="Delete Project">
                         <i class="fas fa-trash"></i>
                     </a>
                 </td>
@@ -40,4 +64,12 @@
         </tbody>
     </table>
 </div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+  $(function () {
+    $('[data-toggle="tooltip"]').tooltip();
+  });
+</script>
 {% endblock %}

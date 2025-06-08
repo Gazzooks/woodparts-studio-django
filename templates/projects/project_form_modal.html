@@ -1,0 +1,41 @@
+{% load crispy_forms_tags %}
+<div class="modal-header">
+    <h5 class="modal-title d-flex align-items-center" id="editProjectModalLabel">
+        <i class="fas fa-project-diagram text-primary mr-2" style="font-size: 1.3rem;"></i>
+        Edit Project
+    </h5>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<form method="post" action="{% url 'projects:edit' form.instance.pk %}">
+    <div class="modal-body">
+        {% csrf_token %}
+        <div class="container-fluid">
+            <div class="form-row">
+                <div class="form-group col-md-6 mb-3">
+                    {{ form.name|as_crispy_field }}
+                </div>
+                <div class="form-group col-md-6 mb-3">
+                    {{ form.status|as_crispy_field }}
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-12 mb-3">
+                    {{ form.description|as_crispy_field }}
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-12 mb-3">
+                    {{ form.notes|as_crispy_field }}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-success">
+            <i class="fas fa-save"></i> Save
+        </button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+    </div>
+</form>
